@@ -10,8 +10,11 @@
 
 @implementation ad4MaxMobile_SampleAppViewController
 
+@synthesize webView;
+
 - (void)dealloc
 {
+    self.webView = nil;
     [super dealloc];
 }
 
@@ -25,13 +28,22 @@
 
 #pragma mark - View lifecycle
 
-/*
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 }
-*/
+
+- (void) viewWillAppear:(BOOL)animated {
+		
+	// set web view content
+	NSString *htmlString = @"<html><head><title></title></head><body><script type=\"text/javascript\">/* 320x50, Advertisement #1 */ad4max_guid = \"b15dded7-8c97-456a-9395-c2ca6a7832d7\";ad4max_width = \"320\";ad4max_height = \"50\";</script><script type=\"text/javascript\" src=\"http://max.medialution.com/ad4max.js\"></script></body></html>";
+    	
+	[webView loadHTMLString:htmlString baseURL:nil];
+	
+	[super viewWillAppear:animated];
+}	
 
 - (void)viewDidUnload
 {
