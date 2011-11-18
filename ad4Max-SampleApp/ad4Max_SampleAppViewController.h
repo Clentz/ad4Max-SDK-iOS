@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ad4MaxMobile_SampleAppViewController : UIViewController <UIWebViewDelegate> {
+@interface ad4Max_SampleAppViewController : UIViewController <UIWebViewDelegate> {
     
     IBOutlet UIWebView *webView;
 }

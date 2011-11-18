@@ -6,9 +6,9 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "ad4MaxMobile_SampleAppViewController.h"
+#import "ad4Max_SampleAppViewController.h"
 
-@implementation ad4MaxMobile_SampleAppViewController
+@implementation ad4Max_SampleAppViewController
 
 @synthesize webView;
 

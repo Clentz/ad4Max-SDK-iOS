@@ -6,11 +6,11 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "ad4MaxMobile_SampleAppAppDelegate.h"
+#import "ad4Max_SampleAppAppDelegate.h"
 
-#import "ad4MaxMobile_SampleAppViewController.h"
+#import "ad4Max_SampleAppViewController.h"
 
-@implementation ad4MaxMobile_SampleAppAppDelegate
+@implementation ad4Max_SampleAppAppDelegate
 
 
 @synthesize window=_window;

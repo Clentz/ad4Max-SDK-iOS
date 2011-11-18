@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class ad4MaxMobile_SampleAppViewController;
+@class ad4Max_SampleAppViewController;
 
-@interface ad4MaxMobile_SampleAppAppDelegate : NSObject <UIApplicationDelegate> {
+@interface ad4Max_SampleAppAppDelegate : NSObject <UIApplicationDelegate> {
 
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
-@property (nonatomic, retain) IBOutlet ad4MaxMobile_SampleAppViewController *viewController;
+@property (nonatomic, retain) IBOutlet ad4Max_SampleAppViewController *viewController;
 
 @end

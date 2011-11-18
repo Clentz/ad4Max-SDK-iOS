@@ -59,7 +59,14 @@
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb.</string>
+						<string type="base64-UTF8" key="IBUIText">RG8geW91IHNlZSBhbnkgVGVsZXR1YmJpZXMgaW4gaGVyZT8gRG8geW91IHNlZSBhIHNsZW5kZXIgcGxh
+c3RpYyB0YWcgY2xpcHBlZCB0byBteSBzaGlydCB3aXRoIG15IG5hbWUgcHJpbnRlZCBvbiBpdD8gRG8g
+eW91IHNlZSBhIGxpdHRsZSBBc2lhbiBjaGlsZCB3aXRoIGEgYmxhbmsgZXhwcmVzc2lvbiBvbiBoaXMg
+ZmFjZSBzaXR0aW5nIG91dHNpZGUgb24gYSBtZWNoYW5pY2FsIGhlbGljb3B0ZXIgdGhhdCBzaGFrZXMg
+d2hlbiB5b3UgcHV0IHF1YXJ0ZXJzIGluIGl0PyBObz8gV2VsbCwgdGhhdCdzIHdoYXQgeW91IHNlZSBh
+dCBhIHRveSBzdG9yZS4gQW5kIHlvdSBtdXN0IHRoaW5rIHlvdSdyZSBpbiBhIHRveSBzdG9yZSwgYmVj
+YXVzZSB5b3UncmUgaGVyZSBzaG9wcGluZyBmb3IgYW4gaW5mYW50IG5hbWVkIEplYi4NLS0gU2FtdWVs
+IEwuIEphY2tzb24sIFB1bHAgRmljdGlvbg</string>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica</string>
 							<double key="NSSize">17</double>
@@ -216,7 +223,7 @@
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>ad4MaxMobile_SampleAppViewController</string>
+					<string>ad4Max_SampleAppViewController</string>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -244,7 +251,7 @@
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<object class="IBPartialClassDescription">
-					<string key="className">ad4MaxMobile_SampleAppViewController</string>
+					<string key="className">ad4Max_SampleAppViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">webView</string>
@@ -259,7 +266,7 @@
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ad4MaxMobile_SampleAppViewController.h</string>
+						<string key="minorKey">./Classes/ad4Max_SampleAppViewController.h</string>
 					</object>
 				</object>
 			</object>
