@@ -1,6 +1,6 @@
 //
 //
-//  ad4MaxMobile_SampleAppViewController.h
+//  ad4Max_SampleAppViewController.h
 //  ad4Max-SampleApp
 //
 //  Copyright 2011 Publigroupe
