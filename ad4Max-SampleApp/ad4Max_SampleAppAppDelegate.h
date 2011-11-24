@@ -1,6 +1,6 @@
 //
 //
-//  ad4MaxMobile_SampleAppAppDelegate.h
+//  ad4Max_SampleAppAppDelegate.h
 //  ad4Max-SampleApp
 //
 //  Copyright 2011 Publigroupe
