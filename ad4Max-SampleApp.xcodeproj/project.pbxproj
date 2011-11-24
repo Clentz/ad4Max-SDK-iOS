@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E475DF30147669E900103DE1 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E475DF2F147669E900103DE1 /* Entitlements.plist */; };
+		E4C6F7C3147E4AA600936DA4 /* Ad4MaxBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7C2147E4AA600936DA4 /* Ad4MaxBannerView.m */; };
+		E4C6F7C9147E4B7100936DA4 /* Ad4MaxComputeParamsService.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7C8147E4B7100936DA4 /* Ad4MaxComputeParamsService.m */; };
 		E4D6E99A147527F2005BB3AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E999147527F2005BB3AE /* UIKit.framework */; };
 		E4D6E99C147527F2005BB3AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99B147527F2005BB3AE /* Foundation.framework */; };
 		E4D6E99E147527F2005BB3AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99D147527F2005BB3AE /* CoreGraphics.framework */; };
@@ -21,6 +23,11 @@
 
 /* Begin PBXFileReference section */
 		E475DF2F147669E900103DE1 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Entitlements.plist; path = ../Entitlements.plist; sourceTree = "<group>"; };
+		E4C6F7C1147E4AA600936DA4 /* Ad4MaxBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad4MaxBannerView.h; sourceTree = "<group>"; };
+		E4C6F7C2147E4AA600936DA4 /* Ad4MaxBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ad4MaxBannerView.m; sourceTree = "<group>"; };
+		E4C6F7C7147E4B7100936DA4 /* Ad4MaxComputeParamsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad4MaxComputeParamsService.h; sourceTree = "<group>"; };
+		E4C6F7C8147E4B7100936DA4 /* Ad4MaxComputeParamsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ad4MaxComputeParamsService.m; sourceTree = "<group>"; };
+		E4C6F7CA147E503500936DA4 /* Ad4MaxBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad4MaxBannerViewDelegate.h; sourceTree = "<group>"; };
 		E4D6E995147527F2005BB3AE /* ad4Max-SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ad4Max-SampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D6E999147527F2005BB3AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E4D6E99B147527F2005BB3AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -51,6 +58,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E4C6F7C5147E4B0C00936DA4 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E4C6F7C7147E4B7100936DA4 /* Ad4MaxComputeParamsService.h */,
+				E4C6F7C8147E4B7100936DA4 /* Ad4MaxComputeParamsService.m */,
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		E4C6F7C6147E4B1C00936DA4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E4C6F7C1147E4AA600936DA4 /* Ad4MaxBannerView.h */,
+				E4C6F7C2147E4AA600936DA4 /* Ad4MaxBannerView.m */,
+				E4C6F7CA147E503500936DA4 /* Ad4MaxBannerViewDelegate.h */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		E4D6E98A147527F2005BB3AE = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +128,8 @@
 		E4D6E9CD147567B9005BB3AE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E4C6F7C6147E4B1C00936DA4 /* View */,
+				E4C6F7C5147E4B0C00936DA4 /* Service */,
 				E4D6E9A8147527F2005BB3AE /* ad4Max_SampleAppAppDelegate.h */,
 				E4D6E9A9147527F2005BB3AE /* ad4Max_SampleAppAppDelegate.m */,
 				E4D6E9AB147527F2005BB3AE /* MainWindow.xib */,
@@ -176,6 +204,8 @@
 				E4D6E9A7147527F2005BB3AE /* main.m in Sources */,
 				E4D6E9AA147527F2005BB3AE /* ad4Max_SampleAppAppDelegate.m in Sources */,
 				E4D6E9B0147527F2005BB3AE /* ad4Max_SampleAppViewController.m in Sources */,
+				E4C6F7C3147E4AA600936DA4 /* Ad4MaxBannerView.m in Sources */,
+				E4C6F7C9147E4B7100936DA4 /* Ad4MaxComputeParamsService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

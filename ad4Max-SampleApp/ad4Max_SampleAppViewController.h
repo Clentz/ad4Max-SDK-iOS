@@ -6,13 +6,15 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import "Ad4MaxBannerViewDelegate.h"
+
 #import <UIKit/UIKit.h>
 
-@interface ad4Max_SampleAppViewController : UIViewController <UIWebViewDelegate> {
+@interface ad4Max_SampleAppViewController : UIViewController <Ad4MaxBannerViewDelegate> {
     
-    IBOutlet UIWebView *webView;
+    IBOutlet Ad4MaxBannerView *bannerView;
 }
 
-@property (nonatomic, retain) IBOutlet UIWebView *webView;
+@property (nonatomic, retain) IBOutlet Ad4MaxBannerView *bannerView;
 
 @end

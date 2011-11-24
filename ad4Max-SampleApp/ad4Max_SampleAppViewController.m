@@ -10,11 +10,11 @@
 
 @implementation ad4Max_SampleAppViewController
 
-@synthesize webView;
+@synthesize bannerView;
 
 - (void)dealloc
 {
-    self.webView = nil;
+    self.bannerView = nil;
     [super dealloc];
 }
 
@@ -33,15 +33,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // set delegate for Ad banner
+    [bannerView setDelegate:self];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-		
-	// set web view content
-	NSString *htmlString = @"<html><head><title></title><style type=\"text/css\">html, body { margin: 0; padding: 0; } </style></head><body><script type=\"text/javascript\">/* 320x50, Advertisement #1 */ad4max_guid = \"b15dded7-8c97-456a-9395-c2ca6a7832d7\";ad4max_width = \"320\";ad4max_height = \"50\";</script><script type=\"text/javascript\" src=\"http://max.medialution.com/ad4max.js\"></script></body></html>";
-    	
-	[webView loadHTMLString:htmlString baseURL:nil];
-	
+			
 	[super viewWillAppear:animated];
 }	
 
@@ -57,5 +55,44 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
+#pragma mark - Ad4MaxBannerViewDelegate
+
+// Getting mandatory parameters
+- (NSString*)getAdBoxId
+{
+    return @"b15dded7-8c97-456a-9395-c2ca6a7832d7";
+}
+
+// Detecting When Advertisements Are Loaded
+- (void)bannerViewWillLoadAd:(Ad4MaxBannerView *)banner
+{
+    // TODO: log it in a view in the Sample App
+    NSLog(@"bannerViewWillLoadAd:");
+}
+
+- (void)bannerViewDidLoadAd:(Ad4MaxBannerView *)banner 
+{
+    // TODO: log it in a view in the Sample App
+    NSLog(@"bannerViewDidLoadAd:");
+
+}
+
+// Detecting When a User Interacts With an Advertisement
+- (BOOL)bannerViewActionShouldBegin:(Ad4MaxBannerView *)banner willLeaveApplication:(BOOL)willLeave 
+{
+    // TODO: log it in a view in the Sample App
+    NSLog(@"bannerViewActionShouldBegin:willLeaveApplication:");
+    return YES;
+}
+
+// Detecting errors
+- (void)bannerView:(Ad4MaxBannerView *)banner didFailToReceiveAdWithError:(NSError *)error 
+{
+    // TODO: log it in a view in the Sample App
+    NSLog(@"bannerView:didFailToReceiveAdWithError:");    
+}
+
 
 @end
