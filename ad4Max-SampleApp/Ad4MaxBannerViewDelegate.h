@@ -26,7 +26,7 @@
 #import <Foundation/Foundation.h>
 
 
-@protocol Ad4MaxBannerViewDelegate 
+@protocol Ad4MaxBannerViewDelegate <NSObject>
 
 // Getting mandatory parameters
 - (NSString*)getAdBoxId;

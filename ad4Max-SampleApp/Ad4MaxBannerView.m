@@ -118,17 +118,31 @@
     NSString *langString = [paramsService getLang];
     NSString *connectionTypeString = [paramsService getConnectionType];
     
-    
     // Handle optional parameters
     NSMutableString *optionalParamsString = [[[NSMutableString alloc] init] autorelease];
     NSString *carrierNameString = [paramsService getCarrierName];
     if(carrierNameString) {
-        [optionalParamsString appendFormat:@"ad4max_carrier = \"%@\"", carrierNameString];
+        [optionalParamsString appendFormat:@"ad4max_carrier = \"%@\";", carrierNameString];
     }
     if([paramsService isFirstLaunch]) {
-        [optionalParamsString appendFormat:@"ad4max_first_launch = \"1\"", carrierNameString];
+        [optionalParamsString appendFormat:@"ad4max_first_launch = \"1\";"];
     }
-        
+    
+    // Handle optional delegate methods
+    if ([ad4MaxDelegate respondsToSelector:@selector(forceLangFilter)] ) {
+        if ([ad4MaxDelegate forceLangFilter]) {
+            [optionalParamsString appendFormat:@"ad4max_lang_filter  = \"on\";"];
+        } 
+        else {
+            [optionalParamsString appendFormat:@"ad4max_lang_filter  = \"off\";"];
+        }
+    }
+    if ([ad4MaxDelegate respondsToSelector:@selector(getTargetedPublisherCategories)] ) {
+        if ([ad4MaxDelegate getTargetedPublisherCategories]) {
+            [optionalParamsString appendFormat:@"ad4max_publisher_categories  = \"%@\";", [ad4MaxDelegate getTargetedPublisherCategories]];
+        }
+    }
+    
     NSString *generatedHTMLString = [[[NSString alloc] initWithFormat:htmlStringFormat, 
                                      guidString, 
                                      appNameString,
@@ -145,8 +159,9 @@
     [activeWebView loadHTMLString:generatedHTMLString baseURL:nil];
 
     // Basic refresh functionality  
-    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(changeAd) userInfo:nil repeats:NO];
-
+    if ([ad4MaxDelegate respondsToSelector:@selector(getAdRefreshRate)] ) {
+        self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:[ad4MaxDelegate getAdRefreshRate] target:self selector:@selector(changeAd) userInfo:nil repeats:NO];
+    }
 }
 
 - (void)changeAd {
