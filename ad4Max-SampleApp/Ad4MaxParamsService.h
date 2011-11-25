@@ -29,11 +29,15 @@
     NSUserDefaults	*userDefaults;  // persist the fact that application was already launched
 }
 
+// Available on all devices
 -(NSString*) getUID;
 -(NSString*) getAppName;
 -(NSString*) getAppVersion;
 -(NSString*) isFirstLaunch;
 -(NSString*) getLang;
+-(NSString*) getConnectionType;
 
+// Possibly not available on some devices
+-(NSString*) getCarrierName;
 
 @end

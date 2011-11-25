@@ -20,8 +20,10 @@
 
 // ============================================================================
 
-
 #import "Ad4MaxParamsService.h"
+
+#import "Reachability.h"
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
 
 
 @interface Ad4MaxParamsService ()
@@ -85,5 +87,25 @@
     return [[NSLocale currentLocale] objectForKey: NSLocaleLanguageCode];
 }
 
+-(NSString*) getConnectionType {
+    
+    // returns wifi if not connected (not send to the server anyway)
+    
+    if( [[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == ReachableViaWWAN ) {
+        return @"edge";
+    }
+    else {
+        return @"wifi";
+    }
+}
+
+// Possibly not available on some
+-(NSString*) getCarrierName {
+    
+    CTTelephonyNetworkInfo *netinfo = [[[CTTelephonyNetworkInfo alloc] init] autorelease];
+
+    CTCarrier *carrier = [netinfo subscriberCellularProvider];
+    return [carrier carrierName];
+}
 
 @end
