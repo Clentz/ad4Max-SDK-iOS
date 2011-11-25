@@ -31,7 +31,8 @@
     id<Ad4MaxBannerViewDelegate>    ad4MaxDelegate;
 
     // Private members
-    UIWebView*					webView;
+    UIWebView*					activeWebView;
+    UIWebView*					inactiveWebView;
     Ad4MaxParamsService*        paramsService;
     NSTimer*                    refreshTimer;
 }

@@ -26,10 +26,12 @@
 
 #import "Ad4MaxBannerView.h"
 
+
 @interface Ad4MaxBannerView ()
 
 // Private properties and methods
-@property (nonatomic, retain) UIWebView*            webView;
+@property (nonatomic, retain) UIWebView*            activeWebView;
+@property (nonatomic, retain) UIWebView*            inactiveWebView; // used for animation
 @property (nonatomic, retain) Ad4MaxParamsService*  paramsService;
 @property (nonatomic, retain) NSTimer*              refreshTimer;
 
@@ -42,7 +44,7 @@
 @implementation Ad4MaxBannerView
 
 @synthesize ad4MaxDelegate;
-@synthesize webView, paramsService, refreshTimer;
+@synthesize activeWebView, inactiveWebView, paramsService, refreshTimer;
 
 #pragma mark -
 #pragma mark - Memory Management
@@ -50,7 +52,8 @@
 - (void)dealloc
 {
     self.ad4MaxDelegate = nil;
-    self.webView = nil;
+    self.activeWebView = nil;
+    self.inactiveWebView = nil;
     self.paramsService = nil;
     
     [super dealloc];
@@ -60,14 +63,15 @@
     
     self.paramsService = [[Ad4MaxParamsService alloc] init];
     
-    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)];
-    webView.alpha = 0.0; // to animate the display of the Ad
-    [webView setOpaque:NO]; 
-    webView.backgroundColor = [UIColor clearColor];
-    [webView setDelegate:self];
+    self.inactiveWebView = nil;
+    self.activeWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)];
+    [activeWebView setOpaque:NO]; 
+    activeWebView.backgroundColor = [UIColor clearColor];
+    [activeWebView setDelegate:self];
     
     // add webView to View
-    [self addSubview:webView];        
+    [self addSubview:inactiveWebView];        
+    [self addSubview:activeWebView];        
 
     // make sure the layout stays correct if the outer superview is resized
     self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
@@ -120,10 +124,7 @@
     if(carrierNameString) {
         [optionalParamsString appendFormat:@"ad4max_carrier = \"%@\"", carrierNameString];
     }
-    
-    // TODO
-    // ad4max_geo 
-    
+        
     NSString *generatedHTMLString = [[NSString alloc] initWithFormat:htmlStringFormat, 
                                      guidString, 
                                      appNameString,
@@ -138,43 +139,24 @@
     
     NSLog(@"%@", generatedHTMLString);
     
-    [webView loadHTMLString:generatedHTMLString baseURL:nil];
+    [activeWebView loadHTMLString:generatedHTMLString baseURL:nil];
 
     // Basic refresh functionality  
-    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideBanner) userInfo:nil repeats:NO];
+    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(changeAd) userInfo:nil repeats:NO];
 
 }
 
-- (void)hideBanner {
+- (void)changeAd {
 
-    // We didn't use [UIWebView reload] because there seems to be a bug with it?
-    // See stackoverflow post: http://bit.ly/uaEBMp
+    self.inactiveWebView = activeWebView;
+    [inactiveWebView stopLoading];
     
-    [UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:0.5];
-	[UIView setAnimationDelegate:self];  
-	[UIView setAnimationDidStopSelector:@selector(showBanner)];   
-    
-    webView.alpha = 0.0;
-       
-    [UIView commitAnimations];
-}
+    self.activeWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)];
+    [activeWebView setOpaque:NO]; 
+    activeWebView.backgroundColor = [UIColor clearColor];
+    [activeWebView setDelegate:self];
 
-- (void)showBanner {
-    
-    [webView stopLoading];
-    [webView removeFromSuperview];
-    
-    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)];
-    webView.alpha = 0.0; // to animate the hide of the Ad
-    [webView setOpaque:NO]; 
-    webView.backgroundColor = [UIColor clearColor];
-    [webView setDelegate:self];
-    
-    // add webView to View
-    [self addSubview:webView];
-    
-    [self loadBannerInView];    
+    [self loadBannerInView];
 }
 
 #pragma mark -
@@ -191,12 +173,15 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)_webView {
     
-    [UIView beginAnimations:nil context:nil];
-	[UIView setAnimationDuration:0.5];
-
-    // display web view
-    webView.alpha = 1.0; // to animate the display of the Ad
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [UIView beginAnimations:nil context:context];
     
+    [UIView setAnimationTransition: UIViewAnimationTransitionFlipFromLeft forView:self cache:YES];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:1.0];
+    
+    // Below assumes you have two subviews that you're trying to transition between
+    [self exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
     [UIView commitAnimations];
 }
 
