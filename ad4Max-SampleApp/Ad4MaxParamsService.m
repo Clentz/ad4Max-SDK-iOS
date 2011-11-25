@@ -102,6 +102,7 @@
 // Possibly not available on some
 -(NSString*) getCarrierName {
     
+    // TODO iOS 4 only
     CTTelephonyNetworkInfo *netinfo = [[[CTTelephonyNetworkInfo alloc] init] autorelease];
 
     CTCarrier *carrier = [netinfo subscriberCellularProvider];
