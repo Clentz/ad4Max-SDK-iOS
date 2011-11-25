@@ -61,10 +61,10 @@
 
 - (void)baseInit {
     
-    self.paramsService = [[Ad4MaxParamsService alloc] init];
+    self.paramsService = [[[Ad4MaxParamsService alloc] init] autorelease];
     
     self.inactiveWebView = nil;
-    self.activeWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)];
+    self.activeWebView = [[[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)] autorelease];
     [activeWebView setOpaque:NO]; 
     activeWebView.backgroundColor = [UIColor clearColor];
     [activeWebView setDelegate:self];
@@ -127,7 +127,7 @@
         [optionalParamsString appendFormat:@"ad4max_carrier = \"%@\"", carrierNameString];
     }
         
-    NSString *generatedHTMLString = [[NSString alloc] initWithFormat:htmlStringFormat, 
+    NSString *generatedHTMLString = [[[NSString alloc] initWithFormat:htmlStringFormat, 
                                      guidString, 
                                      appNameString,
                                      appVersionString,
@@ -137,7 +137,7 @@
                                      connectionTypeString,
                                      widthString, 
                                      heightString, 
-                                     optionalParamsString];
+                                     optionalParamsString] autorelease];
     
     NSLog(@"%@", generatedHTMLString);
     
@@ -153,7 +153,7 @@
     self.inactiveWebView = activeWebView;
     [inactiveWebView stopLoading];
     
-    self.activeWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)];
+    self.activeWebView = [[[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)] autorelease];
     [activeWebView setOpaque:NO]; 
     activeWebView.backgroundColor = [UIColor clearColor];
     [activeWebView setDelegate:self];
