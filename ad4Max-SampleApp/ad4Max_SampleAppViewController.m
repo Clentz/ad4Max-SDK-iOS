@@ -26,10 +26,19 @@
 @implementation ad4Max_SampleAppViewController
 
 @synthesize bannerView;
+@synthesize scrollView , adBoxIdTextField, refreshRateTextField, categoriesTextField, refreshSwitch, forceLangSwitch, singleTap;
 
 - (void)dealloc
 {
     self.bannerView = nil;
+    
+    self.adBoxIdTextField = nil;
+    self.refreshRateTextField = nil;
+    self.categoriesTextField = nil;
+    self.refreshSwitch = nil;
+    self.forceLangSwitch = nil;
+    self.singleTap = nil;
+    
     [super dealloc];
 }
 
@@ -51,18 +60,16 @@
     
     // set delegate for Ad banner
     [bannerView setAd4MaxDelegate:self];
+
+    // detect single touch on a UIScrollView
+	self.singleTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)] autorelease];
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-			
-	[super viewWillAppear:animated];
-}	
+- (void)viewWillAppear:(BOOL)animated {
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    // Register the observer for the keyboardWillShow, keyboardWillBeHidden events
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardDidShowNotification object:nil];		
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -71,43 +78,134 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[super viewWillDisappear:animated];
+}
+
 
 #pragma mark - Ad4MaxBannerViewDelegate
 
 // Getting mandatory parameters
 - (NSString*)getAdBoxId
 {
-    return @"b15dded7-8c97-456a-9395-c2ca6a7832d7";
+    return adBoxIdTextField.text;
+}
+
+// Optional methods
+- (NSUInteger)getAdRefreshRate {
+    if( [refreshSwitch isOn] ) {
+        return [refreshRateTextField.text intValue];
+    }
+    else {
+        return (NSUInteger)0;
+    }
+}
+
+- (NSString*)getTargetedPublisherCategories {
+    return categoriesTextField.text;
+}
+
+- (BOOL)forceLangFilter {
+    return forceLangSwitch.isOn;
 }
 
 // Detecting When Advertisements Are Loaded
 - (void)bannerViewWillLoadAd:(Ad4MaxBannerView *)banner
 {
-    // TODO: log it in a view in the Sample App
     NSLog(@"bannerViewWillLoadAd:");
 }
 
 - (void)bannerViewDidLoadAd:(Ad4MaxBannerView *)banner 
 {
-    // TODO: log it in a view in the Sample App
     NSLog(@"bannerViewDidLoadAd:");
-
 }
 
 // Detecting When a User Interacts With an Advertisement
 - (BOOL)bannerViewActionShouldBegin:(Ad4MaxBannerView *)banner willLeaveApplication:(BOOL)willLeave 
 {
-    // TODO: log it in a view in the Sample App
-    NSLog(@"bannerViewActionShouldBegin:willLeaveApplication:");
+    NSLog(@"bannerViewActionShouldBegin:willLeaveApplication: %@", willLeave);
     return YES;
 }
 
 // Detecting errors
 - (void)bannerView:(Ad4MaxBannerView *)banner didFailToReceiveAdWithError:(NSError *)error 
 {
-    // TODO: log it in a view in the Sample App
-    NSLog(@"bannerView:didFailToReceiveAdWithError:");    
+    NSLog(@"bannerView:didFailToReceiveAdWithError: %@", [error localizedDescription]);    
 }
 
+
+#pragma mark - Handle of user input
+
+- (void) hideKeyboard {	
+	[lastActiveField resignFirstResponder];
+}
+
+// Called when the UIKeyboardDidShowNotification is sent
+- (void)keyboardWillShow:(NSNotification *)notification {
+	
+	// Resize ScrollView and slide to selected UITextView
+	NSDictionary* info = [notification userInfo];
+	
+    keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+	[self resizeAndScrollView];	
+}
+
+// Called when the UIKeyboardWillHideNotification is sent
+- (void)keyboardWillBeHidden:(NSNotification*)notification
+{
+	
+	keyboardSize.height = 0.0;
+	keyboardSize.width = 0.0;	
+	
+    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
+    scrollView.contentInset = contentInsets;
+    scrollView.scrollIndicatorInsets = contentInsets;
+}
+
+- (void) resizeAndScrollView {
+    
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
+    scrollView.contentInset = contentInsets;
+    scrollView.scrollIndicatorInsets = contentInsets;
+	
+    // If active text field is hidden by keyboard, scroll it so it's visible	
+    CGRect aRect = self.view.frame;
+    aRect.size.height -= 44; // nav bar
+    aRect.size.height -= keyboardSize.height;
+	CGFloat currentOffset = [scrollView contentOffset].y;
+	
+	CGPoint topTextFieldPoint = CGPointMake(0.0, lastActiveField.frame.origin.y-currentOffset);
+	CGPoint bottomTextFieldPoint = CGPointMake(0.0, lastActiveField.frame.origin.y+lastActiveField.frame.size.height-currentOffset);
+    
+	if (!CGRectContainsPoint(aRect, bottomTextFieldPoint)) {
+		CGPoint scrollPoint = CGPointMake(0.0, lastActiveField.frame.origin.y+lastActiveField.frame.size.height-keyboardSize.height+20);
+        [scrollView setContentOffset:scrollPoint animated:YES];
+	}
+	else if (!CGRectContainsPoint(aRect, topTextFieldPoint)) {
+		CGPoint scrollPoint = CGPointMake(0.0, lastActiveField.frame.origin.y-20);
+        [scrollView setContentOffset:scrollPoint animated:YES];
+	}
+}
+
+#pragma mark -
+#pragma mark UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    lastActiveField = textField;	
+	
+	// in case you jump from field to field
+	[self resizeAndScrollView];
+	
+	[scrollView addGestureRecognizer:singleTap];
+}
+
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+	[scrollView removeGestureRecognizer:singleTap];
+}
 
 @end

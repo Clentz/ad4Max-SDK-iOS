@@ -25,11 +25,38 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ad4Max_SampleAppViewController : UIViewController <Ad4MaxBannerViewDelegate> {
+@interface ad4Max_SampleAppViewController : UIViewController <Ad4MaxBannerViewDelegate, UITextFieldDelegate> {
+    
     
     IBOutlet Ad4MaxBannerView *bannerView;
+    
+    
+    // Outlets used to exhibit configuration possibilities
+	IBOutlet UIScrollView	*scrollView;
+
+    IBOutlet UITextField    *adBoxIdTextField;
+    IBOutlet UITextField    *refreshRateTextField;
+    IBOutlet UITextField    *categoriesTextField;
+    
+    IBOutlet UISwitch       *refreshSwitch;
+    IBOutlet UISwitch       *forceLangSwitch;
+    
+    UITapGestureRecognizer	*singleTap;	
+	UITextField				*lastActiveField;		// active UITextField
+	CGSize					keyboardSize;			// size of keyboard displayed
 }
 
 @property (nonatomic, retain) IBOutlet Ad4MaxBannerView *bannerView;
+
+@property (nonatomic, retain) IBOutlet UIScrollView	*scrollView;;
+@property (nonatomic, retain) IBOutlet UITextField *adBoxIdTextField;
+@property (nonatomic, retain) IBOutlet UITextField *refreshRateTextField;
+@property (nonatomic, retain) IBOutlet UITextField *categoriesTextField;
+@property (nonatomic, retain) IBOutlet UISwitch *refreshSwitch;
+@property (nonatomic, retain) IBOutlet UISwitch *forceLangSwitch;
+@property (nonatomic, retain) UITapGestureRecognizer *singleTap;
+
+- (void) hideKeyboard;
+- (void) resizeAndScrollView;
 
 @end
