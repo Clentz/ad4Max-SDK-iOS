@@ -15,6 +15,7 @@
 		E4C6F7E4147FB1B500936DA4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C6F7E3147FB1B400936DA4 /* CoreTelephony.framework */; };
 		E4C6F7E7147FB32700936DA4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7E6147FB32600936DA4 /* Reachability.m */; };
 		E4C6F7E9147FB52000936DA4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C6F7E8147FB52000936DA4 /* SystemConfiguration.framework */; };
+		E4C6F7EB147FDD9900936DA4 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C6F7EA147FDD9900936DA4 /* QuartzCore.framework */; };
 		E4D6E99A147527F2005BB3AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E999147527F2005BB3AE /* UIKit.framework */; };
 		E4D6E99C147527F2005BB3AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99B147527F2005BB3AE /* Foundation.framework */; };
 		E4D6E99E147527F2005BB3AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99D147527F2005BB3AE /* CoreGraphics.framework */; };
@@ -41,6 +42,7 @@
 		E4C6F7E5147FB32600936DA4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		E4C6F7E6147FB32600936DA4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		E4C6F7E8147FB52000936DA4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E4C6F7EA147FDD9900936DA4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E4D6E995147527F2005BB3AE /* ad4Max-SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ad4Max-SampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D6E999147527F2005BB3AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E4D6E99B147527F2005BB3AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4C6F7EB147FDD9900936DA4 /* QuartzCore.framework in Frameworks */,
 				E4C6F7E9147FB52000936DA4 /* SystemConfiguration.framework in Frameworks */,
 				E4C6F7E4147FB1B500936DA4 /* CoreTelephony.framework in Frameworks */,
 				E4D6E99A147527F2005BB3AE /* UIKit.framework in Frameworks */,
@@ -108,8 +111,6 @@
 		E4D6E98A147527F2005BB3AE = {
 			isa = PBXGroup;
 			children = (
-				E4C6F7E8147FB52000936DA4 /* SystemConfiguration.framework */,
-				E4C6F7E3147FB1B400936DA4 /* CoreTelephony.framework */,
 				E4D6E99F147527F2005BB3AE /* ad4Max-SampleApp */,
 				E4D6E998147527F2005BB3AE /* Frameworks */,
 				E4D6E996147527F2005BB3AE /* Products */,
@@ -127,6 +128,9 @@
 		E4D6E998147527F2005BB3AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4C6F7EA147FDD9900936DA4 /* QuartzCore.framework */,
+				E4C6F7E8147FB52000936DA4 /* SystemConfiguration.framework */,
+				E4C6F7E3147FB1B400936DA4 /* CoreTelephony.framework */,
 				E4D6E999147527F2005BB3AE /* UIKit.framework */,
 				E4D6E99B147527F2005BB3AE /* Foundation.framework */,
 				E4D6E99D147527F2005BB3AE /* CoreGraphics.framework */,
@@ -300,6 +304,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ad4Max-SampleApp/ad4Max-SampleApp-Prefix.pch";
 				INFOPLIST_FILE = "ad4Max-SampleApp/ad4Max-SampleApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "ad4Max-SampleApp";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;
@@ -348,6 +353,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ad4Max-SampleApp/ad4Max-SampleApp-Prefix.pch";
 				INFOPLIST_FILE = "ad4Max-SampleApp/ad4Max-SampleApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "ad4Max-SampleApp";
 				WRAPPER_EXTENSION = app;
 			};
@@ -363,6 +369,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ad4Max-SampleApp/ad4Max-SampleApp-Prefix.pch";
 				INFOPLIST_FILE = "ad4Max-SampleApp/ad4Max-SampleApp-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = "ad4Max-SampleApp";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;
