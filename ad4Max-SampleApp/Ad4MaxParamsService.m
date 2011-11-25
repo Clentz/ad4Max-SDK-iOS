@@ -70,17 +70,15 @@
     return [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"];    
 }
 
--(NSString*) isFirstLaunch {
+-(BOOL) isFirstLaunch {
     
     BOOL firstLaunch = ![userDefaults boolForKey:@"ad4MaxAlreadyLaunched"];
     
     if( firstLaunch ) {
         [userDefaults setBool:YES forKey:@"ad4MaxAlreadyLaunched"];
-        return @"1";
     }
-    else {
-        return @"0";    
-    }
+
+    return firstLaunch;
 }
 
 -(NSString*) getLang {

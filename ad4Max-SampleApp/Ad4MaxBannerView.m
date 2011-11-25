@@ -106,7 +106,7 @@
 - (void)loadBannerInView {
 
     // set web view content
-    NSString *htmlStringFormat = @"<html><head><title></title><style type=\"text/css\">html, body { margin: 0; padding: 0; } </style></head><body><script type=\"text/javascript\">ad4max_guid = \"%@\";ad4max_app_name = \"%@\";ad4max_app_version = \"%@\";ad4max_uid = \"%@\";ad4max_first_launch = \"%@\";ad4max_lang = \"%@\";ad4max_connection_type = \"%@\";ad4max_width = \"%@\";ad4max_height = \"%@\";%@</script><script type=\"text/javascript\" src=\"http://max.medialution.com/ad4max.js\"></script></body></html>";
+    NSString *htmlStringFormat = @"<html><head><title></title><style type=\"text/css\">html, body { margin: 0; padding: 0; } </style></head><body><script type=\"text/javascript\">ad4max_guid = \"%@\";ad4max_app_name = \"%@\";ad4max_app_version = \"%@\";ad4max_uid = \"%@\";ad4max_lang = \"%@\";ad4max_connection_type = \"%@\";ad4max_width = \"%@\";ad4max_height = \"%@\";%@</script><script type=\"text/javascript\" src=\"http://max.medialution.com/ad4max.js\"></script></body></html>";
 
     NSString *guidString = [ad4MaxDelegate getAdBoxId];
     NSString *widthString = [NSString stringWithFormat: @"%.0f", super.frame.size.width];
@@ -115,7 +115,6 @@
     NSString *uidString = [paramsService getUID];
     NSString *appNameString = [paramsService getAppName];
     NSString *appVersionString = [paramsService getAppVersion];
-    NSString *firstLaunchString = [paramsService isFirstLaunch];
     NSString *langString = [paramsService getLang];
     NSString *connectionTypeString = [paramsService getConnectionType];
     
@@ -126,13 +125,15 @@
     if(carrierNameString) {
         [optionalParamsString appendFormat:@"ad4max_carrier = \"%@\"", carrierNameString];
     }
+    if([paramsService isFirstLaunch]) {
+        [optionalParamsString appendFormat:@"ad4max_first_launch = \"1\"", carrierNameString];
+    }
         
     NSString *generatedHTMLString = [[[NSString alloc] initWithFormat:htmlStringFormat, 
                                      guidString, 
                                      appNameString,
                                      appVersionString,
                                      uidString,
-                                     firstLaunchString,
                                      langString,
                                      connectionTypeString,
                                      widthString, 

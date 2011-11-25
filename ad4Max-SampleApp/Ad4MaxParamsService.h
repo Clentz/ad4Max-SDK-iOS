@@ -33,7 +33,7 @@
 -(NSString*) getUID;
 -(NSString*) getAppName;
 -(NSString*) getAppVersion;
--(NSString*) isFirstLaunch;
+-(BOOL) isFirstLaunch;
 -(NSString*) getLang;
 -(NSString*) getConnectionType;
 
