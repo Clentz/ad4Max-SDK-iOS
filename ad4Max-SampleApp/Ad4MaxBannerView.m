@@ -69,6 +69,8 @@
     // add webView to View
     [self addSubview:webView];        
 
+    // make sure the layout stays correct if the outer superview is resized
+    self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -134,6 +136,9 @@
 
 - (void)hideBanner {
 
+    // We didn't use [UIWebView reload] because there seems to be a bug with it?
+    // See stackoverflow post: http://bit.ly/uaEBMp
+    
     [UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDuration:0.5];
 	[UIView setAnimationDelegate:self];  
@@ -173,7 +178,7 @@
     return YES;
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
+- (void)webViewDidFinishLoad:(UIWebView *)_webView {
     
     [UIView beginAnimations:nil context:nil];
 	[UIView setAnimationDuration:0.5];
