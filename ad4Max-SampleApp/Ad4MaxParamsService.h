@@ -1,6 +1,6 @@
 //
 //
-//  Ad4MaxComputeParamsService.m
+//  Ad4MaxComputeParamsService.h
 //  ad4Max-SampleApp
 //
 //  Copyright 2011 Publigroupe
@@ -21,9 +21,19 @@
 // ============================================================================
 
 
-#import "Ad4MaxComputeParamsService.h"
+#import <Foundation/Foundation.h>
 
 
-@implementation Ad4MaxComputeParamsService
+@interface Ad4MaxParamsService : NSObject {
+
+    NSUserDefaults	*userDefaults;  // persist the fact that application was already launched
+}
+
+-(NSString*) getUID;
+-(NSString*) getAppName;
+-(NSString*) getAppVersion;
+-(NSString*) isFirstLaunch;
+-(NSString*) getLang;
+
 
 @end

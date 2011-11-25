@@ -22,14 +22,17 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Ad4MaxBannerViewDelegate;	
+@protocol   Ad4MaxBannerViewDelegate;	
+@class      Ad4MaxParamsService;
 
 @interface Ad4MaxBannerView : UIView <UIWebViewDelegate> {
         
     // Ad4MaxBannerDelegate
     id<Ad4MaxBannerViewDelegate>    ad4MaxDelegate;
 
+    // Private members
     UIWebView*					webView;
+    Ad4MaxParamsService*        paramsService;
 }
 
 @property(nonatomic, assign) id<Ad4MaxBannerViewDelegate> ad4MaxDelegate;

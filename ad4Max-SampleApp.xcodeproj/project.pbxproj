@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		E475DF30147669E900103DE1 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E475DF2F147669E900103DE1 /* Entitlements.plist */; };
 		E4C6F7C3147E4AA600936DA4 /* Ad4MaxBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7C2147E4AA600936DA4 /* Ad4MaxBannerView.m */; };
-		E4C6F7C9147E4B7100936DA4 /* Ad4MaxComputeParamsService.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7C8147E4B7100936DA4 /* Ad4MaxComputeParamsService.m */; };
+		E4C6F7C9147E4B7100936DA4 /* Ad4MaxParamsService.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7C8147E4B7100936DA4 /* Ad4MaxParamsService.m */; };
+		E4C6F7E1147F8A6A00936DA4 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7DE147F8A6A00936DA4 /* NSString+MD5Addition.m */; };
+		E4C6F7E2147F8A6A00936DA4 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7E0147F8A6A00936DA4 /* UIDevice+IdentifierAddition.m */; };
 		E4D6E99A147527F2005BB3AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E999147527F2005BB3AE /* UIKit.framework */; };
 		E4D6E99C147527F2005BB3AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99B147527F2005BB3AE /* Foundation.framework */; };
 		E4D6E99E147527F2005BB3AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99D147527F2005BB3AE /* CoreGraphics.framework */; };
@@ -25,9 +27,13 @@
 		E475DF2F147669E900103DE1 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Entitlements.plist; path = ../Entitlements.plist; sourceTree = "<group>"; };
 		E4C6F7C1147E4AA600936DA4 /* Ad4MaxBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad4MaxBannerView.h; sourceTree = "<group>"; };
 		E4C6F7C2147E4AA600936DA4 /* Ad4MaxBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ad4MaxBannerView.m; sourceTree = "<group>"; };
-		E4C6F7C7147E4B7100936DA4 /* Ad4MaxComputeParamsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad4MaxComputeParamsService.h; sourceTree = "<group>"; };
-		E4C6F7C8147E4B7100936DA4 /* Ad4MaxComputeParamsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ad4MaxComputeParamsService.m; sourceTree = "<group>"; };
+		E4C6F7C7147E4B7100936DA4 /* Ad4MaxParamsService.h */ = {isa = PBXFileReference; fileEncoding = 4; path = Ad4MaxParamsService.h; sourceTree = "<group>"; };
+		E4C6F7C8147E4B7100936DA4 /* Ad4MaxParamsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ad4MaxParamsService.m; sourceTree = "<group>"; };
 		E4C6F7CA147E503500936DA4 /* Ad4MaxBannerViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad4MaxBannerViewDelegate.h; sourceTree = "<group>"; };
+		E4C6F7DD147F8A6A00936DA4 /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
+		E4C6F7DE147F8A6A00936DA4 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
+		E4C6F7DF147F8A6A00936DA4 /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
+		E4C6F7E0147F8A6A00936DA4 /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
 		E4D6E995147527F2005BB3AE /* ad4Max-SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ad4Max-SampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D6E999147527F2005BB3AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E4D6E99B147527F2005BB3AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,8 +67,8 @@
 		E4C6F7C5147E4B0C00936DA4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				E4C6F7C7147E4B7100936DA4 /* Ad4MaxComputeParamsService.h */,
-				E4C6F7C8147E4B7100936DA4 /* Ad4MaxComputeParamsService.m */,
+				E4C6F7C7147E4B7100936DA4 /* Ad4MaxParamsService.h */,
+				E4C6F7C8147E4B7100936DA4 /* Ad4MaxParamsService.m */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -75,6 +81,17 @@
 				E4C6F7CA147E503500936DA4 /* Ad4MaxBannerViewDelegate.h */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		E4C6F7DB147F8A4900936DA4 /* 3rd Party Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				E4C6F7DD147F8A6A00936DA4 /* NSString+MD5Addition.h */,
+				E4C6F7DE147F8A6A00936DA4 /* NSString+MD5Addition.m */,
+				E4C6F7DF147F8A6A00936DA4 /* UIDevice+IdentifierAddition.h */,
+				E4C6F7E0147F8A6A00936DA4 /* UIDevice+IdentifierAddition.m */,
+			);
+			name = "3rd Party Libraries";
 			sourceTree = "<group>";
 		};
 		E4D6E98A147527F2005BB3AE = {
@@ -128,6 +145,7 @@
 		E4D6E9CD147567B9005BB3AE /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E4C6F7DB147F8A4900936DA4 /* 3rd Party Libraries */,
 				E4C6F7C6147E4B1C00936DA4 /* View */,
 				E4C6F7C5147E4B0C00936DA4 /* Service */,
 				E4D6E9A8147527F2005BB3AE /* ad4Max_SampleAppAppDelegate.h */,
@@ -205,7 +223,9 @@
 				E4D6E9AA147527F2005BB3AE /* ad4Max_SampleAppAppDelegate.m in Sources */,
 				E4D6E9B0147527F2005BB3AE /* ad4Max_SampleAppViewController.m in Sources */,
 				E4C6F7C3147E4AA600936DA4 /* Ad4MaxBannerView.m in Sources */,
-				E4C6F7C9147E4B7100936DA4 /* Ad4MaxComputeParamsService.m in Sources */,
+				E4C6F7C9147E4B7100936DA4 /* Ad4MaxParamsService.m in Sources */,
+				E4C6F7E1147F8A6A00936DA4 /* NSString+MD5Addition.m in Sources */,
+				E4C6F7E2147F8A6A00936DA4 /* UIDevice+IdentifierAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
