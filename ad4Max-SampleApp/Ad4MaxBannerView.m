@@ -75,6 +75,8 @@
 
     // make sure the layout stays correct if the outer superview is resized
     self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    [self setOpaque:NO]; 
+    self.backgroundColor = [UIColor clearColor];
 }
 
 - (id)initWithFrame:(CGRect)frame {
