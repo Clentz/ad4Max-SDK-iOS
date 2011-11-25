@@ -29,8 +29,9 @@
 @interface Ad4MaxBannerView ()
 
 // Private properties and methods
-@property (nonatomic, retain) UIWebView* webView;
-@property (nonatomic, retain) Ad4MaxParamsService* paramsService;
+@property (nonatomic, retain) UIWebView*            webView;
+@property (nonatomic, retain) Ad4MaxParamsService*  paramsService;
+@property (nonatomic, retain) NSTimer*              refreshTimer;
 
 - (void)baseInit;
 - (void)loadBannerInView;
@@ -41,7 +42,7 @@
 @implementation Ad4MaxBannerView
 
 @synthesize ad4MaxDelegate;
-@synthesize webView, paramsService;
+@synthesize webView, paramsService, refreshTimer;
 
 #pragma mark -
 #pragma mark - Memory Management
@@ -60,6 +61,9 @@
     self.paramsService = [[Ad4MaxParamsService alloc] init];
     
     self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)];
+    webView.alpha = 0.0; // to animate the display of the Ad
+    [webView setOpaque:NO]; 
+    webView.backgroundColor = [UIColor clearColor];
     [webView setDelegate:self];
     
     // add webView to View
@@ -123,8 +127,39 @@
     
     [webView loadHTMLString:generatedHTMLString baseURL:nil];
 
+    // Basic refresh functionality  
+    self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(hideBanner) userInfo:nil repeats:NO];
+
 }
 
+- (void)hideBanner {
+
+    [UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.5];
+	[UIView setAnimationDelegate:self];  
+	[UIView setAnimationDidStopSelector:@selector(showBanner)];   
+    
+    webView.alpha = 0.0;
+       
+    [UIView commitAnimations];
+}
+
+- (void)showBanner {
+    
+    [webView stopLoading];
+    [webView removeFromSuperview];
+    
+    self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)];
+    webView.alpha = 0.0; // to animate the hide of the Ad
+    [webView setOpaque:NO]; 
+    webView.backgroundColor = [UIColor clearColor];
+    [webView setDelegate:self];
+    
+    // add webView to View
+    [self addSubview:webView];
+    
+    [self loadBannerInView];    
+}
 
 #pragma mark -
 #pragma mark - UIWebViewDelegate
@@ -136,6 +171,17 @@
     }
     
     return YES;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    
+    [UIView beginAnimations:nil context:nil];
+	[UIView setAnimationDuration:0.5];
+
+    // display web view
+    webView.alpha = 1.0; // to animate the display of the Ad
+    
+    [UIView commitAnimations];
 }
 
 @end

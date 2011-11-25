@@ -33,6 +33,7 @@
     // Private members
     UIWebView*					webView;
     Ad4MaxParamsService*        paramsService;
+    NSTimer*                    refreshTimer;
 }
 
 @property(nonatomic, assign) id<Ad4MaxBannerViewDelegate> ad4MaxDelegate;
