@@ -22,16 +22,16 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol Ad4MaxBannerDelegate;	
+@protocol Ad4MaxBannerViewDelegate;	
 
 @interface Ad4MaxBannerView : UIView <UIWebViewDelegate> {
         
     // Ad4MaxBannerDelegate
-    id<Ad4MaxBannerDelegate>    delegate;
+    id<Ad4MaxBannerViewDelegate>    ad4MaxDelegate;
 
     UIWebView*					webView;
 }
 
-@property(nonatomic, assign) id<Ad4MaxBannerDelegate> delegate;
+@property(nonatomic, assign) id<Ad4MaxBannerViewDelegate> ad4MaxDelegate;
 
 @end

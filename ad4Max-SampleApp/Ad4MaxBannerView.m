@@ -21,6 +21,7 @@
 // ============================================================================
 
 
+#import "Ad4MaxBannerViewDelegate.h"
 #import "Ad4MaxBannerView.h"
 
 @interface Ad4MaxBannerView ()
@@ -36,14 +37,15 @@
 
 @implementation Ad4MaxBannerView
 
-@synthesize delegate;
+@synthesize ad4MaxDelegate;
 @synthesize webView;
 
+#pragma mark -
 #pragma mark - Memory Management
 
 - (void)dealloc
 {
-    self.delegate = nil;
+    self.ad4MaxDelegate = nil;
     self.webView = nil;
     
     [super dealloc];
@@ -57,7 +59,6 @@
     // add webView to View
     [self addSubview:webView];        
 
-    [self loadBannerInView];
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -71,19 +72,40 @@
     [self baseInit];
 }
 
+#pragma mark -
+#pragma mark - Public methods
+
+- (void)setAd4MaxDelegate:(id<Ad4MaxBannerViewDelegate>)_delegate {
+    
+    ad4MaxDelegate = _delegate;
+    [self loadBannerInView];
+}
+
+
+#pragma mark -
+#pragma mark - Private methods
+
 - (void)loadBannerInView {
 
-// set web view content
-NSString *htmlString = @"<html><head><title></title><style type=\"text/css\">html, body { margin: 0; padding: 0; } </style></head><body><script type=\"text/javascript\">/* 320x50, Advertisement #1 */ad4max_guid = \"b15dded7-8c97-456a-9395-c2ca6a7832d7\";ad4max_width = \"320\";ad4max_height = \"50\";</script><script type=\"text/javascript\" src=\"http://max.medialution.com/ad4max.js\"></script></body></html>";
+    // set web view content
+    NSString *htmlStringFormat = @"<html><head><title></title><style type=\"text/css\">html, body { margin: 0; padding: 0; } </style></head><body><script type=\"text/javascript\">ad4max_guid = \"%@\";ad4max_width = \"%@\";ad4max_height = \"%@\";%@</script><script type=\"text/javascript\" src=\"http://max.medialution.com/ad4max.js\"></script></body></html>";
 
-[webView loadHTMLString:htmlString baseURL:nil];
+    NSString *guidString = [ad4MaxDelegate getAdBoxId];
+    NSString *widthString = @"320";
+    NSString *heightString = @"50";  
+    NSString *optionalParamsString = @"";
+    
+    NSString *generatedHTMLString = [[NSString alloc] initWithFormat:htmlStringFormat, guidString, widthString, heightString, optionalParamsString];
+    
+    NSLog(generatedHTMLString);
+    
+    [webView loadHTMLString:generatedHTMLString baseURL:nil];
 
 }
 
-#pragma mark - UIWebViewDelegate
 
 #pragma mark -
-#pragma mark UIWebView delegate
+#pragma mark - UIWebViewDelegate
 
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
     if ( inType == UIWebViewNavigationTypeLinkClicked ) {

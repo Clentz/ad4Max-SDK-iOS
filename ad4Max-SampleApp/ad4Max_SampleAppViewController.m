@@ -50,7 +50,7 @@
     [super viewDidLoad];
     
     // set delegate for Ad banner
-    [bannerView setDelegate:self];
+    [bannerView setAd4MaxDelegate:self];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
