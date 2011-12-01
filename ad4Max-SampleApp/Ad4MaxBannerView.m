@@ -36,6 +36,7 @@
 @property (nonatomic, retain) NSTimer*              refreshTimer;
 
 - (void)baseInit;
+- (void)initActiveWebView;
 - (void)loadBannerInView;
 
 @end
@@ -64,10 +65,7 @@
     self.paramsService = [[[Ad4MaxParamsService alloc] init] autorelease];
     
     self.inactiveWebView = nil;
-    self.activeWebView = [[[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)] autorelease];
-    [activeWebView setOpaque:NO]; 
-    activeWebView.backgroundColor = [UIColor clearColor];
-    [activeWebView setDelegate:self];
+    [self initActiveWebView];
     
     // add webView to View
     [self addSubview:inactiveWebView];        
@@ -77,6 +75,16 @@
     self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self setOpaque:NO]; 
     self.backgroundColor = [UIColor clearColor];
+}
+
+- (void)initActiveWebView {
+ 
+    self.activeWebView = [[[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)] autorelease];
+    UIScrollView *scrollView = [[activeWebView subviews] lastObject];
+    scrollView = NO;
+    [activeWebView setOpaque:NO]; 
+    activeWebView.backgroundColor = [UIColor clearColor];
+    [activeWebView setDelegate:self];
 }
 
 - (id)initWithFrame:(CGRect)frame {
@@ -105,6 +113,11 @@
 
 - (void)loadBannerInView {
 
+    // Test Banner is visible
+    if( [self.superview.subviews lastObject] != self ) {
+        NSLog(@"ERROR: ad4Max banner for AD BOX ID %@ is not visible", [ad4MaxDelegate getAdBoxId]);
+    }
+    
     // set web view content
     NSString *htmlStringFormat = @"<html><head><title></title><style type=\"text/css\">html, body { margin: 0; padding: 0; } </style></head><body><script type=\"text/javascript\">ad4max_guid = \"%@\";ad4max_app_name = \"%@\";ad4max_app_version = \"%@\";ad4max_uid = \"%@\";ad4max_lang = \"%@\";ad4max_connection_type = \"%@\";ad4max_width = \"%@\";ad4max_height = \"%@\";%@</script><script type=\"text/javascript\" src=\"http://max.medialution.com/ad4max.js\"></script></body></html>";
 
@@ -154,7 +167,7 @@
                                      heightString, 
                                      optionalParamsString] autorelease];
     
-    NSLog(@"%@", generatedHTMLString);
+    DLog(@"%@", generatedHTMLString);
     
     [activeWebView loadHTMLString:generatedHTMLString baseURL:nil];
 
@@ -166,13 +179,10 @@
 
 - (void)changeAd {
 
+    [activeWebView stopLoading];
+
     self.inactiveWebView = activeWebView;
-    [inactiveWebView stopLoading];
-    
-    self.activeWebView = [[[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)] autorelease];
-    [activeWebView setOpaque:NO]; 
-    activeWebView.backgroundColor = [UIColor clearColor];
-    [activeWebView setDelegate:self];
+    [self initActiveWebView];
 
     [self loadBannerInView];
 }
