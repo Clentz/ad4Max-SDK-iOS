@@ -12,7 +12,7 @@
 		E4C6F7C9147E4B7100936DA4 /* Ad4MaxParamsService.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7C8147E4B7100936DA4 /* Ad4MaxParamsService.m */; };
 		E4C6F7E1147F8A6A00936DA4 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7DE147F8A6A00936DA4 /* NSString+MD5Addition.m */; };
 		E4C6F7E2147F8A6A00936DA4 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7E0147F8A6A00936DA4 /* UIDevice+IdentifierAddition.m */; };
-		E4C6F7E4147FB1B500936DA4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C6F7E3147FB1B400936DA4 /* CoreTelephony.framework */; };
+		E4C6F7E4147FB1B500936DA4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C6F7E3147FB1B400936DA4 /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E4C6F7E7147FB32700936DA4 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7E6147FB32600936DA4 /* Reachability.m */; };
 		E4C6F7E9147FB52000936DA4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C6F7E8147FB52000936DA4 /* SystemConfiguration.framework */; };
 		E4D6E99A147527F2005BB3AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E999147527F2005BB3AE /* UIKit.framework */; };
@@ -41,7 +41,6 @@
 		E4C6F7E5147FB32600936DA4 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		E4C6F7E6147FB32600936DA4 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		E4C6F7E8147FB52000936DA4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		E4C6F7EA147FDD9900936DA4 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E4D6E995147527F2005BB3AE /* ad4Max-SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ad4Max-SampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D6E999147527F2005BB3AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E4D6E99B147527F2005BB3AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -126,7 +125,6 @@
 		E4D6E998147527F2005BB3AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E4C6F7EA147FDD9900936DA4 /* QuartzCore.framework */,
 				E4C6F7E8147FB52000936DA4 /* SystemConfiguration.framework */,
 				E4C6F7E3147FB1B400936DA4 /* CoreTelephony.framework */,
 				E4D6E999147527F2005BB3AE /* UIKit.framework */,

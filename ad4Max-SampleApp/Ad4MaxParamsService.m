@@ -100,11 +100,15 @@
 // Possibly not available on some
 -(NSString*) getCarrierName {
     
-    // TODO iOS 4 only
-    CTTelephonyNetworkInfo *netinfo = [[[CTTelephonyNetworkInfo alloc] init] autorelease];
-
-    CTCarrier *carrier = [netinfo subscriberCellularProvider];
-    return [carrier carrierName];
+    // TODO lower case
+    if( !NSClassFromString(@"CTTelephonyNetworkInfo") && !NSClassFromString(@"CTCarrier") ) {
+        CTTelephonyNetworkInfo *netinfo = [[[CTTelephonyNetworkInfo alloc] init] autorelease];
+        CTCarrier *carrier = [netinfo subscriberCellularProvider];
+        return [carrier carrierName];
+    }
+    else {
+        return nil;
+    }
 }
 
 @end
