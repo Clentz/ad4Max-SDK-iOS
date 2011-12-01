@@ -70,7 +70,6 @@
     [self initActiveWebView];
     
     // add webView to View
-    [self addSubview:inactiveWebView];        
     [self addSubview:activeWebView];        
     
     // make sure the layout stays correct if the outer superview is resized
@@ -240,7 +239,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)_webView {
     
-    [UIView transitionWithView:self duration:1.0 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{ [[[self subviews] lastObject] removeFromSuperview]; [self addSubview:activeWebView];} completion:NULL];
+    [UIView transitionWithView:self duration:1.0 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{ [inactiveWebView removeFromSuperview]; [self addSubview:activeWebView];} completion:NULL];
     
     // Report event to delegate
     if( --cntWebViewLoads == 0  ) {
