@@ -73,7 +73,7 @@
     [self addSubview:activeWebView];        
     
     // make sure the layout stays correct if the outer superview is resized
-    self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
     [self setOpaque:NO]; 
     self.backgroundColor = [UIColor clearColor];
 

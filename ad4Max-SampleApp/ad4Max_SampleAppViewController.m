@@ -32,6 +32,7 @@
 {
     self.bannerView = nil;
     
+    self.scrollView = nil;
     self.adBoxIdTextField = nil;
     self.refreshRateTextField = nil;
     self.categoriesTextField = nil;
@@ -59,7 +60,10 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor clearColor];
-    
+    // Set content size for scroll view
+    scrollView.contentSize = CGSizeMake(0, scrollView.frame.size.height);
+    scrollView.clipsToBounds = YES;
+
     // detect single touch on a UIScrollView
 	self.singleTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)] autorelease];
 }
@@ -72,9 +76,9 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+{    
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -131,7 +135,7 @@
 // Detecting errors
 - (void)bannerView:(Ad4MaxBannerView *)banner didFailToReceiveAdWithError:(NSError *)error 
 {
-    NSLog(@"bannerView:didFailToReceiveAdWithError: %@", [error localizedDescription]);    
+    NSLog(@"bannerView:didFailToReceiveAdWithError: %@", [error description]);    
 }
 
 
