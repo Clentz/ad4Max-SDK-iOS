@@ -104,7 +104,7 @@
     if( !NSClassFromString(@"CTTelephonyNetworkInfo") && !NSClassFromString(@"CTCarrier") ) {
         CTTelephonyNetworkInfo *netinfo = [[[CTTelephonyNetworkInfo alloc] init] autorelease];
         CTCarrier *carrier = [netinfo subscriberCellularProvider];
-        return [carrier carrierName];
+        return [[carrier carrierName] lowercaseString];
     }
     else {
         return nil;
