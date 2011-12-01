@@ -240,17 +240,8 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)_webView {
     
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [UIView beginAnimations:nil context:context];
+    [UIView transitionWithView:self duration:1.0 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{ [[[self subviews] lastObject] removeFromSuperview]; [self addSubview:activeWebView];} completion:NULL];
     
-    [UIView setAnimationTransition: UIViewAnimationTransitionFlipFromLeft forView:self cache:YES];
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:1.0];
-    
-    // Below assumes you have two subviews that you're trying to transition between
-    [self exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
-    [UIView commitAnimations];
-
     // Report event to delegate
     if( --cntWebViewLoads == 0  ) {
         [self.ad4MaxDelegate bannerViewDidLoadAd:self];
