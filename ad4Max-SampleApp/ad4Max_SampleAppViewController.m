@@ -58,9 +58,8 @@
 {
     [super viewDidLoad];
     
-    // set delegate for Ad banner
-    [bannerView setAd4MaxDelegate:self];
-
+    self.view.backgroundColor = [UIColor clearColor];
+    
     // detect single touch on a UIScrollView
 	self.singleTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)] autorelease];
 }
