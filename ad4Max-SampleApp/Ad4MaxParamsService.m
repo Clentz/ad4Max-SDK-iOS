@@ -100,7 +100,6 @@
 // Possibly not available on some
 -(NSString*) getCarrierName {
     
-    // TODO lower case
     if( !NSClassFromString(@"CTTelephonyNetworkInfo") && !NSClassFromString(@"CTCarrier") ) {
         CTTelephonyNetworkInfo *netinfo = [[[CTTelephonyNetworkInfo alloc] init] autorelease];
         CTCarrier *carrier = [netinfo subscriberCellularProvider];
