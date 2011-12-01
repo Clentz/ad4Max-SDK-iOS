@@ -64,7 +64,6 @@
 
 - (void)baseInit {
  
-
     self.paramsService = [[[Ad4MaxParamsService alloc] init] autorelease];
     
     self.inactiveWebView = nil;
@@ -198,6 +197,7 @@
     
     DLog(@"%@", generatedHTMLString);
     
+    cntWebViewLoads = 0;
     [activeWebView loadHTMLString:generatedHTMLString baseURL:nil];
 
     // Report event to delegate
@@ -231,7 +231,10 @@
         }
         return NO;
     }
-    
+
+    // Track number of page loaded
+    cntWebViewLoads++;
+
     return YES;
 }
 
@@ -249,7 +252,15 @@
     [UIView commitAnimations];
 
     // Report event to delegate
-    [self.ad4MaxDelegate bannerViewDidLoadAd:self];
+    if( --cntWebViewLoads == 0  ) {
+        [self.ad4MaxDelegate bannerViewDidLoadAd:self];
+    }
 }
+
+//- (void)webView:(UIWebView*)webView didFailLoadWithError:(NSError*)error {
+//    
+//    // do not decrement cntWebViewLoads to avoid having webViewDidFinishLoad: called
+//    [ad4MaxDelegate bannerView:self didFailToReceiveAdWithError:error];
+//}
 
 @end

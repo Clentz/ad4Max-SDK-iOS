@@ -36,6 +36,7 @@
     UIWebView*					inactiveWebView;
     Ad4MaxParamsService*        paramsService;
     NSTimer*                    refreshTimer;
+    NSInteger                   cntWebViewLoads;
 }
 
 @property(nonatomic, assign) IBOutlet id<Ad4MaxBannerViewDelegate> ad4MaxDelegate;
