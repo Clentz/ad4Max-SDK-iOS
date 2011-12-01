@@ -57,11 +57,14 @@
     self.inactiveWebView = nil;
     self.paramsService = nil;
     
+    initialized = NO;
+    
     [super dealloc];
 }
 
 - (void)baseInit {
-    
+ 
+
     self.paramsService = [[[Ad4MaxParamsService alloc] init] autorelease];
     
     self.inactiveWebView = nil;
@@ -70,11 +73,15 @@
     // add webView to View
     [self addSubview:inactiveWebView];        
     [self addSubview:activeWebView];        
-
+    
     // make sure the layout stays correct if the outer superview is resized
     self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
     [self setOpaque:NO]; 
     self.backgroundColor = [UIColor clearColor];
+
+    initialized = YES;
+    
+    [self loadBannerInView];        
 }
 
 - (void)initActiveWebView {
@@ -104,7 +111,13 @@
 - (void)setAd4MaxDelegate:(id<Ad4MaxBannerViewDelegate>)_delegate {
     
     ad4MaxDelegate = _delegate;
-    [self loadBannerInView];
+
+    // The load sequence is different if the delegate is set via IB or programatically
+    // In case of IB, delegate is set before the call to awakeFromNib
+    // If done programatically in controller viewDidLoad, delegare is set after the call to awakeFromNib
+    if( initialized ) {
+        [self loadBannerInView];    
+    }
 }
 
 
@@ -113,10 +126,26 @@
 
 - (void)loadBannerInView {
 
+    NSLog(@"delegate %@", ad4MaxDelegate);
+    NSLog(@"service %@", paramsService);
+    
+    if( !ad4MaxDelegate ) {
+        // TODO add an error
+        NSLog(@"ERROR: you did not set any delegate for ad4max banner %@", self);
+        return;
+    }
+    else if( ![ad4MaxDelegate respondsToSelector:@selector(getAdBoxId)] ) {
+        // TODO add an error
+        NSLog(@"ERROR: your delegate for ad4amx banner %@ does not implement mandatory method getAdBoxId", self);        
+        return;
+    }
+
     // Test Banner is visible
     if( [self.superview.subviews lastObject] != self ) {
+        // TODO add an error
         NSLog(@"ERROR: ad4Max banner for AD BOX ID %@ is not visible", [ad4MaxDelegate getAdBoxId]);
-    }
+        return;
+    }    
     
     // set web view content
     NSString *htmlStringFormat = @"<html><head><title></title><style type=\"text/css\">html, body { margin: 0; padding: 0; } </style></head><body><script type=\"text/javascript\">ad4max_guid = \"%@\";ad4max_app_name = \"%@\";ad4max_app_version = \"%@\";ad4max_uid = \"%@\";ad4max_lang = \"%@\";ad4max_connection_type = \"%@\";ad4max_width = \"%@\";ad4max_height = \"%@\";%@</script><script type=\"text/javascript\" src=\"http://max.medialution.com/ad4max.js\"></script></body></html>";

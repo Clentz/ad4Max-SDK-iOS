@@ -28,15 +28,16 @@
 @interface Ad4MaxBannerView : UIView <UIWebViewDelegate> {
         
     // Ad4MaxBannerDelegate
-    id<Ad4MaxBannerViewDelegate>    ad4MaxDelegate;
+    IBOutlet id<Ad4MaxBannerViewDelegate>    ad4MaxDelegate;
 
     // Private members
+    BOOL                        initialized;
     UIWebView*					activeWebView;
     UIWebView*					inactiveWebView;
     Ad4MaxParamsService*        paramsService;
     NSTimer*                    refreshTimer;
 }
 
-@property(nonatomic, assign) id<Ad4MaxBannerViewDelegate> ad4MaxDelegate;
+@property(nonatomic, assign) IBOutlet id<Ad4MaxBannerViewDelegate> ad4MaxDelegate;
 
 @end
