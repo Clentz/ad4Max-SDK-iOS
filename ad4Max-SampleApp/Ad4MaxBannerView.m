@@ -171,6 +171,9 @@
     
     [activeWebView loadHTMLString:generatedHTMLString baseURL:nil];
 
+    // Report event to delegate
+    [self.ad4MaxDelegate bannerViewWillLoadAd:self];
+
     // Basic refresh functionality  
     if ([ad4MaxDelegate respondsToSelector:@selector(getAdRefreshRate)] ) {
         self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:[ad4MaxDelegate getAdRefreshRate] target:self selector:@selector(changeAd) userInfo:nil repeats:NO];
@@ -192,7 +195,11 @@
 
 -(BOOL) webView:(UIWebView *)inWeb shouldStartLoadWithRequest:(NSURLRequest *)inRequest navigationType:(UIWebViewNavigationType)inType {
     if ( inType == UIWebViewNavigationTypeLinkClicked ) {
-        [[UIApplication sharedApplication] openURL:[inRequest URL]];
+
+        // Ask to app whether it is ok to leave app
+        if( [self.ad4MaxDelegate bannerViewActionShouldBegin:self willLeaveApplication:YES] ) {
+            [[UIApplication sharedApplication] openURL:[inRequest URL]];        
+        }
         return NO;
     }
     
@@ -211,6 +218,9 @@
     // Below assumes you have two subviews that you're trying to transition between
     [self exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
     [UIView commitAnimations];
+
+    // Report event to delegate
+    [self.ad4MaxDelegate bannerViewDidLoadAd:self];
 }
 
 @end

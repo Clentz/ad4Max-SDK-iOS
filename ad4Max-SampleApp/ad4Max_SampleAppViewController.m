@@ -125,7 +125,7 @@
 // Detecting When a User Interacts With an Advertisement
 - (BOOL)bannerViewActionShouldBegin:(Ad4MaxBannerView *)banner willLeaveApplication:(BOOL)willLeave 
 {
-    NSLog(@"bannerViewActionShouldBegin:willLeaveApplication: %@", willLeave);
+    NSLog(@"bannerViewActionShouldBegin:willLeaveApplication: %@", (willLeave ? @"YES" : @"NO"));
     return YES;
 }
 
