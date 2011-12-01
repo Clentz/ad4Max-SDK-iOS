@@ -28,32 +28,45 @@
 @interface ad4Max_SampleAppViewController : UIViewController <Ad4MaxBannerViewDelegate, UITextFieldDelegate> {
     
     
-    IBOutlet Ad4MaxBannerView *bannerView;
+    IBOutlet Ad4MaxBannerView   *bannerView;
     
     
     // Outlets used to exhibit configuration possibilities
-	IBOutlet UIScrollView	*scrollView;
+	IBOutlet UIScrollView       *scrollView;
 
-    IBOutlet UITextField    *adBoxIdTextField;
-    IBOutlet UITextField    *refreshRateTextField;
-    IBOutlet UITextField    *categoriesTextField;
+    IBOutlet UINavigationBar    *navBar;
+    IBOutlet UITabBar           *tabBar;
     
-    IBOutlet UISwitch       *refreshSwitch;
-    IBOutlet UISwitch       *forceLangSwitch;
+    IBOutlet UITextField        *adBoxIdTextField;
+    IBOutlet UITextField        *refreshRateTextField;
+    IBOutlet UITextField        *categoriesTextField;
     
-    UITapGestureRecognizer	*singleTap;	
-	UITextField				*lastActiveField;		// active UITextField
-	CGSize					keyboardSize;			// size of keyboard displayed
+    IBOutlet UISwitch           *refreshSwitch;
+    IBOutlet UISwitch           *forceLangSwitch;
+    IBOutlet UISwitch           *disableClickSwitch;
+    
+    IBOutlet UISegmentedControl *positionControl;
+    
+    
+    UITapGestureRecognizer      *singleTap;	
+	UITextField                 *lastActiveField;	// active UITextField
+	CGSize                      keyboardSize;		// size of keyboard
+                                                    // displayed
 }
 
 @property (nonatomic, retain) IBOutlet Ad4MaxBannerView *bannerView;
 
 @property (nonatomic, retain) IBOutlet UIScrollView	*scrollView;;
+@property (nonatomic, retain) IBOutlet UINavigationBar    *navBar;
+@property (nonatomic, retain) IBOutlet UITabBar           *tabBar;
 @property (nonatomic, retain) IBOutlet UITextField *adBoxIdTextField;
 @property (nonatomic, retain) IBOutlet UITextField *refreshRateTextField;
 @property (nonatomic, retain) IBOutlet UITextField *categoriesTextField;
 @property (nonatomic, retain) IBOutlet UISwitch *refreshSwitch;
 @property (nonatomic, retain) IBOutlet UISwitch *forceLangSwitch;
+@property (nonatomic, retain) IBOutlet UISwitch *disableClickSwitch;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *positionControl;
+
 @property (nonatomic, retain) UITapGestureRecognizer *singleTap;
 
 - (void) hideKeyboard;

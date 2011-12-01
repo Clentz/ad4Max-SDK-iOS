@@ -141,12 +141,13 @@
         return;
     }
 
+    // TODO
     // Test Banner is visible
-    if( [self.superview.subviews lastObject] != self ) {
-        // TODO add an error
-        NSLog(@"ERROR: ad4Max banner for AD BOX ID %@ is not visible", [ad4MaxDelegate getAdBoxId]);
-        return;
-    }    
+//    if( [self.superview.subviews lastObject] != self ) {
+//        // TODO add an error
+//        NSLog(@"ERROR: ad4Max banner for AD BOX ID %@ is not visible", [ad4MaxDelegate getAdBoxId]);
+//        return;
+//    }    
     
     // set web view content
     NSString *htmlStringFormat = @"<html><head><title></title><style type=\"text/css\">html, body { margin: 0; padding: 0; } </style></head><body><script type=\"text/javascript\">ad4max_guid = \"%@\";ad4max_app_name = \"%@\";ad4max_app_version = \"%@\";ad4max_uid = \"%@\";ad4max_lang = \"%@\";ad4max_connection_type = \"%@\";ad4max_width = \"%@\";ad4max_height = \"%@\";%@</script><script type=\"text/javascript\" src=\"http://max.medialution.com/ad4max.js\"></script></body></html>";
@@ -242,7 +243,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)_webView {
     
-    [UIView transitionWithView:self duration:1.0 options:UIViewAnimationOptionTransitionFlipFromLeft animations:^{ [inactiveWebView removeFromSuperview]; [self addSubview:activeWebView];} completion:NULL];
+    [UIView transitionFromView:inactiveWebView toView:activeWebView duration:1.0 options:UIViewAnimationOptionTransitionFlipFromLeft completion:NULL];
     
     // Report event to delegate
     if( --cntWebViewLoads == 0  ) {

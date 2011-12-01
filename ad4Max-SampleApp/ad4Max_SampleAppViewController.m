@@ -26,18 +26,22 @@
 @implementation ad4Max_SampleAppViewController
 
 @synthesize bannerView;
-@synthesize scrollView , adBoxIdTextField, refreshRateTextField, categoriesTextField, refreshSwitch, forceLangSwitch, singleTap;
+@synthesize scrollView , navBar, tabBar, adBoxIdTextField, refreshRateTextField, categoriesTextField, refreshSwitch, forceLangSwitch, disableClickSwitch, positionControl, singleTap;
 
 - (void)dealloc
 {
     self.bannerView = nil;
     
     self.scrollView = nil;
+    self.navBar = nil;
+    self.tabBar = nil;
     self.adBoxIdTextField = nil;
     self.refreshRateTextField = nil;
     self.categoriesTextField = nil;
     self.refreshSwitch = nil;
     self.forceLangSwitch = nil;
+    self.disableClickSwitch = nil;
+    self.positionControl = nil;
     self.singleTap = nil;
     
     [super dealloc];
@@ -64,6 +68,10 @@
     scrollView.contentSize = CGSizeMake(0, scrollView.frame.size.height);
     scrollView.clipsToBounds = YES;
 
+    [positionControl addTarget:self
+                        action:@selector(positionControlChanged)
+              forControlEvents:UIControlEventValueChanged];
+
     // detect single touch on a UIScrollView
 	self.singleTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)] autorelease];
 }
@@ -87,6 +95,42 @@
 	[super viewWillDisappear:animated];
 }
 
+- (void)positionControlChanged {
+    
+    CGFloat screenHeight = [self.view bounds].size.height;
+    CGFloat screenWidth = [self.view bounds].size.width;
+    
+    switch (positionControl.selectedSegmentIndex) {
+        case 0:
+            // Top position, instead of NavBar
+            navBar.hidden = YES;
+            tabBar.hidden = NO;
+            [bannerView setFrame:CGRectMake(0, 0, bannerView.frame.size.width, bannerView.frame.size.height)];  
+            [scrollView setFrame:CGRectMake(0, bannerView.frame.size.height, scrollView.frame.size.width, scrollView.frame.size.height)];
+            break;
+        case 1:
+            // Bottom position, instead of TabBar
+            navBar.hidden = NO;
+            tabBar.hidden = YES;
+            [bannerView setFrame:CGRectMake(0, screenHeight-bannerView.frame.size.height, bannerView.frame.size.width, bannerView.frame.size.height)];                        
+            [scrollView setFrame:CGRectMake(0, navBar.frame.size.height, scrollView.frame.size.width, scrollView.frame.size.height)];
+            break;
+        case 2:
+            // Bottom position, above TabBar
+            navBar.hidden = YES;
+            tabBar.hidden = NO;
+            [bannerView setFrame:CGRectMake(0, screenHeight-bannerView.frame.size.height-tabBar.frame.size.height, bannerView.frame.size.width, bannerView.frame.size.height)];                        
+            [scrollView setFrame:CGRectMake(0, 0, scrollView.frame.size.width, scrollView.frame.size.height)];
+            break;
+        case 3:
+            // Top position, below NavBar
+            navBar.hidden = NO;
+            tabBar.hidden = YES;
+            [bannerView setFrame:CGRectMake(0, navBar.frame.size.height, bannerView.frame.size.width, bannerView.frame.size.height)];                        
+            [scrollView setFrame:CGRectMake(0, navBar.frame.size.height+bannerView.frame.size.height, scrollView.frame.size.width, scrollView.frame.size.height)];
+            break;
+    }
+}
 
 #pragma mark - Ad4MaxBannerViewDelegate
 
@@ -129,7 +173,11 @@
 - (BOOL)bannerViewActionShouldBegin:(Ad4MaxBannerView *)banner willLeaveApplication:(BOOL)willLeave 
 {
     NSLog(@"bannerViewActionShouldBegin:willLeaveApplication: %@", (willLeave ? @"YES" : @"NO"));
-    return YES;
+    
+    if( disableClickSwitch.isOn )
+        return NO;
+    else
+        return YES;
 }
 
 // Detecting errors
