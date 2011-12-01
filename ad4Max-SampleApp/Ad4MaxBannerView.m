@@ -85,8 +85,11 @@
 - (void)initActiveWebView {
  
     self.activeWebView = [[[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)] autorelease];
-    UIScrollView *scrollView = [[activeWebView subviews] lastObject];
-    scrollView = NO;
+    
+    for (id subview in activeWebView.subviews)
+        if ([[subview class] isSubclassOfClass: [UIScrollView class]])
+            ((UIScrollView *)subview).bounces = NO;
+
     [activeWebView setOpaque:NO]; 
     activeWebView.backgroundColor = [UIColor clearColor];
     [activeWebView setDelegate:self];
