@@ -259,6 +259,11 @@
             [self reportError:@"ERROR: failed to load ad4Max banner, server is not responding correctly (server failure)" withCode:Ad4MaxServerFailureError]; 
             return;
         }
+        else if( height == 0 && width == (int)self.frame.size.width ) {
+            // No Ad available
+            [self reportError:@"ERROR: no ad banner is currently available for your application. You can hide this banner until a new ad becomes available" withCode:Ad4MaxNoAdsAvailableError]; 
+            return;            
+        }
         if( height != (int)self.frame.size.height || width != (int)self.frame.size.width ) {
             [self reportBannerSizeErrorWithHeight:height andWidth:width];
             return;

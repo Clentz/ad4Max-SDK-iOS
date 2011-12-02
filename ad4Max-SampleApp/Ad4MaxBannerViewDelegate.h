@@ -56,8 +56,9 @@ enum {
     Ad4MaxUnknownError = 0,
     Ad4MaxConfigurationError = 1,
     Ad4MaxServerFailureError = 2,
-    Ad4MaxNetworkNotReachableError = 3,
-    Ad4MaxBannerSizeError = 4,
-    Ad4MaxBannerVisibilityError = 5,
+    Ad4MaxBannerSizeError = 3,
+    Ad4MaxBannerVisibilityError = 4,
+    Ad4MaxNetworkNotReachableError = 5,
+    Ad4MaxNoAdsAvailableError = 6
 };
 typedef NSUInteger Ad4MaxError;
