@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E44FECD61488EDA900C268E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E999147527F2005BB3AE /* UIKit.framework */; };
+		E44FECD71488EDA900C268E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99B147527F2005BB3AE /* Foundation.framework */; };
+		E44FECD81488EDA900C268E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99D147527F2005BB3AE /* CoreGraphics.framework */; };
+		E44FECDE1488EDA900C268E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E44FECDC1488EDA900C268E7 /* InfoPlist.strings */; };
+		E44FECE11488EDA900C268E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E44FECE01488EDA900C268E7 /* main.m */; };
+		E44FECF91488EDBA00C268E7 /* GHUnitIOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E44FECF81488EDBA00C268E7 /* GHUnitIOS.framework */; };
 		E475DF30147669E900103DE1 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = E475DF2F147669E900103DE1 /* Entitlements.plist */; };
 		E4C6F7C3147E4AA600936DA4 /* Ad4MaxBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7C2147E4AA600936DA4 /* Ad4MaxBannerView.m */; };
 		E4C6F7C9147E4B7100936DA4 /* Ad4MaxParamsService.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7C8147E4B7100936DA4 /* Ad4MaxParamsService.m */; };
@@ -24,9 +30,16 @@
 		E4D6E9AD147527F2005BB3AE /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D6E9AB147527F2005BB3AE /* MainWindow.xib */; };
 		E4D6E9B0147527F2005BB3AE /* ad4Max_SampleAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D6E9AF147527F2005BB3AE /* ad4Max_SampleAppViewController.m */; };
 		E4D6E9B3147527F2005BB3AE /* ad4Max_SampleAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D6E9B1147527F2005BB3AE /* ad4Max_SampleAppViewController.xib */; };
+		E4E798641488EFC300A39E65 /* Ad4MaxParamsServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E798631488EFC300A39E65 /* Ad4MaxParamsServiceTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E44FECD41488EDA900C268E7 /* ad4Max-Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ad4Max-Tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E44FECDB1488EDA900C268E7 /* ad4Max-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ad4Max-Tests-Info.plist"; sourceTree = "<group>"; };
+		E44FECDD1488EDA900C268E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E44FECDF1488EDA900C268E7 /* ad4Max-Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ad4Max-Tests-Prefix.pch"; sourceTree = "<group>"; };
+		E44FECE01488EDA900C268E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E44FECF81488EDBA00C268E7 /* GHUnitIOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GHUnitIOS.framework; path = "ad4Max-SampleApp/GHUnitIOS.framework"; sourceTree = "<group>"; };
 		E475DF2F147669E900103DE1 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Entitlements.plist; path = ../Entitlements.plist; sourceTree = "<group>"; };
 		E4C6F7C1147E4AA600936DA4 /* Ad4MaxBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad4MaxBannerView.h; sourceTree = "<group>"; };
 		E4C6F7C2147E4AA600936DA4 /* Ad4MaxBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ad4MaxBannerView.m; sourceTree = "<group>"; };
@@ -55,9 +68,21 @@
 		E4D6E9AE147527F2005BB3AE /* ad4Max_SampleAppViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ad4Max_SampleAppViewController.h; sourceTree = "<group>"; };
 		E4D6E9AF147527F2005BB3AE /* ad4Max_SampleAppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ad4Max_SampleAppViewController.m; sourceTree = "<group>"; };
 		E4D6E9B2147527F2005BB3AE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ad4Max_SampleAppViewController.xib; sourceTree = "<group>"; };
+		E4E798631488EFC300A39E65 /* Ad4MaxParamsServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ad4MaxParamsServiceTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E44FECD11488EDA900C268E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E44FECD61488EDA900C268E7 /* UIKit.framework in Frameworks */,
+				E44FECD71488EDA900C268E7 /* Foundation.framework in Frameworks */,
+				E44FECD81488EDA900C268E7 /* CoreGraphics.framework in Frameworks */,
+				E44FECF91488EDBA00C268E7 /* GHUnitIOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E4D6E992147527F2005BB3AE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,6 +98,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E44FECD91488EDA900C268E7 /* ad4Max-Tests */ = {
+			isa = PBXGroup;
+			children = (
+				E44FECDA1488EDA900C268E7 /* Supporting Files */,
+				E4E798631488EFC300A39E65 /* Ad4MaxParamsServiceTests.m */,
+			);
+			path = "ad4Max-Tests";
+			sourceTree = "<group>";
+		};
+		E44FECDA1488EDA900C268E7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E44FECDB1488EDA900C268E7 /* ad4Max-Tests-Info.plist */,
+				E44FECDC1488EDA900C268E7 /* InfoPlist.strings */,
+				E44FECDF1488EDA900C268E7 /* ad4Max-Tests-Prefix.pch */,
+				E44FECE01488EDA900C268E7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		E4C6F7C5147E4B0C00936DA4 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				E4D6E99F147527F2005BB3AE /* ad4Max-SampleApp */,
+				E44FECD91488EDA900C268E7 /* ad4Max-Tests */,
 				E4D6E998147527F2005BB3AE /* Frameworks */,
 				E4D6E996147527F2005BB3AE /* Products */,
 			);
@@ -118,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				E4D6E995147527F2005BB3AE /* ad4Max-SampleApp.app */,
+				E44FECD41488EDA900C268E7 /* ad4Max-Tests.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,6 +172,7 @@
 		E4D6E998147527F2005BB3AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E44FECF81488EDBA00C268E7 /* GHUnitIOS.framework */,
 				E4C6F7E8147FB52000936DA4 /* SystemConfiguration.framework */,
 				E4C6F7E3147FB1B400936DA4 /* CoreTelephony.framework */,
 				E4D6E999147527F2005BB3AE /* UIKit.framework */,
@@ -174,6 +222,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E44FECD31488EDA900C268E7 /* ad4Max-Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E44FECF61488EDA900C268E7 /* Build configuration list for PBXNativeTarget "ad4Max-Tests" */;
+			buildPhases = (
+				E44FECD01488EDA900C268E7 /* Sources */,
+				E44FECD11488EDA900C268E7 /* Frameworks */,
+				E44FECD21488EDA900C268E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ad4Max-Tests";
+			productName = "ad4Max-Tests";
+			productReference = E44FECD41488EDA900C268E7 /* ad4Max-Tests.app */;
+			productType = "com.apple.product-type.application";
+		};
 		E4D6E994147527F2005BB3AE /* ad4Max-SampleApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E4D6E9B6147527F2005BB3AE /* Build configuration list for PBXNativeTarget "ad4Max-SampleApp" */;
@@ -209,11 +274,20 @@
 			projectRoot = "";
 			targets = (
 				E4D6E994147527F2005BB3AE /* ad4Max-SampleApp */,
+				E44FECD31488EDA900C268E7 /* ad4Max-Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E44FECD21488EDA900C268E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E44FECDE1488EDA900C268E7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E4D6E993147527F2005BB3AE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -228,6 +302,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E44FECD01488EDA900C268E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E44FECE11488EDA900C268E7 /* main.m in Sources */,
+				E4E798641488EFC300A39E65 /* Ad4MaxParamsServiceTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E4D6E991147527F2005BB3AE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -246,6 +329,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		E44FECDC1488EDA900C268E7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E44FECDD1488EDA900C268E7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		E4D6E9A2147527F2005BB3AE /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -274,6 +365,78 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E44FECF31488EDA900C268E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ad4Max-SampleApp\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ad4Max-Tests/ad4Max-Tests-Prefix.pch";
+				INFOPLIST_FILE = "ad4Max-Tests/ad4Max-Tests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E44FECF41488EDA900C268E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ad4Max-SampleApp\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ad4Max-Tests/ad4Max-Tests-Prefix.pch";
+				INFOPLIST_FILE = "ad4Max-Tests/ad4Max-Tests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		E44FECF51488EDA900C268E7 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/ad4Max-SampleApp\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ad4Max-Tests/ad4Max-Tests-Prefix.pch";
+				INFOPLIST_FILE = "ad4Max-Tests/ad4Max-Tests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = AdHoc;
+		};
 		E475DF3114766A2B00103DE1 /* AdHoc */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -376,6 +539,16 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E44FECF61488EDA900C268E7 /* Build configuration list for PBXNativeTarget "ad4Max-Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E44FECF31488EDA900C268E7 /* Debug */,
+				E44FECF41488EDA900C268E7 /* Release */,
+				E44FECF51488EDA900C268E7 /* AdHoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E4D6E98F147527F2005BB3AE /* Build configuration list for PBXProject "ad4Max-SampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
