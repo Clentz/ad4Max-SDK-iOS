@@ -44,7 +44,7 @@
 
 @implementation Ad4MaxBannerView
 
-@synthesize ad4MaxDelegate;
+@synthesize ad4MaxDelegate, bannerLoaded;
 @synthesize activeWebView, inactiveWebView, paramsService, refreshTimer;
 
 #pragma mark -
@@ -78,6 +78,7 @@
     self.backgroundColor = [UIColor clearColor];
 
     initialized = YES;
+    bannerLoaded = NO;
     
     [self loadBannerInView];        
 }
@@ -201,6 +202,7 @@
     DLog(@"%@", generatedHTMLString);
     
     cntWebViewLoads = 0;
+    bannerLoaded = NO;
     [activeWebView loadHTMLString:generatedHTMLString baseURL:nil];
 
     // Report event to delegate
@@ -247,6 +249,7 @@
     
     // Report event to delegate
     if( --cntWebViewLoads == 0  ) {
+        bannerLoaded = YES;
         [self.ad4MaxDelegate bannerViewDidLoadAd:self];
     }
 }

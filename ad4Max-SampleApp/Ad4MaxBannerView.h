@@ -30,6 +30,8 @@
     // Ad4MaxBannerDelegate
     IBOutlet id<Ad4MaxBannerViewDelegate>    ad4MaxDelegate;
 
+    BOOL                                     bannerLoaded;
+    
     // Private members
     BOOL                        initialized;
     UIWebView*					activeWebView;
@@ -40,5 +42,6 @@
 }
 
 @property(nonatomic, assign) IBOutlet id<Ad4MaxBannerViewDelegate> ad4MaxDelegate;
+@property(readonly, assign) BOOL bannerLoaded;
 
 @end
