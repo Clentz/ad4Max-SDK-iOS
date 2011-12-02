@@ -39,6 +39,10 @@
 - (void)initActiveWebView;
 - (void)loadBannerInView;
 
+- (void)reportConfigError:(NSString*)errorMsg;
+- (void)reportBannerSizeErrorWithHeight:(int)height andWidth:(int)width;
+- (void)reportError:(NSString*)errorMsg withCode:(NSInteger)code;
+
 @end
 
 
@@ -114,9 +118,11 @@
     
     ad4MaxDelegate = _delegate;
 
-    // The load sequence is different if the delegate is set via IB or programatically
+    // The load sequence is different if the delegate is set via IB or
+    // programatically
     // In case of IB, delegate is set before the call to awakeFromNib
-    // If done programatically in controller viewDidLoad, delegare is set after the call to awakeFromNib
+    // If done programatically in controller viewDidLoad, delegare is set after
+    // the call to awakeFromNib
     if( initialized ) {
         [self loadBannerInView];    
     }
@@ -127,28 +133,17 @@
 #pragma mark - Private methods
 
 - (void)loadBannerInView {
-
-    NSLog(@"delegate %@", ad4MaxDelegate);
-    NSLog(@"service %@", paramsService);
     
     if( !ad4MaxDelegate ) {
-        // TODO add an error
-        NSLog(@"ERROR: you did not set any delegate for ad4max banner %@", self);
+        NSLog(@"ERROR: you did not set any delegate for ad4max banner %@", 
+              self);
         return;
     }
-    else if( ![ad4MaxDelegate respondsToSelector:@selector(getAdBoxId)] ) {
-        // TODO add an error
-        NSLog(@"ERROR: your delegate for ad4amx banner %@ does not implement mandatory method getAdBoxId", self);        
+    
+    if( ![ad4MaxDelegate respondsToSelector:@selector(getAdBoxId)] ) {
+        [self reportConfigError:@"ERROR: your delegate for ad4max banner does not implement mandatory method getAdBoxId"];
         return;
     }
-
-    // TODO
-    // Test Banner is visible
-//    if( [self.superview.subviews lastObject] != self ) {
-//        // TODO add an error
-//        NSLog(@"ERROR: ad4Max banner for AD BOX ID %@ is not visible", [ad4MaxDelegate getAdBoxId]);
-//        return;
-//    }    
     
     // set web view content
     NSString *htmlStringFormat = @"<html><head><title></title><style type=\"text/css\">html, body { margin: 0; padding: 0; } </style></head><body><script type=\"text/javascript\">ad4max_guid = \"%@\";ad4max_app_name = \"%@\";ad4max_app_version = \"%@\";ad4max_uid = \"%@\";ad4max_lang = \"%@\";ad4max_connection_type = \"%@\";ad4max_width = \"%@\";ad4max_height = \"%@\";%@</script><script type=\"text/javascript\" src=\"http://max.medialution.com/ad4max.js\"></script></body></html>";
@@ -206,9 +201,13 @@
     [activeWebView loadHTMLString:generatedHTMLString baseURL:nil];
 
     // Report event to delegate
-    [self.ad4MaxDelegate bannerViewWillLoadAd:self];
-
-    // Basic refresh functionality  
+    if ([ad4MaxDelegate respondsToSelector:@selector(bannerViewWillLoadAd:)] ) {
+        [self.ad4MaxDelegate bannerViewWillLoadAd:self];
+    }
+        
+    // Basic refresh functionality 
+    // If application goes in backgroune, the timer will fire the next time 
+    // the application becomes active, which is the expected behaviour
     if ([ad4MaxDelegate respondsToSelector:@selector(getAdRefreshRate)] ) {
         self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:[ad4MaxDelegate getAdRefreshRate] target:self selector:@selector(changeAd) userInfo:nil repeats:NO];
     }
@@ -231,7 +230,9 @@
     if ( inType == UIWebViewNavigationTypeLinkClicked ) {
 
         // Ask to app whether it is ok to leave app
-        if( [self.ad4MaxDelegate bannerViewActionShouldBegin:self willLeaveApplication:YES] ) {
+        if(   ![ad4MaxDelegate respondsToSelector:@selector(bannerViewActionShouldBegin:willLeaveApplication:)] 
+           || [self.ad4MaxDelegate bannerViewActionShouldBegin:self willLeaveApplication:YES] ) {
+            
             [[UIApplication sharedApplication] openURL:[inRequest URL]];        
         }
         return NO;
@@ -249,15 +250,63 @@
     
     // Report event to delegate
     if( --cntWebViewLoads == 0  ) {
+                
+        // Check size of the view is correct
+        int height = [[activeWebView stringByEvaluatingJavaScriptFromString:@"document.body.getElementsByTagName('iframe').item(0).contentWindow.document.body.offsetHeight;"] intValue];
+        int width = [[activeWebView stringByEvaluatingJavaScriptFromString:@"document.body.getElementsByTagName('iframe').item(0).contentWindow.document.body.offsetWidth;"] intValue];
+        
+        if( height != (int)self.frame.size.height || width != (int)self.frame.size.width ) {
+            [self reportBannerSizeErrorWithHeight:height andWidth:width];
+            return;
+        }
+
         bannerLoaded = YES;
-        [self.ad4MaxDelegate bannerViewDidLoadAd:self];
+
+        if( [ad4MaxDelegate respondsToSelector:@selector(bannerViewDidLoadAd:)] )
+            [self.ad4MaxDelegate bannerViewDidLoadAd:self];
     }
 }
 
-//- (void)webView:(UIWebView*)webView didFailLoadWithError:(NSError*)error {
-//    
-//    // do not decrement cntWebViewLoads to avoid having webViewDidFinishLoad: called
-//    [ad4MaxDelegate bannerView:self didFailToReceiveAdWithError:error];
-//}
+- (void)webView:(UIWebView*)webView didFailLoadWithError:(NSError*)_error {
+
+    // Do not decrement cntWebViewLoads to avoid having webViewDidFinishLoad
+    // called    
+
+    // Handle error
+    if ([_error code] == -1009) {
+        [self reportError:@"ERROR: unable to load a ad4Max banner, your Internet collection appears to be offline" withCode:Ad4MaxNetworkNotReachableError];    
+    }
+    else {
+        [self reportError:[_error description] withCode:Ad4MaxUnknownError];
+    }
+}
+
+- (void)reportConfigError:(NSString*)errorMsg {    
+    NSLog(@"%@", errorMsg);
+    [self reportError:errorMsg withCode:Ad4MaxConfigurationError];
+}
+
+- (void)reportBannerSizeErrorWithHeight:(int)height andWidth:(int)width {
+    
+    NSString *errorMsg = [[[NSString alloc] initWithFormat:@"ERROR: your ad4Max banner is not of the size configured in your AD BOX. Your ad4MaxBanner is %d x %d and your configured AD BOX size is %d x %d", (int)self.frame.size.height, (int)self.frame.size.width, height, width] autorelease];
+    
+    [self reportError:errorMsg withCode:Ad4MaxBannerSizeError];
+}
+
+- (void)reportError:(NSString*)errorMsg withCode:(NSInteger)code {
+
+    if (![ad4MaxDelegate respondsToSelector:@selector(bannerView:didFailToReceiveAdWithError:)] ) {
+        NSLog(@"ERROR: your delegate for ad4Max banner %@ does not implement mandatory method bannerView:didFailToReceiveAdWithError:", self);        
+        NSLog(@"ERROR to report was: %@", errorMsg);        
+        return;
+    }
+    
+    NSMutableDictionary *errorDetail = [NSMutableDictionary dictionary];
+    [errorDetail setValue:errorMsg forKey:NSLocalizedDescriptionKey];
+    NSError *error = [NSError errorWithDomain:@"ad4Max" code:code userInfo:errorDetail];
+    
+    [ad4MaxDelegate bannerView:self didFailToReceiveAdWithError:error];
+}
+
 
 @end

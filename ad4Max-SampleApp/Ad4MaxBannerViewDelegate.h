@@ -31,6 +31,16 @@
 // Getting mandatory parameters
 - (NSString*)getAdBoxId;
 
+// Detecting errors
+- (void)bannerView:(Ad4MaxBannerView *)banner didFailToReceiveAdWithError:(NSError *)error;
+
+@optional
+
+// Getting optional parameters
+- (NSUInteger)getAdRefreshRate;
+- (NSString*)getTargetedPublisherCategories;
+- (BOOL)forceLangFilter;
+
 // Detecting When Advertisements Are Loaded
 - (void)bannerViewWillLoadAd:(Ad4MaxBannerView *)banner;
 - (void)bannerViewDidLoadAd:(Ad4MaxBannerView *)banner;
@@ -38,14 +48,16 @@
 // Detecting When a User Interacts With an Advertisement
 - (BOOL)bannerViewActionShouldBegin:(Ad4MaxBannerView *)banner willLeaveApplication:(BOOL)willLeave;
 
-// Detecting errors
-- (void)bannerView:(Ad4MaxBannerView *)banner didFailToReceiveAdWithError:(NSError *)error;
-
-@optional
-// Getting optional parameters
-- (NSUInteger)getAdRefreshRate;
-- (NSString*)getTargetedPublisherCategories;
-- (BOOL)forceLangFilter;
-
-
 @end
+
+
+// Definition of error codes
+enum {
+    Ad4MaxUnknownError = 0,
+    Ad4MaxConfigurationError = 1,
+    Ad4MaxServerFailureError = 2,
+    Ad4MaxNetworkNotReachableError = 3,
+    Ad4MaxBannerSizeError = 4,
+    Ad4MaxBannerVisibilityError = 5,
+};
+typedef NSUInteger Ad4MaxError;
