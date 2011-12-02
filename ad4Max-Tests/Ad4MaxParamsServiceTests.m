@@ -64,7 +64,8 @@
 }
 
 - (void)testGetLang {
-    GHAssertEqualStrings(@"en", [service getLang], @"User language");
+    
+    GHAssertTrue([@"en" isEqualToString:[service getLang]] || [@"fr" isEqualToString:[service getLang]], @"User language is 'en' or 'fr'");
 }
 
 - (void)testIsFirstLaunch_firstLaunch { 
