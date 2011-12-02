@@ -39,7 +39,6 @@
 - (void)initActiveWebView;
 - (void)loadBannerInView;
 
-- (void)reportConfigError:(NSString*)errorMsg;
 - (void)reportBannerSizeErrorWithHeight:(int)height andWidth:(int)width;
 - (void)reportError:(NSString*)errorMsg withCode:(NSInteger)code;
 
@@ -135,13 +134,12 @@
 - (void)loadBannerInView {
     
     if( !ad4MaxDelegate ) {
-        NSLog(@"ERROR: you did not set any delegate for ad4max banner %@", 
-              self);
+        [self reportError:@"ERROR: you did not set any delegate for your ad4Max banner" withCode:Ad4MaxConfigurationError];
         return;
     }
     
     if( ![ad4MaxDelegate respondsToSelector:@selector(getAdBoxId)] ) {
-        [self reportConfigError:@"ERROR: your delegate for ad4max banner does not implement mandatory method getAdBoxId"];
+        [self reportError:@"ERROR: your delegate for ad4Max banner does not implement mandatory method getAdBoxId" withCode:Ad4MaxConfigurationError];
         return;
     }
     
@@ -255,6 +253,12 @@
         int height = [[activeWebView stringByEvaluatingJavaScriptFromString:@"document.body.getElementsByTagName('iframe').item(0).contentWindow.document.body.offsetHeight;"] intValue];
         int width = [[activeWebView stringByEvaluatingJavaScriptFromString:@"document.body.getElementsByTagName('iframe').item(0).contentWindow.document.body.offsetWidth;"] intValue];
         
+        
+        if( height == 0 && width == 0 ) {
+            // Problem loading iframe content
+            [self reportError:@"ERROR: failed to load ad4Max banner, server is not responding correctly (server failure)" withCode:Ad4MaxServerFailureError]; 
+            return;
+        }
         if( height != (int)self.frame.size.height || width != (int)self.frame.size.width ) {
             [self reportBannerSizeErrorWithHeight:height andWidth:width];
             return;
@@ -281,11 +285,6 @@
     }
 }
 
-- (void)reportConfigError:(NSString*)errorMsg {    
-    NSLog(@"%@", errorMsg);
-    [self reportError:errorMsg withCode:Ad4MaxConfigurationError];
-}
-
 - (void)reportBannerSizeErrorWithHeight:(int)height andWidth:(int)width {
     
     NSString *errorMsg = [[[NSString alloc] initWithFormat:@"ERROR: your ad4Max banner is not of the size configured in your AD BOX. Your ad4MaxBanner is %d x %d and your configured AD BOX size is %d x %d", (int)self.frame.size.height, (int)self.frame.size.width, height, width] autorelease];
@@ -296,8 +295,10 @@
 - (void)reportError:(NSString*)errorMsg withCode:(NSInteger)code {
 
     if (![ad4MaxDelegate respondsToSelector:@selector(bannerView:didFailToReceiveAdWithError:)] ) {
-        NSLog(@"ERROR: your delegate for ad4Max banner %@ does not implement mandatory method bannerView:didFailToReceiveAdWithError:", self);        
-        NSLog(@"ERROR to report was: %@", errorMsg);        
+        
+        NSLog(@"ERROR: your delegate for ad4Max banner %@ does not implement mandatory method bannerView:didFailToReceiveAdWithError:", self);  
+        // Log the inital message anyway
+        NSLog(@"%@", errorMsg);        
         return;
     }
     
