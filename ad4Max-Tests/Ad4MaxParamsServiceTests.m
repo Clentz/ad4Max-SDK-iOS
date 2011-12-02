@@ -21,23 +21,44 @@
 // ============================================================================
 
 
+#import "Ad4MaxParamsService.h"
+
 #import <GHUnitIOS/GHUnit.h> 
 
-@interface Ad4MaxParamsServiceTests : GHTestCase { }
+@interface Ad4MaxParamsServiceTests : GHTestCase { 
+
+    Ad4MaxParamsService *service;
+}
+
+@property (nonatomic, retain) Ad4MaxParamsService *service;
+
 @end
 
 @implementation Ad4MaxParamsServiceTests
 
-- (void)testStrings {       
-    NSString *string1 = @"a string";
-    GHTestLog(@"I can log to the GHUnit test console: %@", string1);
+@synthesize service;
+
+- (void)setUpClass {
+    // Run at start of all tests in the class
+    self.service = [[[Ad4MaxParamsService alloc] init] autorelease];
+}
+
+- (void)tearDownClass {
+    // Run at end of all tests in the class
+    self.service = nil;
+}
+
+- (void)testIsFirstLaunch_firstLaunch { 
     
-    // Assert string1 is not NULL, with no custom error description
-    GHAssertNotNULL(string1, nil);
+    NSUserDefaults *userDefaults = [[[NSUserDefaults alloc] init] autorelease];
+    [userDefaults setBool:NO forKey:@"ad4MaxAlreadyLaunched"];
     
-    // Assert equal objects, add custom error description
-    NSString *string2 = @"a string";
-    GHAssertEqualObjects(string1, string2, @"A custom error message. string1 should be equal to: %@.", string2);
+    GHAssertTrue([service isFirstLaunch], @"isFirstLaunch should be YES");        
+}
+
+- (void)testIsFirstLaunch_notFirstLaunch { 
+        
+    GHAssertFalse([service isFirstLaunch], @"isFirstLaunch should be NO");        
 }
 
 @end

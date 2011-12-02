@@ -31,6 +31,14 @@
 		E4D6E9B0147527F2005BB3AE /* ad4Max_SampleAppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D6E9AF147527F2005BB3AE /* ad4Max_SampleAppViewController.m */; };
 		E4D6E9B3147527F2005BB3AE /* ad4Max_SampleAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D6E9B1147527F2005BB3AE /* ad4Max_SampleAppViewController.xib */; };
 		E4E798641488EFC300A39E65 /* Ad4MaxParamsServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E798631488EFC300A39E65 /* Ad4MaxParamsServiceTests.m */; };
+		E4E79868148908D800A39E65 /* Ad4MaxParamsService.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7C8147E4B7100936DA4 /* Ad4MaxParamsService.m */; };
+		E4E79869148908EE00A39E65 /* Reachability.h in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7E5147FB32600936DA4 /* Reachability.h */; };
+		E4E7986A148908EE00A39E65 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7E6147FB32600936DA4 /* Reachability.m */; };
+		E4E7986C148908EE00A39E65 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7DE147F8A6A00936DA4 /* NSString+MD5Addition.m */; };
+		E4E7986E148908EE00A39E65 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7E0147F8A6A00936DA4 /* UIDevice+IdentifierAddition.m */; };
+		E4E79870148908FA00A39E65 /* Ad4MaxBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C6F7C2147E4AA600936DA4 /* Ad4MaxBannerView.m */; };
+		E4E798731489097700A39E65 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4E798721489097700A39E65 /* SystemConfiguration.framework */; };
+		E4E798751489097F00A39E65 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4E798741489097F00A39E65 /* CoreTelephony.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +77,8 @@
 		E4D6E9AF147527F2005BB3AE /* ad4Max_SampleAppViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ad4Max_SampleAppViewController.m; sourceTree = "<group>"; };
 		E4D6E9B2147527F2005BB3AE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ad4Max_SampleAppViewController.xib; sourceTree = "<group>"; };
 		E4E798631488EFC300A39E65 /* Ad4MaxParamsServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ad4MaxParamsServiceTests.m; sourceTree = "<group>"; };
+		E4E798721489097700A39E65 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E4E798741489097F00A39E65 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +86,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4E798751489097F00A39E65 /* CoreTelephony.framework in Frameworks */,
+				E4E798731489097700A39E65 /* SystemConfiguration.framework in Frameworks */,
 				E44FECD61488EDA900C268E7 /* UIKit.framework in Frameworks */,
 				E44FECD71488EDA900C268E7 /* Foundation.framework in Frameworks */,
 				E44FECD81488EDA900C268E7 /* CoreGraphics.framework in Frameworks */,
@@ -153,6 +165,8 @@
 		E4D6E98A147527F2005BB3AE = {
 			isa = PBXGroup;
 			children = (
+				E4E798741489097F00A39E65 /* CoreTelephony.framework */,
+				E4E798721489097700A39E65 /* SystemConfiguration.framework */,
 				E4D6E99F147527F2005BB3AE /* ad4Max-SampleApp */,
 				E44FECD91488EDA900C268E7 /* ad4Max-Tests */,
 				E4D6E998147527F2005BB3AE /* Frameworks */,
@@ -324,6 +338,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4E79870148908FA00A39E65 /* Ad4MaxBannerView.m in Sources */,
+				E4E79869148908EE00A39E65 /* Reachability.h in Sources */,
+				E4E7986A148908EE00A39E65 /* Reachability.m in Sources */,
+				E4E7986C148908EE00A39E65 /* NSString+MD5Addition.m in Sources */,
+				E4E7986E148908EE00A39E65 /* UIDevice+IdentifierAddition.m in Sources */,
+				E4E79868148908D800A39E65 /* Ad4MaxParamsService.m in Sources */,
 				E44FECE11488EDA900C268E7 /* main.m in Sources */,
 				E4E798641488EFC300A39E65 /* Ad4MaxParamsServiceTests.m in Sources */,
 			);
