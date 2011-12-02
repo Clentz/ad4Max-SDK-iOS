@@ -38,6 +38,9 @@
 
 @synthesize service;
 
+#pragma mark -
+#pragma mark Tests setup
+
 - (void)setUpClass {
     // Run at start of all tests in the class
     self.service = [[[Ad4MaxParamsService alloc] init] autorelease];
@@ -46,6 +49,22 @@
 - (void)tearDownClass {
     // Run at end of all tests in the class
     self.service = nil;
+}
+
+
+#pragma mark -
+#pragma mark Tests methods
+
+- (void)testGetAppName {
+    GHAssertEqualStrings(@"ad4Max-Tests", [service getAppName], @"App name");
+}
+
+- (void)testGetAppVersion {
+    GHAssertEqualStrings(@"1.0", [service getAppVersion], @"App version");
+}
+
+- (void)testGetLang {
+    GHAssertEqualStrings(@"en", [service getLang], @"User language");
 }
 
 - (void)testIsFirstLaunch_firstLaunch { 
@@ -60,5 +79,24 @@
         
     GHAssertFalse([service isFirstLaunch], @"isFirstLaunch should be NO");        
 }
+
+- (void)testGetUID {
+    
+    NSString *uid = [service getUID];
+    GHAssertEqualStrings(uid, [service getUID], @"UID should be constant");
+    GHAssertEqualStrings(uid, [service getUID], @"UID should be constant");
+}
+
+- (void)testConnectionType {
+    
+    GHAssertEqualStrings(@"wifi", [service getConnectionType], @"No possible to be on edge in simulator");    
+}
+
+- (void)testCarrierName {
+    
+    GHAssertNil([service getCarrierName], @"No carrier on simulator");   
+}
+
+
 
 @end
