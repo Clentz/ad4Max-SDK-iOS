@@ -3,6 +3,5 @@
 appledoc --no-create-docset --project-name ad4Max --project-company "Publigroupe" --company-id com.publigroup --output ./ ~/Desktop/ad4Max-SampleApp-iOS/ad4Max
 
 
-
-
-appledoc --project-name ad4Max --project-company "Publigroupe" --company-id com.publigroup --output ./html/ --docset-feed-url http://clentz.github.com/ad4Max-SampleApp-iOS/%DOCSETATOMFILENAME --docset-package-url http://clentz.github.com/ad4Max-SampleApp-iOS/%DOCSETPACKAGEFILENAME --publish-docset  ~/Desktop/ad4Max-SampleApp-iOS/ad4Max
+//generate docset package and feed
+appledoc --project-name ad4Max --project-company "Publigroupe" --company-id com.publigroup --output ./html/ --docset-feed-url http://clentz.github.com/ad4Max-SampleApp-iOS/publish/%DOCSETATOMFILENAME --docset-package-url http://clentz.github.com/ad4Max-SampleApp-iOS/publish/%DOCSETPACKAGEFILENAME --publish-docset  ~/Desktop/ad4Max-SampleApp-iOS/ad4Max

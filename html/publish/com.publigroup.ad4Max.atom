@@ -1,0 +1,20 @@
+<?xml version="1.0" standalone="no"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:docset="http://developer.apple.com/rss/docset_extensions" xml:lang="en">
+    <id>http://clentz.github.com/ad4Max-SampleApp-iOS/publish/com.publigroup.ad4Max.atom/20111205181709</id>
+    <title type="text">ad4Max Documentation</title>
+    <rights>Copyright © 2011 Publigroupe. All rights reserved.</rights>
+    <link rel="self" href="http://clentz.github.com/ad4Max-SampleApp-iOS/publish/com.publigroup.ad4Max.atom"></link>
+    <docset:publisherName>Publigroupe</docset:publisherName>
+    <docset:publisherID>com.publigroup.documentation</docset:publisherID>
+    <updated>2011-12-05T18:17:09+01:00</updated>
+    <entry>
+        <id>tag:clentz.github.com,2011-12-05:com.publigroup.ad4Max/1.0.0</id>
+        <title type="text">ad4Max Documentation</title>
+        <updated>2011-12-05T18:17:09+01:00</updated>
+        <content type="text">ad4Max Documentation (v1.0.0)</content>
+        <link rel="enclosure" type="application/octet-stream" href="http://clentz.github.com/ad4Max-SampleApp-iOS/publish/com.publigroup.ad4Max-1.0.xar" length="24466"></link>
+        <docset:identifier>com.publigroup.ad4Max</docset:identifier>
+        <docset:version>1.0.0</docset:version>
+        <docset:minimumXcodeVersion>3.0.0</docset:minimumXcodeVersion>
+    </entry>
+</feed>
