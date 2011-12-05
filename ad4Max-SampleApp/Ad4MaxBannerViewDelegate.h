@@ -25,7 +25,10 @@
 
 #import <Foundation/Foundation.h>
 
-
+/**
+ Ad4MaxBanner View Delegate protocol
+ handle the ad configuration and beaviors
+ */
 @protocol Ad4MaxBannerViewDelegate <NSObject>
 
 // Getting mandatory parameters
