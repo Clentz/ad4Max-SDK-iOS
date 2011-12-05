@@ -21,7 +21,7 @@
 // ============================================================================
 
 #import "Ad4MaxParamsService.h"
-
+#import "UIDevice+IdentifierAddition.h"
 #import "Reachability.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 
