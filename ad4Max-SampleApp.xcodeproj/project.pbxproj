@@ -6,6 +6,21 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		11E4FB60148E1A26007437C8 /* Universal_Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 11E4FB6B148E1A26007437C8 /* Build configuration list for PBXAggregateTarget "Universal_Framework" */;
+			buildPhases = (
+				11E4FB5F148E1A26007437C8 /* ShellScript */,
+			);
+			dependencies = (
+				11E4FB70148E1A71007437C8 /* PBXTargetDependency */,
+			);
+			name = Universal_Framework;
+			productName = Universal_Framework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		112C8B50148D19AF001FBABD /* Ad4MaxBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112C8B4C148D19AF001FBABD /* Ad4MaxBannerView.m */; };
 		112C8B51148D19AF001FBABD /* Ad4MaxParamsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 112C8B4F148D19AF001FBABD /* Ad4MaxParamsService.m */; };
@@ -28,6 +43,18 @@
 		11631B79148D198A00DC4DB4 /* ad4Max_SampleAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11631B6B148D198A00DC4DB4 /* ad4Max_SampleAppViewController.xib */; };
 		11631B7A148D198A00DC4DB4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11631B6D148D198A00DC4DB4 /* InfoPlist.strings */; };
 		11631B7B148D198A00DC4DB4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11631B6F148D198A00DC4DB4 /* MainWindow.xib */; };
+		11E38254148E1D4200D2499C /* Ad4Max.h in Headers */ = {isa = PBXBuildFile; fileRef = 11E38253148E1D4200D2499C /* Ad4Max.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11E4FB71148E1A8A007437C8 /* Ad4MaxBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112C8B4C148D19AF001FBABD /* Ad4MaxBannerView.m */; };
+		11E4FB72148E1A8A007437C8 /* Ad4MaxParamsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 112C8B4F148D19AF001FBABD /* Ad4MaxParamsService.m */; };
+		11E4FB73148E1A8A007437C8 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 11631B65148D198A00DC4DB4 /* NSString+MD5Addition.m */; };
+		11E4FB74148E1A8A007437C8 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 11631B67148D198A00DC4DB4 /* Reachability.m */; };
+		11E4FB75148E1A8A007437C8 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 11631B69148D198A00DC4DB4 /* UIDevice+IdentifierAddition.m */; };
+		11E4FB76148E1ABE007437C8 /* Ad4MaxBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 112C8B4B148D19AF001FBABD /* Ad4MaxBannerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11E4FB77148E1ABE007437C8 /* Ad4MaxBannerViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 112C8B4D148D19AF001FBABD /* Ad4MaxBannerViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11E4FB78148E1ACF007437C8 /* Ad4MaxParamsService.h in Headers */ = {isa = PBXBuildFile; fileRef = 112C8B4E148D19AF001FBABD /* Ad4MaxParamsService.h */; };
+		11E4FB79148E1ACF007437C8 /* NSString+MD5Addition.h in Headers */ = {isa = PBXBuildFile; fileRef = 11631B64148D198A00DC4DB4 /* NSString+MD5Addition.h */; };
+		11E4FB7A148E1ACF007437C8 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 11631B66148D198A00DC4DB4 /* Reachability.h */; };
+		11E4FB7B148E1ACF007437C8 /* UIDevice+IdentifierAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = 11631B68148D198A00DC4DB4 /* UIDevice+IdentifierAddition.h */; };
 		E44FECD61488EDA900C268E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E999147527F2005BB3AE /* UIKit.framework */; };
 		E44FECD71488EDA900C268E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99B147527F2005BB3AE /* Foundation.framework */; };
 		E44FECD81488EDA900C268E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99D147527F2005BB3AE /* CoreGraphics.framework */; };
@@ -40,6 +67,16 @@
 		E4D6E99E147527F2005BB3AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99D147527F2005BB3AE /* CoreGraphics.framework */; };
 		E4E798641488EFC300A39E65 /* Ad4MaxParamsServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E798631488EFC300A39E65 /* Ad4MaxParamsServiceTests.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		11E4FB6F148E1A71007437C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4D6E98C147527F2005BB3AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 11E4FB5D148E1A26007437C8;
+			remoteInfo = ad4Max;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		112C8B4B148D19AF001FBABD /* Ad4MaxBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad4MaxBannerView.h; sourceTree = "<group>"; };
@@ -65,6 +102,8 @@
 		11631B6C148D198A00DC4DB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ad4Max_SampleAppViewController.xib; sourceTree = "<group>"; };
 		11631B6E148D198A00DC4DB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		11631B70148D198A00DC4DB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		11E38253148E1D4200D2499C /* Ad4Max.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad4Max.h; sourceTree = "<group>"; };
+		11E4FB5E148E1A26007437C8 /* ad4Max.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ad4Max.framework; path = Ad4Max.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44FECD41488EDA900C268E7 /* ad4Max-Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ad4Max-Tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44FECDB1488EDA900C268E7 /* ad4Max-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ad4Max-Tests-Info.plist"; sourceTree = "<group>"; };
 		E44FECDD1488EDA900C268E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -80,6 +119,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		11E4FB59148E1A26007437C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E44FECD11488EDA900C268E7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -116,6 +162,7 @@
 				112C8B4D148D19AF001FBABD /* Ad4MaxBannerViewDelegate.h */,
 				112C8B4E148D19AF001FBABD /* Ad4MaxParamsService.h */,
 				112C8B4F148D19AF001FBABD /* Ad4MaxParamsService.m */,
+				11E38253148E1D4200D2499C /* Ad4Max.h */,
 			);
 			path = ad4Max;
 			sourceTree = "<group>";
@@ -197,6 +244,7 @@
 			children = (
 				E4D6E995147527F2005BB3AE /* ad4Max-SampleApp.app */,
 				E44FECD41488EDA900C268E7 /* ad4Max-Tests.app */,
+				11E4FB5E148E1A26007437C8 /* ad4Max.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -247,7 +295,43 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		11E4FB5A148E1A26007437C8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11E4FB76148E1ABE007437C8 /* Ad4MaxBannerView.h in Headers */,
+				11E4FB77148E1ABE007437C8 /* Ad4MaxBannerViewDelegate.h in Headers */,
+				11E38254148E1D4200D2499C /* Ad4Max.h in Headers */,
+				11E4FB78148E1ACF007437C8 /* Ad4MaxParamsService.h in Headers */,
+				11E4FB79148E1ACF007437C8 /* NSString+MD5Addition.h in Headers */,
+				11E4FB7A148E1ACF007437C8 /* Reachability.h in Headers */,
+				11E4FB7B148E1ACF007437C8 /* UIDevice+IdentifierAddition.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		11E4FB5D148E1A26007437C8 /* Ad4Max */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11E4FB6A148E1A26007437C8 /* Build configuration list for PBXNativeTarget "Ad4Max" */;
+			buildPhases = (
+				11E4FB58148E1A26007437C8 /* Sources */,
+				11E4FB59148E1A26007437C8 /* Frameworks */,
+				11E4FB5A148E1A26007437C8 /* Headers */,
+				11E4FB5B148E1A26007437C8 /* Resources */,
+				11E4FB5C148E1A26007437C8 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ad4Max;
+			productName = ad4Max;
+			productReference = 11E4FB5E148E1A26007437C8 /* ad4Max.framework */;
+			productType = "com.apple.product-type.bundle";
+		};
 		E44FECD31488EDA900C268E7 /* ad4Max-Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E44FECF61488EDA900C268E7 /* Build configuration list for PBXNativeTarget "ad4Max-Tests" */;
@@ -302,11 +386,20 @@
 			targets = (
 				E4D6E994147527F2005BB3AE /* ad4Max-SampleApp */,
 				E44FECD31488EDA900C268E7 /* ad4Max-Tests */,
+				11E4FB5D148E1A26007437C8 /* Ad4Max */,
+				11E4FB60148E1A26007437C8 /* Universal_Framework */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		11E4FB5B148E1A26007437C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E44FECD21488EDA900C268E7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -330,6 +423,32 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		11E4FB5C148E1A26007437C8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\nrm -f \"${CONFIGURATION_BUILD_DIR}/FakeFramework\"\nif [ -f \"${CONFIGURATION_BUILD_DIR}/${EXECUTABLE_PATH}\" ]; then\n\tcp \"${CONFIGURATION_BUILD_DIR}/${EXECUTABLE_PATH}\" \"${CONFIGURATION_BUILD_DIR}/FakeFramework\"\nfi\n\t\t\t\t\t";
+		};
+		11E4FB5F148E1A26007437C8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\n# Config\n\n#UFW_TARGET=${PROJECT}\nUFW_TARGET=Ad4Max\n\n\n# Defaults\n\n# Default build dir\nUFW_BUILD_DIR=\"./build\"\n\n\n\n# Global vars\n\n#if [ ! -z ${BUILD_DIR} ]; then\n## Use the build dir specified by XCode\n#    UFW_BUILD_DIR=\"${BUILD_DIR}\"\n#fi\n\nif [ -z ${SDK_NAME} ]; then\n    # Use the latest iphoneos SDK available\n    UFW_GREP_RESULT=$(xcodebuild -showsdks | grep -o \"iphoneos.*$\")\n    while read -r line; do\n    UFW_SDK_VERSION=\"${line}\"\n    done <<< \"${UFW_GREP_RESULT}\"\nelse\n    # Use the SDK specified by XCode\n    UFW_SDK_VERSION=\"${SDK_NAME}\"\nfi\n\nUFW_SDK_VERSION=$(echo \"${UFW_SDK_VERSION}\" | grep -o \"[0-9].*$\")\nUFW_EXE_FOLDER_PATH=\"${UFW_TARGET}.framework\"\nUFW_EXE_PATH=\"${UFW_EXE_FOLDER_PATH}/${UFW_TARGET}\"\nUFW_IPHONE_DIR=\"${UFW_BUILD_DIR}/Release-iphoneos\"\nUFW_SIMULATOR_DIR=\"${UFW_BUILD_DIR}/Release-iphonesimulator\"\nUFW_UNIVERSAL_DIR=\"${UFW_BUILD_DIR}/Release-universal\"\n\n\n# Build Framework\n\nrm -rf \"${UFW_UNIVERSAL_DIR}\"\n\nxcodebuild -target \"${UFW_TARGET}\" -configuration Release -sdk iphoneos${UFW_SDK_VERSION} clean build\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: xcodebuild failed\"; exit 1; fi\nxcodebuild -target \"${UFW_TARGET}\" -configuration Release -sdk iphonesimulator${UFW_SDK_VERSION} clean build\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: xcodebuild failed\"; exit 1; fi\n\nif [ ! -f \"${UFW_IPHONE_DIR}/${UFW_EXE_PATH}\" ]; then\n    echo \"Framework target \\\"${UFW_TARGET}\\\" had no source files to build from. Make sure your source files have the correct target membership\"\n    exit 1\nfi\n\nmkdir -p \"${UFW_UNIVERSAL_DIR}\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: mkdir failed\"; exit 1; fi\n\ncp -a \"${UFW_IPHONE_DIR}/${UFW_EXE_FOLDER_PATH}\" \"${UFW_UNIVERSAL_DIR}/${UFW_EXE_FOLDER_PATH}\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: cp failed\"; exit 1; fi\n\nlipo -create -output \"${UFW_UNIVERSAL_DIR}/${UFW_EXE_PATH}\" \"${UFW_IPHONE_DIR}/${UFW_EXE_PATH}\" \"${UFW_SIMULATOR_DIR}/${UFW_EXE_PATH}\"\nif [ \"$?\" != \"0\" ]; then echo >&2 \"Error: lipo failed\"; exit 1; fi\n\t\t\t\t\t";
+		};
 		E4E798661488F51000A39E65 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -347,6 +466,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		11E4FB58148E1A26007437C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11E4FB71148E1A8A007437C8 /* Ad4MaxBannerView.m in Sources */,
+				11E4FB72148E1A8A007437C8 /* Ad4MaxParamsService.m in Sources */,
+				11E4FB73148E1A8A007437C8 /* NSString+MD5Addition.m in Sources */,
+				11E4FB74148E1A8A007437C8 /* Reachability.m in Sources */,
+				11E4FB75148E1A8A007437C8 /* UIDevice+IdentifierAddition.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E44FECD01488EDA900C268E7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -377,6 +508,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		11E4FB70148E1A71007437C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 11E4FB5D148E1A26007437C8 /* Ad4Max */;
+			targetProxy = 11E4FB6F148E1A71007437C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		11631B6B148D198A00DC4DB4 /* ad4Max_SampleAppViewController.xib */ = {
@@ -414,6 +553,122 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		11E4FB64148E1A26007437C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		11E4FB65148E1A26007437C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		11E4FB66148E1A26007437C8 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				MACH_O_TYPE = mh_object;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = AdHoc;
+		};
+		11E4FB67148E1A26007437C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = UniversalFramework;
+			};
+			name = Debug;
+		};
+		11E4FB68148E1A26007437C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = UniversalFramework;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		11E4FB69148E1A26007437C8 /* AdHoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				PRODUCT_NAME = UniversalFramework;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = AdHoc;
+		};
 		E44FECF31488EDA900C268E7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -592,6 +847,26 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		11E4FB6A148E1A26007437C8 /* Build configuration list for PBXNativeTarget "Ad4Max" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11E4FB64148E1A26007437C8 /* Debug */,
+				11E4FB65148E1A26007437C8 /* Release */,
+				11E4FB66148E1A26007437C8 /* AdHoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		11E4FB6B148E1A26007437C8 /* Build configuration list for PBXAggregateTarget "Universal_Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11E4FB67148E1A26007437C8 /* Debug */,
+				11E4FB68148E1A26007437C8 /* Release */,
+				11E4FB69148E1A26007437C8 /* AdHoc */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E44FECF61488EDA900C268E7 /* Build configuration list for PBXNativeTarget "ad4Max-Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

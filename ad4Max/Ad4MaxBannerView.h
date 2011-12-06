@@ -20,7 +20,7 @@
 // ============================================================================
 
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @protocol   Ad4MaxBannerViewDelegate;	
 @class      Ad4MaxParamsService;

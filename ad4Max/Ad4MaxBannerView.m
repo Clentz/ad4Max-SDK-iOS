@@ -192,7 +192,7 @@
                                      heightString, 
                                      optionalParamsString] autorelease];
     
-    DLog(@"%@", generatedHTMLString);
+    NSLog(@"%@", generatedHTMLString);
     
     cntWebViewLoads = 0;
     bannerLoaded = NO;
