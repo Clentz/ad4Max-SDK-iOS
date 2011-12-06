@@ -61,8 +61,6 @@
     self.inactiveWebView = nil;
     self.paramsService = nil;
     
-    initialized = NO;
-    
     [super dealloc];
 }
 
@@ -81,7 +79,6 @@
     [self setOpaque:NO]; 
     self.backgroundColor = [UIColor clearColor];
 
-    initialized = YES;
     bannerLoaded = NO;
     
     [self loadBannerInView];        
@@ -123,7 +120,7 @@
     // In case of IB, delegate is set before the call to awakeFromNib
     // If done programatically in controller viewDidLoad, delegare is set after
     // the call to awakeFromNib
-    if( initialized ) {
+    if( self ) {
         [self loadBannerInView];    
     }
 }

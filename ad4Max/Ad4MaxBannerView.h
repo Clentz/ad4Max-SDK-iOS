@@ -25,23 +25,48 @@
 @protocol   Ad4MaxBannerViewDelegate;	
 @class      Ad4MaxParamsService;
 
+/**
+ Ad4MaxBanner View
+ */
 @interface Ad4MaxBannerView : UIView <UIWebViewDelegate> {
         
-    // Ad4MaxBannerDelegate
-    IBOutlet id<Ad4MaxBannerViewDelegate>    ad4MaxDelegate;
-
-    BOOL                                     bannerLoaded;
-    
-    // Private members
-    BOOL                        initialized;
+   /**
+        The webview containing the ad
+    */
     UIWebView*					activeWebView;
+    
+    /**
+        The next add in a non-visible webview
+     */
     UIWebView*					inactiveWebView;
-    Ad4MaxParamsService*        paramsService;
-    NSTimer*                    refreshTimer;
+    
+    /**
+        The number of webview ad ready do display
+     */
     NSInteger                   cntWebViewLoads;
+    
+    /**
+        The service object used to retrieve the ad content
+     */
+    Ad4MaxParamsService*        paramsService;
+    
+    /**
+        The timer runing to handle the refresh of the ad
+     */
+    NSTimer*                    refreshTimer;
+    
+   
 }
 
+
+/**
+ The ad4MaxBannerView Delegate attribute
+ */
 @property(nonatomic, assign) IBOutlet id<Ad4MaxBannerViewDelegate> ad4MaxDelegate;
+
+/**
+ bannerLoaded atribute set to YES if the banner is fully loaded
+ */
 @property(readonly, assign) BOOL bannerLoaded;
 
 @end
