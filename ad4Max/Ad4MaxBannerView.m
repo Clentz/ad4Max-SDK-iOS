@@ -26,6 +26,7 @@
 
 #import "Ad4MaxBannerView.h"
 
+#import "Ad4MaxInternals.h"
 
 @interface Ad4MaxBannerView ()
 
@@ -192,7 +193,7 @@
                                      heightString, 
                                      optionalParamsString] autorelease];
     
-    NSLog(@"%@", generatedHTMLString);
+    ad4MaxLog(@"%@", generatedHTMLString);
     
     cntWebViewLoads = 0;
     bannerLoaded = NO;
