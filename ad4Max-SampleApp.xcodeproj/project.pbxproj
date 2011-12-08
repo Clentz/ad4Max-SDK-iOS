@@ -39,18 +39,13 @@
 		11631B7B148D198A00DC4DB4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11631B6F148D198A00DC4DB4 /* MainWindow.xib */; };
 		11E38254148E1D4200D2499C /* Ad4Max.h in Headers */ = {isa = PBXBuildFile; fileRef = 11E38253148E1D4200D2499C /* Ad4Max.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11E382A8148E4A6100D2499C /* Ad4MaxInternals.h in Headers */ = {isa = PBXBuildFile; fileRef = 11E382A7148E4A6100D2499C /* Ad4MaxInternals.h */; };
-		11E383761490C25E00D2499C /* NSString+MD5Addition.h in Headers */ = {isa = PBXBuildFile; fileRef = 11E383701490C25E00D2499C /* NSString+MD5Addition.h */; };
-		11E383771490C25E00D2499C /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E383711490C25E00D2499C /* NSString+MD5Addition.m */; };
-		11E383781490C25E00D2499C /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E383711490C25E00D2499C /* NSString+MD5Addition.m */; };
-		11E383791490C25E00D2499C /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E383711490C25E00D2499C /* NSString+MD5Addition.m */; };
 		11E3837A1490C25E00D2499C /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 11E383721490C25E00D2499C /* Reachability.h */; };
 		11E3837B1490C25E00D2499C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E383731490C25E00D2499C /* Reachability.m */; };
 		11E3837C1490C25E00D2499C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E383731490C25E00D2499C /* Reachability.m */; };
 		11E3837D1490C25E00D2499C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E383731490C25E00D2499C /* Reachability.m */; };
-		11E3837E1490C25E00D2499C /* UIDevice+IdentifierAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = 11E383741490C25E00D2499C /* UIDevice+IdentifierAddition.h */; };
-		11E3837F1490C25E00D2499C /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E383751490C25E00D2499C /* UIDevice+IdentifierAddition.m */; };
-		11E383801490C25E00D2499C /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E383751490C25E00D2499C /* UIDevice+IdentifierAddition.m */; };
-		11E383811490C25E00D2499C /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E383751490C25E00D2499C /* UIDevice+IdentifierAddition.m */; };
+		11E3839C1490C6A800D2499C /* Ad4MaxUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E3839B1490C6A800D2499C /* Ad4MaxUtilities.m */; };
+		11E3839E1490CFCF00D2499C /* Ad4MaxUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E3839B1490C6A800D2499C /* Ad4MaxUtilities.m */; };
+		11E3839F1490CFDB00D2499C /* Ad4MaxUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 11E3839A1490C6A800D2499C /* Ad4MaxUtilities.h */; };
 		11E4FB71148E1A8A007437C8 /* Ad4MaxBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112C8B4C148D19AF001FBABD /* Ad4MaxBannerView.m */; };
 		11E4FB72148E1A8A007437C8 /* Ad4MaxParamsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 112C8B4F148D19AF001FBABD /* Ad4MaxParamsService.m */; };
 		11E4FB76148E1ABE007437C8 /* Ad4MaxBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 112C8B4B148D19AF001FBABD /* Ad4MaxBannerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -99,12 +94,10 @@
 		11631B70148D198A00DC4DB4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		11E38253148E1D4200D2499C /* Ad4Max.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad4Max.h; sourceTree = "<group>"; };
 		11E382A7148E4A6100D2499C /* Ad4MaxInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad4MaxInternals.h; sourceTree = "<group>"; };
-		11E383701490C25E00D2499C /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
-		11E383711490C25E00D2499C /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		11E383721490C25E00D2499C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		11E383731490C25E00D2499C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		11E383741490C25E00D2499C /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
-		11E383751490C25E00D2499C /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
+		11E3839A1490C6A800D2499C /* Ad4MaxUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad4MaxUtilities.h; sourceTree = "<group>"; };
+		11E3839B1490C6A800D2499C /* Ad4MaxUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ad4MaxUtilities.m; sourceTree = "<group>"; };
 		11E4FB5E148E1A26007437C8 /* ad4Max.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ad4Max.framework; path = Ad4Max.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44FECD41488EDA900C268E7 /* ad4Max-Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ad4Max-Tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44FECDB1488EDA900C268E7 /* ad4Max-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ad4Max-Tests-Info.plist"; sourceTree = "<group>"; };
@@ -167,6 +160,8 @@
 				112C8B4F148D19AF001FBABD /* Ad4MaxParamsService.m */,
 				11E38253148E1D4200D2499C /* Ad4Max.h */,
 				11E382A7148E4A6100D2499C /* Ad4MaxInternals.h */,
+				11E3839A1490C6A800D2499C /* Ad4MaxUtilities.h */,
+				11E3839B1490C6A800D2499C /* Ad4MaxUtilities.m */,
 			);
 			path = ad4Max;
 			sourceTree = "<group>";
@@ -202,12 +197,8 @@
 		11E3836F1490C25E00D2499C /* Externals */ = {
 			isa = PBXGroup;
 			children = (
-				11E383701490C25E00D2499C /* NSString+MD5Addition.h */,
-				11E383711490C25E00D2499C /* NSString+MD5Addition.m */,
 				11E383721490C25E00D2499C /* Reachability.h */,
 				11E383731490C25E00D2499C /* Reachability.m */,
-				11E383741490C25E00D2499C /* UIDevice+IdentifierAddition.h */,
-				11E383751490C25E00D2499C /* UIDevice+IdentifierAddition.m */,
 			);
 			path = Externals;
 			sourceTree = "<group>";
@@ -306,11 +297,10 @@
 				11E4FB76148E1ABE007437C8 /* Ad4MaxBannerView.h in Headers */,
 				11E4FB77148E1ABE007437C8 /* Ad4MaxBannerViewDelegate.h in Headers */,
 				11E38254148E1D4200D2499C /* Ad4Max.h in Headers */,
+				11E3839F1490CFDB00D2499C /* Ad4MaxUtilities.h in Headers */,
 				11E4FB78148E1ACF007437C8 /* Ad4MaxParamsService.h in Headers */,
 				11E382A8148E4A6100D2499C /* Ad4MaxInternals.h in Headers */,
-				11E383761490C25E00D2499C /* NSString+MD5Addition.h in Headers */,
 				11E3837A1490C25E00D2499C /* Reachability.h in Headers */,
-				11E3837E1490C25E00D2499C /* UIDevice+IdentifierAddition.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,9 +466,8 @@
 			files = (
 				11E4FB71148E1A8A007437C8 /* Ad4MaxBannerView.m in Sources */,
 				11E4FB72148E1A8A007437C8 /* Ad4MaxParamsService.m in Sources */,
-				11E383791490C25E00D2499C /* NSString+MD5Addition.m in Sources */,
 				11E3837D1490C25E00D2499C /* Reachability.m in Sources */,
-				11E383811490C25E00D2499C /* UIDevice+IdentifierAddition.m in Sources */,
+				11E3839E1490CFCF00D2499C /* Ad4MaxUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,9 +479,7 @@
 				E4E798641488EFC300A39E65 /* Ad4MaxParamsServiceTests.m in Sources */,
 				112C8B58148D1AB2001FBABD /* Ad4MaxParamsService.m in Sources */,
 				112C8B59148D1AB6001FBABD /* Ad4MaxBannerView.m in Sources */,
-				11E383781490C25E00D2499C /* NSString+MD5Addition.m in Sources */,
 				11E3837C1490C25E00D2499C /* Reachability.m in Sources */,
-				11E383801490C25E00D2499C /* UIDevice+IdentifierAddition.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,9 +492,8 @@
 				11631B75148D198A00DC4DB4 /* ad4Max_SampleAppViewController.m in Sources */,
 				112C8B50148D19AF001FBABD /* Ad4MaxBannerView.m in Sources */,
 				112C8B51148D19AF001FBABD /* Ad4MaxParamsService.m in Sources */,
-				11E383771490C25E00D2499C /* NSString+MD5Addition.m in Sources */,
 				11E3837B1490C25E00D2499C /* Reachability.m in Sources */,
-				11E3837F1490C25E00D2499C /* UIDevice+IdentifierAddition.m in Sources */,
+				11E3839C1490C6A800D2499C /* Ad4MaxUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

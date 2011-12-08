@@ -21,9 +21,9 @@
 // ============================================================================
 
 #import "Ad4MaxParamsService.h"
-#import "UIDevice+IdentifierAddition.h"
 #import "Reachability.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import "Ad4MaxUtilities.h"
 
 
 @interface Ad4MaxParamsService ()
@@ -59,7 +59,7 @@
 #pragma mark Public methods for Ad4MaxBannerView
 
 -(NSString*) getUID {
-    return [[UIDevice currentDevice] uniqueGlobalDeviceIdentifier];
+    return [Ad4MaxUtilities uniqueGlobalDeviceIdentifier];
 }
 
 -(NSString*) getAppName {
