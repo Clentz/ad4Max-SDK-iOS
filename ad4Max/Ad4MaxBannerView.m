@@ -318,8 +318,12 @@ static const int MIN_REFRESH_RATE = 30;
     // Do not decrement cntWebViewLoads to avoid having webViewDidFinishLoad
     // called    
 
-    // Handle error
-    if ([_error code] == -1009) {
+    // Handle errors
+    if ([_error code] == NSURLErrorCancelled) {
+        // Ignore this error, it means we aborted an unfinished request
+        return;
+    }
+    else if ([_error code] == -1009) {
         [self reportError:@"ERROR: unable to load a ad4Max banner, your Internet collection appears to be offline" withCode:Ad4MaxNetworkNotReachableError];    
     }
     else {
