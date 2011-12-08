@@ -46,6 +46,7 @@
 		11E383A91490D38B00D2499C /* Ad4MaxReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E383A71490D38B00D2499C /* Ad4MaxReachability.m */; };
 		11E383AA1490D38B00D2499C /* Ad4MaxReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E383A71490D38B00D2499C /* Ad4MaxReachability.m */; };
 		11E383AB1490D38B00D2499C /* Ad4MaxReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E383A71490D38B00D2499C /* Ad4MaxReachability.m */; };
+		11E383B91490DE9F00D2499C /* Ad4MaxUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 11E3839B1490C6A800D2499C /* Ad4MaxUtilities.m */; };
 		11E4FB71148E1A8A007437C8 /* Ad4MaxBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112C8B4C148D19AF001FBABD /* Ad4MaxBannerView.m */; };
 		11E4FB72148E1A8A007437C8 /* Ad4MaxParamsService.m in Sources */ = {isa = PBXBuildFile; fileRef = 112C8B4F148D19AF001FBABD /* Ad4MaxParamsService.m */; };
 		11E4FB76148E1ABE007437C8 /* Ad4MaxBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 112C8B4B148D19AF001FBABD /* Ad4MaxBannerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -472,6 +473,7 @@
 				112C8B58148D1AB2001FBABD /* Ad4MaxParamsService.m in Sources */,
 				112C8B59148D1AB6001FBABD /* Ad4MaxBannerView.m in Sources */,
 				11E383AA1490D38B00D2499C /* Ad4MaxReachability.m in Sources */,
+				11E383B91490DE9F00D2499C /* Ad4MaxUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
