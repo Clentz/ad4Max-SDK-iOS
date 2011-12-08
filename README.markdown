@@ -37,14 +37,14 @@
 8. Link the ad4MaxDelegate to the file owner (probably your view controller)
 
 	![delegate](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/10.png)9. Go in this file owner and start by including the header file:	 #import <Ad4Max/Ad4Max.h>10. Make your interface to implement the Ad4MaxBannerViewDelegate protocol:@interface ViewController : UIViewController <Ad4MaxBannerViewDelegate>11. Implement the requires methods:	
-	- the banner identifier definition:
+the banner identifier definition:
 
 >-(NSString*)getAdBoxId
 >{
 >return @"b15dded7-8c97-456a-9395-c2ca6a7832d7";
 >}
 
-	- and the the error handling:
+and the the error handling:
 >-(void)bannerView:(Ad4MaxBannerView *)banner didFailToReceiveAdWithError:(NSError *)error>{>    NSLog(@"Error");>}You can also implement the optionals methods to handle the refresh rate, the ad categories, the lang filter, and the banner behaviors. Refer to the documentation to find the details about the other parameters you can act on.
 
 ### Documentation
