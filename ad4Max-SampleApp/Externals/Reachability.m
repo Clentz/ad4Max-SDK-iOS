@@ -55,15 +55,17 @@
 #import <CoreFoundation/CoreFoundation.h>
 
 #import "Reachability.h"
-#import "Ad4MaxInternals.h"
 
-#define kShouldPrintReachabilityFlags 1
+#ifdef DEBUG
+    #define kShouldPrintReachabilityFlags 1
+#endif
 
 static void PrintReachabilityFlags(SCNetworkReachabilityFlags    flags, const char* comment)
 {
+    
 #if kShouldPrintReachabilityFlags
 	
-    ad4MaxLog(@"Reachability Flag Status: %c%c %c%c%c%c%c%c%c %s\n",
+    NSLog(@"Reachability Flag Status: %c%c %c%c%c%c%c%c%c %s\n",
 			(flags & kSCNetworkReachabilityFlagsIsWWAN)				  ? 'W' : '-',
 			(flags & kSCNetworkReachabilityFlagsReachable)            ? 'R' : '-',
 			

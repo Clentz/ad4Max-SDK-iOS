@@ -190,7 +190,7 @@
                                      heightString, 
                                      optionalParamsString] autorelease];
     
-    ad4MaxLog(@"%@", generatedHTMLString);
+    AD4MAXDLOG(@"%@", generatedHTMLString);
     
     cntWebViewLoads = 0;
     bannerLoaded = NO;
