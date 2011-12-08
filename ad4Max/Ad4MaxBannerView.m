@@ -41,10 +41,17 @@ static const int MIN_REFRESH_RATE = 30;
 
 - (void)baseInit;
 - (void)initActiveWebView;
+
+- (void)didBecomeActive:(NSNotification *)notification;
+- (void)willResignActive:(NSNotification *)notification;
+
+- (NSString*)getWebViewContent;
 - (void)loadBannerInView;
+- (void)scheduleAdRefresh;
 
 - (void)reportBannerSizeErrorWithHeight:(int)height andWidth:(int)width;
 - (void)reportError:(NSString*)errorMsg withCode:(NSInteger)code;
+
 
 @end
 
@@ -59,10 +66,17 @@ static const int MIN_REFRESH_RATE = 30;
 
 - (void)dealloc
 {
+    // Unregister from notifications
+    [[NSNotificationCenter defaultCenter] removeObserver: self];
+    
+    initialized = NO;
+    
     self.ad4MaxDelegate = nil;
+    
     self.activeWebView = nil;
     self.inactiveWebView = nil;
     self.paramsService = nil;
+    self.refreshTimer = nil;
     
     [super dealloc];
 }
@@ -84,6 +98,17 @@ static const int MIN_REFRESH_RATE = 30;
 
     bannerLoaded = NO;
     
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(didBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(willResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
+
+    
+    initialized = YES;
     [self loadBannerInView];        
 }
 
@@ -112,6 +137,21 @@ static const int MIN_REFRESH_RATE = 30;
 }
 
 #pragma mark -
+#pragma mark - Application Lifecycle management
+
+- (void)didBecomeActive:(NSNotification *)notification {
+
+    // Schedule next ad refresh
+    [self scheduleAdRefresh];    
+}
+
+- (void)willResignActive:(NSNotification *)notification {
+    // Cancel ad refresh as long as ads are not visible
+    AD4MAXDLOG(@"Cancelling ad refresh timer...");
+    [refreshTimer invalidate];
+}
+
+#pragma mark -
 #pragma mark - Public methods
 
 - (void)setAd4MaxDelegate:(id<Ad4MaxBannerViewDelegate>)_delegate {
@@ -121,10 +161,10 @@ static const int MIN_REFRESH_RATE = 30;
     // The load sequence is different if the delegate is set via IB or
     // programatically
     // In case of IB, delegate is set before the call to awakeFromNib
-    // If done programatically in controller viewDidLoad, delegare is set after
+    // If done programatically in controller viewDidLoad, delegate is set after
     // the call to awakeFromNib
-    if( self ) {
-        [self loadBannerInView];    
+    if( initialized ) {
+    [self loadBannerInView];    
     }
 }
 
@@ -132,45 +172,31 @@ static const int MIN_REFRESH_RATE = 30;
 #pragma mark -
 #pragma mark - Private methods
 
-- (void)loadBannerInView {
-    
-    if( !ad4MaxDelegate ) {
-        [self reportError:@"ERROR: you did not set any delegate for your ad4Max banner" withCode:Ad4MaxConfigurationError];
-        return;
-    }
-    
-    if( ![ad4MaxDelegate respondsToSelector:@selector(getAdBoxId)] ) {
-        [self reportError:@"ERROR: your delegate for ad4Max banner does not implement mandatory method getAdBoxId" withCode:Ad4MaxConfigurationError];
-        return;
-    }
-    if( ![ad4MaxDelegate respondsToSelector:@selector(getAdServerURL)] ) {
-        [self reportError:@"ERROR: your delegate for ad4Max banner does not implement mandatory method getAdServerURL" withCode:Ad4MaxConfigurationError];
-        return;
-    }
+- (NSString*)getWebViewContent {
         
     // set web view content
     NSString *htmlStringFormat = @""
-        "<html>"
-        "<head>"
-        "<title></title>"
-        "<style type='text/css'>html, body { margin: 0; padding: 0; }</style>"
-        "</head>"
-        "<body>"
-        "<script type='text/javascript'>"
-            "ad4max_guid = '%@';"
-            "ad4max_app_name = '%@';"
-            "ad4max_app_version = '%@';"
-            "ad4max_uid = '%@';"
-            "ad4max_lang = '%@';"
-            "ad4max_connection_type = '%@';"
-            "ad4max_width = '%@';"
-            "ad4max_height = '%@';"
-            "%@"
-        "</script>"
-        "<script type='text/javascript' src='http://%@/ad4max.js'></script>"
-        "</body>"
-        "</html>";
-
+    "<html>"
+    "<head>"
+    "<title></title>"
+    "<style type='text/css'>html, body { margin: 0; padding: 0; }</style>"
+    "</head>"
+    "<body>"
+    "<script type='text/javascript'>"
+    "ad4max_guid = '%@';"
+    "ad4max_app_name = '%@';"
+    "ad4max_app_version = '%@';"
+    "ad4max_uid = '%@';"
+    "ad4max_lang = '%@';"
+    "ad4max_connection_type = '%@';"
+    "ad4max_width = '%@';"
+    "ad4max_height = '%@';"
+    "%@"
+    "</script>"
+    "<script type='text/javascript' src='http://%@/ad4max.js'></script>"
+    "</body>"
+    "</html>";
+    
     NSString *guidString = [ad4MaxDelegate getAdBoxId];
     // TODO validate URL
     NSString *serverURLString = [ad4MaxDelegate getAdServerURL];
@@ -223,17 +249,49 @@ static const int MIN_REFRESH_RATE = 30;
     
     AD4MAXDLOG(@"%@", generatedHTMLString);
     
+    return generatedHTMLString;
+}
+
+
+- (void)loadBannerInView {
+    
+    if( !ad4MaxDelegate ) {
+        [self reportError:@"ERROR: you did not set any delegate for your ad4Max banner" withCode:Ad4MaxConfigurationError];
+        return;
+    }
+    
+    if( ![ad4MaxDelegate respondsToSelector:@selector(getAdBoxId)] ) {
+        [self reportError:@"ERROR: your delegate for ad4Max banner does not implement mandatory method getAdBoxId" withCode:Ad4MaxConfigurationError];
+        return;
+    }
+    
+    if( ![ad4MaxDelegate respondsToSelector:@selector(getAdServerURL)] ) {
+        [self reportError:@"ERROR: your delegate for ad4Max banner does not implement mandatory method getAdServerURL" withCode:Ad4MaxConfigurationError];
+        return;
+    }
+
     cntWebViewLoads = 0;
     bannerLoaded = NO;
-    [activeWebView loadHTMLString:generatedHTMLString baseURL:nil];
+    
+    [activeWebView loadHTMLString:[self getWebViewContent] baseURL:nil];    
 
     // Report event to delegate
     if ([ad4MaxDelegate respondsToSelector:@selector(bannerViewWillLoadAd:)] ) {
         [self.ad4MaxDelegate bannerViewWillLoadAd:self];
     }
+    
+    // Schedule next ad refresh
+    [self scheduleAdRefresh];
         
-    // If application goes in background, the timer will fire the next time 
-    // the application becomes active, which is the expected behaviour    
+}
+
+- (void)scheduleAdRefresh {
+    
+    if ([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
+        AD4MAXDLOG(@"Not scheduling ad refresh because application is inactive...");        
+        return;
+    }
+
     NSUInteger refreshRate = DEFAULT_REFRESH_RATE;
     if ([ad4MaxDelegate respondsToSelector:@selector(getAdRefreshRate)] ) {
         refreshRate = [ad4MaxDelegate getAdRefreshRate];
@@ -242,8 +300,11 @@ static const int MIN_REFRESH_RATE = 30;
         }
     }
     if( refreshRate != 0 ) {
+        AD4MAXDLOG(@"Scheduling ad refresh in %d sec", refreshRate);
+        [refreshTimer invalidate];
         self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:refreshRate target:self selector:@selector(changeAd) userInfo:nil repeats:NO];
     }
+
 }
 
 - (void)changeAd {
@@ -331,6 +392,9 @@ static const int MIN_REFRESH_RATE = 30;
     }
 }
 
+#pragma mark -
+#pragma mark - Error management
+
 - (void)reportBannerSizeErrorWithHeight:(int)height andWidth:(int)width {
     
     NSString *errorMsg = [[[NSString alloc] initWithFormat:@"ERROR: your ad4Max banner is not of the size configured in your AD BOX. Your ad4MaxBanner is %d x %d and your configured AD BOX size is %d x %d", (int)self.frame.size.height, (int)self.frame.size.width, height, width] autorelease];
@@ -357,3 +421,4 @@ static const int MIN_REFRESH_RATE = 30;
 
 
 @end
+    

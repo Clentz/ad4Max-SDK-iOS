@@ -193,7 +193,7 @@
 }
 
 
-#pragma mark - Handle of user input
+#pragma mark - Handling of user input
 
 - (void) hideKeyboard {	
 	[lastActiveField resignFirstResponder];
