@@ -44,10 +44,12 @@ static const int MIN_REFRESH_RATE = 30;
 
 - (void)didBecomeActive:(NSNotification *)notification;
 - (void)willResignActive:(NSNotification *)notification;
+- (void)orientationDidChange:(NSNotification *)notification;
 
 - (NSString*)getWebViewContent;
 - (void)loadBannerInView;
 - (void)scheduleAdRefresh;
+- (void)changeAd;
 
 - (void)reportBannerSizeErrorWithHeight:(int)height andWidth:(int)width;
 - (void)reportError:(NSString*)errorMsg withCode:(NSInteger)code;
@@ -93,11 +95,19 @@ static const int MIN_REFRESH_RATE = 30;
     
     // make sure the layout stays correct if the outer superview is resized
     self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+    self.autoresizesSubviews = YES;
+    
     [self setOpaque:NO]; 
     self.backgroundColor = [UIColor clearColor];
 
     bannerLoaded = NO;
-    
+
+    // Register for orientation change event
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(orientationDidChange:)
+                                                 name:@"UIApplicationDidChangeStatusBarOrientationNotification" object:nil];
+
+    // Register for application lifecycle events
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(didBecomeActive:)
                                                  name:UIApplicationDidBecomeActiveNotification
@@ -115,7 +125,9 @@ static const int MIN_REFRESH_RATE = 30;
 - (void)initActiveWebView {
  
     self.activeWebView = [[[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)] autorelease];
-    
+
+    activeWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+
     for (id subview in activeWebView.subviews)
         if ([[subview class] isSubclassOfClass: [UIScrollView class]])
             ((UIScrollView *)subview).bounces = NO;
@@ -146,9 +158,20 @@ static const int MIN_REFRESH_RATE = 30;
 }
 
 - (void)willResignActive:(NSNotification *)notification {
+    
     // Cancel ad refresh as long as ads are not visible
     AD4MAXDLOG(@"Cancelling ad refresh timer...");
     [refreshTimer invalidate];
+}
+
+- (void)orientationDidChange:(NSNotification *)notification {
+
+    // Reload the ad to give the developer the opportunity to change
+    // its ad format
+    AD4MAXDLOG(@"Reloading ad as the orientation has changed...");
+    
+    [refreshTimer invalidate];
+    [self performSelector:@selector(changeAd) withObject:nil afterDelay:1.0];
 }
 
 #pragma mark -
@@ -164,7 +187,7 @@ static const int MIN_REFRESH_RATE = 30;
     // If done programatically in controller viewDidLoad, delegate is set after
     // the call to awakeFromNib
     if( initialized ) {
-    [self loadBannerInView];    
+        [self loadBannerInView];    
     }
 }
 
@@ -179,9 +202,10 @@ static const int MIN_REFRESH_RATE = 30;
     "<html>"
     "<head>"
     "<title></title>"
-    "<style type='text/css'>html, body { margin: 0; padding: 0; }</style>"
+    "<style type='text/css'>html, body { margin: 0; padding: 0; } div#container { text-align: center; }</style>"
     "</head>"
     "<body>"
+    "<div id='container'>"
     "<script type='text/javascript'>"
     "ad4max_guid = '%@';"
     "ad4max_app_name = '%@';"
@@ -194,6 +218,7 @@ static const int MIN_REFRESH_RATE = 30;
     "%@"
     "</script>"
     "<script type='text/javascript' src='http://%@/ad4max.js'></script>"
+    "<div>"
     "</body>"
     "</html>";
     
@@ -339,12 +364,15 @@ static const int MIN_REFRESH_RATE = 30;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)_webView {
-    
-    [UIView transitionFromView:inactiveWebView toView:activeWebView duration:1.0 options:UIViewAnimationOptionTransitionFlipFromLeft completion:NULL];
-    
+            
     // Report event to delegate
     if( --cntWebViewLoads == 0  ) {
-                
+    
+        // Center the iframe in case the content is not
+        // TODO: this is a bit of a hack, this should be done server-side
+        [activeWebView stringByEvaluatingJavaScriptFromString:@"document.body.getElementsByTagName('iframe').item(0).contentWindow.document.body.style.textAlign='center';"];
+        [activeWebView stringByEvaluatingJavaScriptFromString:@"document.body.getElementsByTagName('iframe').item(0).contentWindow.document.body.getElementsByTagName('div').item(0).style.textAlign='left';"];
+
         // Check size of the view is correct
         int height = [[activeWebView stringByEvaluatingJavaScriptFromString:@"document.body.getElementsByTagName('iframe').item(0).contentWindow.document.body.offsetHeight;"] intValue];
         int width = [[activeWebView stringByEvaluatingJavaScriptFromString:@"document.body.getElementsByTagName('iframe').item(0).contentWindow.document.body.offsetWidth;"] intValue];
@@ -368,6 +396,8 @@ static const int MIN_REFRESH_RATE = 30;
         }
 
         bannerLoaded = YES;
+
+        [UIView transitionFromView:inactiveWebView toView:activeWebView duration:1.0 options:UIViewAnimationOptionTransitionFlipFromLeft completion:NULL];
 
         if( [ad4MaxDelegate respondsToSelector:@selector(bannerViewDidLoadAd:)] )
             [self.ad4MaxDelegate bannerViewDidLoadAd:self];
