@@ -38,7 +38,8 @@ click on the “Add Other...” button
 
 8. Link the ad4MaxDelegate to the file owner (probably your view controller)
 
-![delegate](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/10.png)9. Go in this file owner and start by including the header file:>	 #import <Ad4Max/Ad4Max.h>10. Make your interface to implement the Ad4MaxBannerViewDelegate protocol:>@interface ViewController : UIViewController <Ad4MaxBannerViewDelegate>11. Implement the requires methods:	
+![delegate](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/10.png)9. Go in this file owner and start by including the header file:
+>	 #import <Ad4Max/Ad4Max.h>10. Make your interface to implement the Ad4MaxBannerViewDelegate protocol:>@interface ViewController : UIViewController <Ad4MaxBannerViewDelegate>11. Implement the requires methods:	
 the banner identifier definition:
 
 >-(NSString*)getAdBoxId
