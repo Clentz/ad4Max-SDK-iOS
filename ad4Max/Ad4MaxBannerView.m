@@ -28,6 +28,9 @@
 
 #import "Ad4MaxInternals.h"
 
+static const int DEFAULT_REFRESH_RATE = 45;
+static const int MIN_REFRESH_RATE = 30;
+
 @interface Ad4MaxBannerView ()
 
 // Private properties and methods
@@ -201,11 +204,17 @@
         [self.ad4MaxDelegate bannerViewWillLoadAd:self];
     }
         
-    // Basic refresh functionality 
-    // If application goes in backgroune, the timer will fire the next time 
-    // the application becomes active, which is the expected behaviour
+    // If application goes in background, the timer will fire the next time 
+    // the application becomes active, which is the expected behaviour    
+    NSUInteger refreshRate = DEFAULT_REFRESH_RATE;
     if ([ad4MaxDelegate respondsToSelector:@selector(getAdRefreshRate)] ) {
-        self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:[ad4MaxDelegate getAdRefreshRate] target:self selector:@selector(changeAd) userInfo:nil repeats:NO];
+        refreshRate = [ad4MaxDelegate getAdRefreshRate];
+        if( refreshRate != 0 && refreshRate < MIN_REFRESH_RATE ) {
+            refreshRate = MIN_REFRESH_RATE;
+        }
+    }
+    if( refreshRate != 0 ) {
+        self.refreshTimer = [NSTimer scheduledTimerWithTimeInterval:refreshRate target:self selector:@selector(changeAd) userInfo:nil repeats:NO];
     }
 }
 

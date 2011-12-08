@@ -27,7 +27,7 @@
 
 /**
  Ad4MaxBanner View Delegate protocol
- handle the ad configuration and beaviors
+ Handle the ad configuration and the management of banner lifecycle events
  */
 @protocol Ad4MaxBannerViewDelegate <NSObject>
 
@@ -47,8 +47,11 @@
 @optional
 /** @name Optionals parameters */
 
-/** Ad refresh rate
- @return the refresh rate configured
+/** Set the time interval at which the banner ad will be refreshed. 
+    If you don't implement this method, the default value will be 45 seconds
+    The minimum value is 30 seconds, values returned below 30 seconds will be floored to 30 seconds. 
+    If you want to disable the refresh, you can simply return 0.
+ @return the refresh rate configured  
  */
 - (NSUInteger)getAdRefreshRate;
 
