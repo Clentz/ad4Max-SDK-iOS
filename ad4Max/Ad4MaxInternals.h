@@ -1,14 +1,28 @@
 //
+//
 //  Ad4MaxInternals.h
 //  ad4Max-SampleApp
 //
-//  Created by Thibaut LE LEVIER on 12/6/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Publigroupe
+//
+//  Licensed under the Apache License, Version 2.0 (the "License"); you may not
+//  use this file except in compliance with the License.  You may obtain a copy
+//  of the License at
+//
+//  http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+//  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
+//  License for the specific language governing permissions and limitations under
+//  the License.
 //
 
+// ============================================================================
+
+
 #ifdef DEBUG
-#    define ad4MaxLog(...) NSLog(__VA_ARGS__)
+    #define AD4MAXDLOG(...) NSLog(__VA_ARGS__)
 #else
-#    define ad4MaxLog(...) /* */
+    #define AD4MAXDLOG(...) /* */
 #endif
-#define ad4MaxALog(...) NSLog(__VA_ARGS__)
