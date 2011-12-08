@@ -7,15 +7,18 @@
 	![Finder package](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/01.png)
 
 3. Include the Ad4Max.framework in the in the linked libraries in the project configuration:
+
 	- In the project settings go to the build phases tab
 
 	![Build phases tab](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/02.png)
 
+
 	- explode “Link Binary With Libraries” and click the “+” button
+
 
 	- click on the “Add Other...” button
 
-	![add other library](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/03.png)	- and finally select the Ad4Max.framework folder to add it
+	![add other library](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/03.png)	- and finally select the Ad4Max.framework folder to add it
 
 	![select .framework](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/04.png)
 
