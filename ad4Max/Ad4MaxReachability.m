@@ -89,15 +89,10 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	NSCAssert(info != NULL, @"info was NULL in ReachabilityCallback");
 	NSCAssert([(NSObject*) info isKindOfClass: [Ad4MaxReachability class]], @"info was wrong class in ReachabilityCallback");
 
-	//We're on the main RunLoop, so an NSAutoreleasePool is not necessary, but is added defensively
-	// in case someon uses the Reachablity object in a different thread.
-	NSAutoreleasePool* myPool = [[NSAutoreleasePool alloc] init];
-	
-	Ad4MaxReachability* noteObject = (Ad4MaxReachability*) info;
-	// Post a notification to notify the client that the network reachability changed.
-	[[NSNotificationCenter defaultCenter] postNotificationName: kReachabilityChangedNotification object: noteObject];
-	
-	[myPool release];
+    // No notification is sent to avoid duplication if the developer is also
+    // using Apple Reachability sample. 
+    // Ad4Max does not need the notification part
+    
 }
 
 - (BOOL) startNotifier
