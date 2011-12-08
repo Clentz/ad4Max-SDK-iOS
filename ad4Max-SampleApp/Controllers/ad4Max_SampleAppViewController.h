@@ -38,6 +38,7 @@
     IBOutlet UITabBar           *tabBar;
     
     IBOutlet UITextField        *adBoxIdTextField;
+    IBOutlet UITextField        *adServerUrlTextField;
     IBOutlet UITextField        *refreshRateTextField;
     IBOutlet UITextField        *categoriesTextField;
     
@@ -60,6 +61,7 @@
 @property (nonatomic, retain) IBOutlet UINavigationBar    *navBar;
 @property (nonatomic, retain) IBOutlet UITabBar           *tabBar;
 @property (nonatomic, retain) IBOutlet UITextField *adBoxIdTextField;
+@property (nonatomic, retain) IBOutlet UITextField *adServerUrlTextField;
 @property (nonatomic, retain) IBOutlet UITextField *refreshRateTextField;
 @property (nonatomic, retain) IBOutlet UITextField *categoriesTextField;
 @property (nonatomic, retain) IBOutlet UISwitch *refreshSwitch;

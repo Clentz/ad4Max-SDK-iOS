@@ -29,7 +29,9 @@
  Ad4MaxBanner View
  */
 @interface Ad4MaxBannerView : UIView <UIWebViewDelegate> {
-        
+     
+    BOOL                        initialized;
+    
    /**
         The webview containing the ad
     */
