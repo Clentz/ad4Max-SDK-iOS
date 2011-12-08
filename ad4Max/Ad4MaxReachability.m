@@ -54,7 +54,7 @@
 
 #import <CoreFoundation/CoreFoundation.h>
 
-#import "Reachability.h"
+#import "Ad4MaxReachability.h"
 
 #ifdef DEBUG
     #define kShouldPrintReachabilityFlags 1
@@ -65,7 +65,7 @@ static void PrintReachabilityFlags(SCNetworkReachabilityFlags    flags, const ch
     
 #if kShouldPrintReachabilityFlags
 	
-    NSLog(@"Reachability Flag Status: %c%c %c%c%c%c%c%c%c %s\n",
+    NSLog(@"Ad4MaxReachability Flag Status: %c%c %c%c%c%c%c%c%c %s\n",
 			(flags & kSCNetworkReachabilityFlagsIsWWAN)				  ? 'W' : '-',
 			(flags & kSCNetworkReachabilityFlagsReachable)            ? 'R' : '-',
 			
@@ -82,18 +82,18 @@ static void PrintReachabilityFlags(SCNetworkReachabilityFlags    flags, const ch
 }
 
 
-@implementation Reachability
+@implementation Ad4MaxReachability
 static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReachabilityFlags flags, void* info)
 {
 	#pragma unused (target, flags)
 	NSCAssert(info != NULL, @"info was NULL in ReachabilityCallback");
-	NSCAssert([(NSObject*) info isKindOfClass: [Reachability class]], @"info was wrong class in ReachabilityCallback");
+	NSCAssert([(NSObject*) info isKindOfClass: [Ad4MaxReachability class]], @"info was wrong class in ReachabilityCallback");
 
 	//We're on the main RunLoop, so an NSAutoreleasePool is not necessary, but is added defensively
 	// in case someon uses the Reachablity object in a different thread.
 	NSAutoreleasePool* myPool = [[NSAutoreleasePool alloc] init];
 	
-	Reachability* noteObject = (Reachability*) info;
+	Ad4MaxReachability* noteObject = (Ad4MaxReachability*) info;
 	// Post a notification to notify the client that the network reachability changed.
 	[[NSNotificationCenter defaultCenter] postNotificationName: kReachabilityChangedNotification object: noteObject];
 	
@@ -132,9 +132,9 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	[super dealloc];
 }
 
-+ (Reachability*) reachabilityWithHostName: (NSString*) hostName;
++ (Ad4MaxReachability*) reachabilityWithHostName: (NSString*) hostName;
 {
-	Reachability* retVal = NULL;
+	Ad4MaxReachability* retVal = NULL;
 	SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithName(NULL, [hostName UTF8String]);
 	if(reachability!= NULL)
 	{
@@ -148,10 +148,10 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	return retVal;
 }
 
-+ (Reachability*) reachabilityWithAddress: (const struct sockaddr_in*) hostAddress;
++ (Ad4MaxReachability*) reachabilityWithAddress: (const struct sockaddr_in*) hostAddress;
 {
 	SCNetworkReachabilityRef reachability = SCNetworkReachabilityCreateWithAddress(kCFAllocatorDefault, (const struct sockaddr*)hostAddress);
-	Reachability* retVal = NULL;
+	Ad4MaxReachability* retVal = NULL;
 	if(reachability!= NULL)
 	{
 		retVal= [[[self alloc] init] autorelease];
@@ -164,7 +164,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	return retVal;
 }
 
-+ (Reachability*) reachabilityForInternetConnection;
++ (Ad4MaxReachability*) reachabilityForInternetConnection;
 {
 	struct sockaddr_in zeroAddress;
 	bzero(&zeroAddress, sizeof(zeroAddress));
@@ -173,7 +173,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	return [self reachabilityWithAddress: &zeroAddress];
 }
 
-+ (Reachability*) reachabilityForLocalWiFi;
++ (Ad4MaxReachability*) reachabilityForLocalWiFi;
 {
 	struct sockaddr_in localWifiAddress;
 	bzero(&localWifiAddress, sizeof(localWifiAddress));
@@ -181,7 +181,7 @@ static void ReachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	localWifiAddress.sin_family = AF_INET;
 	// IN_LINKLOCALNETNUM is defined in <netinet/in.h> as 169.254.0.0
 	localWifiAddress.sin_addr.s_addr = htonl(IN_LINKLOCALNETNUM);
-	Reachability* retVal = [self reachabilityWithAddress: &localWifiAddress];
+	Ad4MaxReachability* retVal = [self reachabilityWithAddress: &localWifiAddress];
 	if(retVal!= NULL)
 	{
 		retVal->localWiFiRef = YES;

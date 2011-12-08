@@ -21,7 +21,7 @@
 // ============================================================================
 
 #import "Ad4MaxParamsService.h"
-#import "Reachability.h"
+#import "Ad4MaxReachability.h"
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 #import "Ad4MaxUtilities.h"
 
@@ -89,7 +89,7 @@
     
     // returns wifi if not connected (not send to the server anyway)
     
-    if( [[Reachability reachabilityForInternetConnection] currentReachabilityStatus] == ReachableViaWWAN ) {
+    if( [[Ad4MaxReachability reachabilityForInternetConnection] currentReachabilityStatus] == ReachableViaWWAN ) {
         return @"edge";
     }
     else {
