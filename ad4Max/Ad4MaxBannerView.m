@@ -172,6 +172,7 @@ static const int MIN_REFRESH_RATE = 30;
         "</html>";
 
     NSString *guidString = [ad4MaxDelegate getAdBoxId];
+    // TODO validate URL
     NSString *serverURLString = [ad4MaxDelegate getAdServerURL];
     NSString *widthString = [NSString stringWithFormat: @"%.0f", super.frame.size.width];
     NSString *heightString = [NSString stringWithFormat: @"%.0f", super.frame.size.height];
@@ -186,25 +187,25 @@ static const int MIN_REFRESH_RATE = 30;
     NSMutableString *optionalParamsString = [[[NSMutableString alloc] init] autorelease];
     NSString *carrierNameString = [paramsService getCarrierName];
     if(carrierNameString) {
-        [optionalParamsString appendFormat:@"ad4max_carrier = \"%@\";", carrierNameString];
+        [optionalParamsString appendFormat:@"ad4max_carrier = '%@';", carrierNameString];
     }
     if([paramsService isFirstLaunch]) {
-        [optionalParamsString appendFormat:@"ad4max_first_launch = \"1\";"];
+        [optionalParamsString appendFormat:@"ad4max_first_launch = '1';"];
     }
     
     // Handle optional delegate methods
     if ([ad4MaxDelegate respondsToSelector:@selector(forceLangFilter)] ) {
         if ([ad4MaxDelegate forceLangFilter]) {
-            [optionalParamsString appendFormat:@"ad4max_lang_filter  = \"on\";"];
+            [optionalParamsString appendFormat:@"ad4max_lang_filter = 'on';"];
         } 
         else {
-            [optionalParamsString appendFormat:@"ad4max_lang_filter  = \"off\";"];
+            [optionalParamsString appendFormat:@"ad4max_lang_filter = 'off';"];
         }
     }
     if ([ad4MaxDelegate respondsToSelector:@selector(getTargetedPublisherCategories)] ) {
         // TODO check format cat1;cat2;cat3 (max 3)
         if ([ad4MaxDelegate getTargetedPublisherCategories]) {
-            [optionalParamsString appendFormat:@"ad4max_publisher_categories  = \"%@\";", [ad4MaxDelegate getTargetedPublisherCategories]];
+            [optionalParamsString appendFormat:@"ad4max_publisher_categories = '%@';", [ad4MaxDelegate getTargetedPublisherCategories]];
         }
     }
         
@@ -295,7 +296,9 @@ static const int MIN_REFRESH_RATE = 30;
         }
         else if( height == 0 && width == (int)self.frame.size.width ) {
             // No Ad available
-            [self reportError:@"ERROR: no ad banner is currently available for your application. You can hide this banner until a new ad becomes available" withCode:Ad4MaxNoAdsAvailableError]; 
+            // Today we are not able to make the difference between an error 
+            // on the AD BOX id and the fact that no ad is available
+            [self reportError:@"ERROR: either you AD BOX id is not valid or no ad banner is currently available for your application. You can hide this banner until a new ad becomes available" withCode:Ad4MaxNoAdsAvailableError]; 
             return;            
         }
         if( height != (int)self.frame.size.height || width != (int)self.frame.size.width ) {
