@@ -26,7 +26,7 @@
 @implementation ad4Max_SampleAppViewController
 
 @synthesize bannerView;
-@synthesize scrollView , navBar, tabBar, adBoxIdTextField, refreshRateTextField, categoriesTextField, refreshSwitch, forceLangSwitch, disableClickSwitch, positionControl, singleTap;
+@synthesize scrollView , navBar, tabBar, adBoxIdTextField, adServerUrlTextField,refreshRateTextField, categoriesTextField, refreshSwitch, forceLangSwitch, disableClickSwitch, positionControl, singleTap;
 
 - (void)dealloc
 {
@@ -36,6 +36,7 @@
     self.navBar = nil;
     self.tabBar = nil;
     self.adBoxIdTextField = nil;
+    self.adServerUrlTextField = nil;
     self.refreshRateTextField = nil;
     self.categoriesTextField = nil;
     self.refreshSwitch = nil;
@@ -139,6 +140,11 @@
 {
     return adBoxIdTextField.text;
 }
+
+- (NSString*)getAdServerURL {
+    return adServerUrlTextField.text;
+}
+
 
 // Optional methods
 - (NSUInteger)getAdRefreshRate {
