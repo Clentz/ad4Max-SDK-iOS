@@ -4,7 +4,7 @@ About
 Installation
 =======================
 
-1) First you need to get the latest version of the Ad4Max framework binary on GitHub, or you can also compile it from the sources.2) Add the `Ad4Max.framework` package to the project folder using the finder.
+1) First you need to get [the latest version of the Ad4Max framework binary]() on GitHub, or you can also compile it from the sources.2) Unzip the `Ad4Max.framework` package to the project folder using the finder.
 
 ![Finder package](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/01.png)
 
@@ -45,7 +45,7 @@ click on the “Add Other...” button
 	#import <Ad4Max/Ad4Max.h>10) Make your interface to implement the `Ad4MaxBannerViewDelegate` protocol:	@interface ViewController : UIViewController <Ad4MaxBannerViewDelegate>```11) Implement the requires methods:	
 the banner identifier definition:
 
-	-(NSString*)getAdBoxId	{	return @"38eef07c-f3c0-4caf-89e8-251e920d0668";	}
+	-(NSString*)getAdBoxId	{		return @"38eef07c-f3c0-4caf-89e8-251e920d0668";	}
 
 the ad server of your provider:
 
