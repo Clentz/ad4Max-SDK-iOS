@@ -52,11 +52,15 @@
 	
 	<option value="//api/name/bannerViewWillLoadAd:">&nbsp;&nbsp;&nbsp;&nbsp;- bannerViewWillLoadAd:</option>
 	
-	<option value="//api/name/forceLangFilter">&nbsp;&nbsp;&nbsp;&nbsp;- forceLangFilter</option>
+	<option value="//api/name/doForceLanguage">&nbsp;&nbsp;&nbsp;&nbsp;- doForceLanguage</option>
 	
 	<option value="//api/name/getAdBoxId">&nbsp;&nbsp;&nbsp;&nbsp;- getAdBoxId</option>
 	
 	<option value="//api/name/getAdRefreshRate">&nbsp;&nbsp;&nbsp;&nbsp;- getAdRefreshRate</option>
+	
+	<option value="//api/name/getAdServerURL">&nbsp;&nbsp;&nbsp;&nbsp;- getAdServerURL</option>
+	
+	<option value="//api/name/getGeoLocation">&nbsp;&nbsp;&nbsp;&nbsp;- getGeoLocation</option>
 	
 	<option value="//api/name/getTargetedPublisherCategories">&nbsp;&nbsp;&nbsp;&nbsp;- getTargetedPublisherCategories</option>
 	
@@ -76,9 +80,15 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Mandatory parameters">Mandatory parameters</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Configure the Banner View - Mandatory parameters">Configure the Banner View - Mandatory parameters</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Optionals parameters">Optionals parameters</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Handling Errors">Handling Errors</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Configure the Banner View - Optional parameters">Configure the Banner View - Optional parameters</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Improving the Targeting - Optional Methods">Improving the Targeting - Optional Methods</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Detecting When Ads Are Loaded or Clicked - Optional Methods">Detecting When Ads Are Loaded or Clicked - Optional Methods</a></span></li>
 	
 </ul></li>
 
@@ -100,11 +110,15 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/bannerViewWillLoadAd:">bannerViewWillLoadAd:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/forceLangFilter">forceLangFilter</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/doForceLanguage">doForceLanguage</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getAdBoxId">getAdBoxId</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getAdRefreshRate">getAdRefreshRate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getAdServerURL">getAdServerURL</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getGeoLocation">getGeoLocation</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/getTargetedPublisherCategories">getTargetedPublisherCategories</a></span></li>
 	
@@ -145,8 +159,7 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Ad4MaxBanner View Delegate protocol
-handle the ad configuration and beaviors</p>
+						<p>The <a href="Ad4MaxBannerViewDelegate.html">Ad4MaxBannerViewDelegate</a> protocol is implemented by an object to configure an <a href="../Classes/Ad4MaxBannerView.html">Ad4MaxBannerView</a> and to react to changes in an <a href="../Classes/Ad4MaxBannerView.html">Ad4MaxBannerView</a> object. The banner view calls its delegate before loading a new banner view, when a new advertisement is loaded, when the user interacts with an advertisement, and when errors occur.</p>
 					</div>
 					
 					
@@ -158,21 +171,21 @@ handle the ad configuration and beaviors</p>
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						<a title="Mandatory parameters" name="task_Mandatory parameters"></a>
-						<h3 class="subsubtitle task-title">Mandatory parameters</h3>
+						<a title="Configure the Banner View - Mandatory parameters" name="task_Configure the Banner View - Mandatory parameters"></a>
+						<h3 class="subsubtitle task-title">Configure the Banner View - Mandatory parameters</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getAdBoxId">&ndash;&nbsp;getAdBoxId</a></code>
-		<span class="tooltip"><p>get the AdBox Identifier</p></span>
+		<span class="tooltip"><p>Get your AD BOX account for which the Ad will be displayed</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/bannerView:didFailToReceiveAdWithError:">&ndash;&nbsp;bannerView:didFailToReceiveAdWithError:</a></code>
-		<span class="tooltip"><p>errors handling</p></span>
+		<code><a href="#//api/name/getAdServerURL">&ndash;&nbsp;getAdServerURL</a></code>
+		<span class="tooltip"><p>Get the URL of the server responsible for serving the Ads</p></span>
 	</span>
 	
 	<span class="task-item-suffix">required method</span>
@@ -180,49 +193,89 @@ handle the ad configuration and beaviors</p>
 						</ul>
 						
 						
-						<a title="Optionals parameters" name="task_Optionals parameters"></a>
-						<h3 class="subsubtitle task-title">Optionals parameters</h3>
+						<a title="Handling Errors" name="task_Handling Errors"></a>
+						<h3 class="subsubtitle task-title">Handling Errors</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/bannerView:didFailToReceiveAdWithError:">&ndash;&nbsp;bannerView:didFailToReceiveAdWithError:</a></code>
+		<span class="tooltip"><p>Called when a banner view fails to load a new Ad.</p></span>
+	</span>
+	
+	<span class="task-item-suffix">required method</span>
+</li>
+						</ul>
+						
+						
+						<a title="Configure the Banner View - Optional parameters" name="task_Configure the Banner View - Optional parameters"></a>
+						<h3 class="subsubtitle task-title">Configure the Banner View - Optional parameters</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getAdRefreshRate">&ndash;&nbsp;getAdRefreshRate</a></code>
-		<span class="tooltip"><p>Ad refresh rate</p></span>
+		<span class="tooltip"><p>Set the time interval at which the banner ad will be refreshed.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Improving the Targeting - Optional Methods" name="task_Improving the Targeting - Optional Methods"></a>
+						<h3 class="subsubtitle task-title">Improving the Targeting - Optional Methods</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/getGeoLocation">&ndash;&nbsp;getGeoLocation</a></code>
+		<span class="tooltip"><p>Set the location of the user of your application.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/getTargetedPublisherCategories">&ndash;&nbsp;getTargetedPublisherCategories</a></code>
-		<span class="tooltip"><p>Ad categories</p></span>
+		<span class="tooltip"><p>Set categories of Ads you want to display in your application</p>
+
+<p>If you want to display Ads related to your application (eg. Health related Ads), you can specify categories by this method. A maximum of three categories is possible.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/forceLangFilter">&ndash;&nbsp;forceLangFilter</a></code>
-		<span class="tooltip"><p>Ad lang filter</p></span>
+		<code><a href="#//api/name/doForceLanguage">&ndash;&nbsp;doForceLanguage</a></code>
+		<span class="tooltip"><p>Specify whether you accept Ads in another language than the language of the user.</p></span>
 	</span>
 	
 	
-</li><li>
+</li>
+						</ul>
+						
+						
+						<a title="Detecting When Ads Are Loaded or Clicked - Optional Methods" name="task_Detecting When Ads Are Loaded or Clicked - Optional Methods"></a>
+						<h3 class="subsubtitle task-title">Detecting When Ads Are Loaded or Clicked - Optional Methods</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/bannerViewWillLoadAd:">&ndash;&nbsp;bannerViewWillLoadAd:</a></code>
-		<span class="tooltip"><p>banner will load event</p></span>
+		<span class="tooltip"><p>Called before a new banner Ad is loaded</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/bannerViewDidLoadAd:">&ndash;&nbsp;bannerViewDidLoadAd:</a></code>
-		<span class="tooltip"><p>banner did load event</p></span>
+		<span class="tooltip"><p>Called when a new banner Ad is loaded and ready to be displayed.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/bannerViewActionShouldBegin:willLeaveApplication:">&ndash;&nbsp;bannerViewActionShouldBegin:willLeaveApplication:</a></code>
-		<span class="tooltip"><p>user interaction events</p></span>
+		<span class="tooltip"><p>Called before a banner view executes an action.</p></span>
 	</span>
 	
 	
@@ -250,7 +303,7 @@ handle the ad configuration and beaviors</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>errors handling</p>
+		<p>Called when a banner view fails to load a new Ad.</p>
 	</div>		
 	
 	
@@ -262,12 +315,12 @@ handle the ad configuration and beaviors</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>banner</em></dt>
-			<dd><p>the banner which call it delegate</p></dd>
+			<dd><p>The banner view that failed to load an Ad.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>error</em></dt>
-			<dd><p>the error generated by the failed request</p></dd>
+			<dd><p>The error object that describes the problem.</p></dd>
 		</dl>
 		
 	</div>
@@ -280,7 +333,9 @@ handle the ad configuration and beaviors</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>errors handling</p>
+		<p>Called when a banner view fails to load a new Ad.</p>
+
+<p>This delegate method is mandatory otherwise you will get the errors logged to the console.</p>
 	</div>
 	
 	
@@ -304,7 +359,7 @@ handle the ad configuration and beaviors</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>user interaction events</p>
+		<p>Called before a banner view executes an action.</p>
 	</div>		
 	
 	
@@ -316,12 +371,12 @@ handle the ad configuration and beaviors</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>banner</em></dt>
-			<dd><p>the banner concerned by the user interaction</p></dd>
+			<dd><p>The banner view that the user clicked on.</p></dd>
 		</dl>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>willLeave</em></dt>
-			<dd><p>the action asked by the interaction</p></dd>
+			<dd><p>YES if Safari will be launched to execute the action; NO if the action is going to be executed inside your application.</p></dd>
 		</dl>
 		
 	</div>
@@ -330,7 +385,7 @@ handle the ad configuration and beaviors</p>
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>YES if the ad is allow to process it action</p>
+		<p>Your delegate returns YES if the action should execute; NO to prevent the banner action from executing.</p>
 	</div>
 	
 	
@@ -339,7 +394,11 @@ handle the ad configuration and beaviors</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>user interaction events</p>
+		<p>Called before a banner view executes an action.</p>
+
+<p>This method is called when the user clicks the banner view. To allow the action to be triggered, return YES. To suppress the action, return NO. Your application should almost always allow actions to be triggered; preventing actions may alter the Ads your application sees and reduce the revenue your application earns.</p>
+
+<p>If the willLeave parameter is YES, then your application is moved to the background shortly after this method returns. This is the only possible value as of today, NO parameter will not be used.</p>
 	</div>
 	
 	
@@ -363,7 +422,7 @@ handle the ad configuration and beaviors</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>banner did load event</p>
+		<p>Called when a new banner Ad is loaded and ready to be displayed.</p>
 	</div>		
 	
 	
@@ -375,7 +434,7 @@ handle the ad configuration and beaviors</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>banner</em></dt>
-			<dd><p>the loaded banner</p></dd>
+			<dd><p>The banner view that loaded a new Ad.</p></dd>
 		</dl>
 		
 	</div>
@@ -388,7 +447,7 @@ handle the ad configuration and beaviors</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>banner did load event</p>
+		<p>Called when a new banner Ad is loaded and ready to be displayed.</p>
 	</div>
 	
 	
@@ -412,7 +471,7 @@ handle the ad configuration and beaviors</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>banner will load event</p>
+		<p>Called before a new banner Ad is loaded</p>
 	</div>		
 	
 	
@@ -424,7 +483,7 @@ handle the ad configuration and beaviors</p>
 		
 		<dl class="argument-def parameter-def">
 			<dt><em>banner</em></dt>
-			<dd><p>the loading banner</p></dd>
+			<dd><p>The banner view that is about to load a new advertisement.</p></dd>
 		</dl>
 		
 	</div>
@@ -437,7 +496,7 @@ handle the ad configuration and beaviors</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>banner will load event</p>
+		<p>Called before a new banner Ad is loaded</p>
 	</div>
 	
 	
@@ -455,24 +514,24 @@ handle the ad configuration and beaviors</p>
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/forceLangFilter" title="forceLangFilter"></a>
-	<h3 class="subsubtitle method-title">forceLangFilter</h3>
+	<a name="//api/name/doForceLanguage" title="doForceLanguage"></a>
+	<h3 class="subsubtitle method-title">doForceLanguage</h3>
 	
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Ad lang filter</p>
+		<p>Specify whether you accept Ads in another language than the language of the user.</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>- (BOOL)forceLangFilter</code></div>
+	<div class="method-subsection method-declaration"><code>- (BOOL)doForceLanguage</code></div>
 	
 	
 	
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>YES if the lang is forced to the curent device language</p>
+		<p>YES if you want to force the language of the Ad to the current device language</p>
 	</div>
 	
 	
@@ -481,7 +540,9 @@ handle the ad configuration and beaviors</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Ad lang filter</p>
+		<p>Specify whether you accept Ads in another language than the language of the user.</p>
+
+<p>By default Ads could be displayed in a different language, specially in countries speaking multiple languages.</p>
 	</div>
 	
 	
@@ -505,7 +566,7 @@ handle the ad configuration and beaviors</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>get the AdBox Identifier</p>
+		<p>Get your AD BOX account for which the Ad will be displayed</p>
 	</div>		
 	
 	
@@ -516,7 +577,7 @@ handle the ad configuration and beaviors</p>
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the adbox identifier as a string</p>
+		<p>A string representing your AD BOX id (eg. &lsquo;38eef07c-f3c0-4caf-89e8-251e920d0668&rsquo;)</p>
 	</div>
 	
 	
@@ -525,7 +586,11 @@ handle the ad configuration and beaviors</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>get the AdBox Identifier</p>
+		<p>Get your AD BOX account for which the Ad will be displayed</p>
+
+<p>The returned value can vary at run time and you could decide to return different AD BOX ids for the same banner view. This is typically the case if your application supports the landscape orientation, as an AD BOX is associated to a single Ad format.</p>
+
+<p>This delegate method is mandatory otherwise you will get an error through your delegate method <a href="#//api/name/bannerView:didFailToReceiveAdWithError:">bannerView:didFailToReceiveAdWithError:</a>.</p>
 	</div>
 	
 	
@@ -549,7 +614,7 @@ handle the ad configuration and beaviors</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Ad refresh rate</p>
+		<p>Set the time interval at which the banner ad will be refreshed.</p>
 	</div>		
 	
 	
@@ -560,7 +625,7 @@ handle the ad configuration and beaviors</p>
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the refresh rate configured</p>
+		<p>An integer setting the refresh rate of the Ads or 0 if you want to disable the refresh</p>
 	</div>
 	
 	
@@ -569,7 +634,103 @@ handle the ad configuration and beaviors</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Ad refresh rate</p>
+		<p>Set the time interval at which the banner ad will be refreshed.</p>
+
+<p>If you do not implement this method, the default value will be 45 seconds.
+The minimum value is 30 seconds, values below 30 seconds will be floored to 30 seconds.
+If you want to disable the refresh, you can simply return 0.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Ad4MaxBannerViewDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getAdServerURL" title="getAdServerURL"></a>
+	<h3 class="subsubtitle method-title">getAdServerURL</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Get the URL of the server responsible for serving the Ads</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)getAdServerURL</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A string representing the server URL (eg. &lsquo;adtest.ad4max.com&rsquo; or &lsquo;<a href="http://adtest.ad4max.com">http://adtest.ad4max.com</a>&rsquo;)</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Get the URL of the server responsible for serving the Ads</p>
+
+<p>This delegate method is mandatory otherwise you will get an error through your delegate method <a href="#//api/name/bannerView:didFailToReceiveAdWithError:">bannerView:didFailToReceiveAdWithError:</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">Ad4MaxBannerViewDelegate.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/getGeoLocation" title="getGeoLocation"></a>
+	<h3 class="subsubtitle method-title">getGeoLocation</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Set the location of the user of your application.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (CLLocation *)getGeoLocation</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A CLLocation object giving the current device location</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Set the location of the user of your application.</p>
+
+<p>You have to provide a standard CLLocation object and use in your application a CLLocationManager to update it. You don&rsquo;t need to notify the banner view when an update to the user location is available, this method will be called each time a new Ad will be loaded.</p>
 	</div>
 	
 	
@@ -593,7 +754,9 @@ handle the ad configuration and beaviors</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>Ad categories</p>
+		<p>Set categories of Ads you want to display in your application</p>
+
+<p>If you want to display Ads related to your application (eg. Health related Ads), you can specify categories by this method. A maximum of three categories is possible.</p>
 	</div>		
 	
 	
@@ -604,7 +767,7 @@ handle the ad configuration and beaviors</p>
 	
 	<div class="method-subsection return">
 		<h4 class="method-subtitle parameter-title">Return Value</h4>
-		<p>the ad categories asked, up to 3 in a single string separeted by commas</p>
+		<p>A string containing a maximum of three Ad categories separated by semicolon (eg. &lsquo;101;2003;200&rsquo;)</p>
 	</div>
 	
 	
@@ -613,7 +776,11 @@ handle the ad configuration and beaviors</p>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>Ad categories</p>
+		<p>Set categories of Ads you want to display in your application</p>
+
+<p>If you want to display Ads related to your application (eg. Health related Ads), you can specify categories by this method. A maximum of three categories is possible.</p>
+
+<p>See <this link> for a description of categories codes.</p>
 	</div>
 	
 	
@@ -643,7 +810,7 @@ handle the ad configuration and beaviors</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 Publigroupe. All rights reserved. (Last updated: 2011-12-06)</span><br />
+						<p><span class="copyright">&copy; 2011 Publigroupe. All rights reserved. (Last updated: 2011-12-09)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
 						

@@ -64,6 +64,10 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Getting and Setting the Delegate">Getting and Setting the Delegate</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Determining If the Banner View Is Showing an Ad">Determining If the Banner View Is Showing an Ad</a></span></li>
+	
 </ul></li>
 
 
@@ -120,7 +124,19 @@
 					<div class="section section-overview">
 						<a title="Overview" name="overview"></a>
 						<h2 class="subtitle subtitle-overview">Overview</h2>
-						<p>Ad4MaxBanner View</p>
+						<p>The <a href="Ad4MaxBannerView.html">Ad4MaxBannerView</a> class provides a view that displays banner advertisements to the user using adOne advertisement network. When the user taps a banner view, the view triggers an action programmed into the advertisement.</p>
+
+<p>The Ad4MaxBannerView’s delegate is called when a banner view cycles to show a new advertisement as well as when the user interacts with the banner view.</p>
+
+<p>A banner view size must be always match the size of the advertisement defined</p>
+
+<pre><code>in the server, otherwise your delegate will be notified of an error via
+the bannerView:didFailToReceiveAdWithError:.
+</code></pre>
+
+<h3>Subclassing Notes</h3>
+
+<p>The <a href="Ad4MaxBannerView.html">Ad4MaxBannerView</a> class provides a self-contained view. Your application should not subclass ADBannerView nor add subviews to a banner view.</p>
 					</div>
 					
 					
@@ -132,21 +148,29 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						
-						
+						<a title="Getting and Setting the Delegate" name="task_Getting and Setting the Delegate"></a>
+						<h3 class="subsubtitle task-title">Getting and Setting the Delegate</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/id">&nbsp;&nbsp;id</a></code>
-		<span class="tooltip"><p>The ad4MaxBannerView Delegate attribute</p></span>
+		<span class="tooltip"><p>The delegate of the <a href="Ad4MaxBannerView.html">Ad4MaxBannerView</a>.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
-</li><li>
+</li>
+						</ul>
+						
+						
+						<a title="Determining If the Banner View Is Showing an Ad" name="task_Determining If the Banner View Is Showing an Ad"></a>
+						<h3 class="subsubtitle task-title">Determining If the Banner View Is Showing an Ad</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/bannerLoaded">&nbsp;&nbsp;bannerLoaded</a></code>
-		<span class="tooltip"><p><a href="#//api/name/bannerLoaded">bannerLoaded</a> atribute set to YES if the banner is fully loaded</p></span>
+		<span class="tooltip"><p>A Boolean value that states whether the banner view has downloaded an Ad. (read-only)</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -170,7 +194,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p><a href="#//api/name/bannerLoaded">bannerLoaded</a> atribute set to YES if the banner is fully loaded</p>
+		<p>A Boolean value that states whether the banner view has downloaded an Ad. (read-only)</p>
 	</div>		
 	
 	
@@ -179,13 +203,18 @@
 	
 	
 	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>This property returns YES if an Ad is loaded; NO otherwise.</p>
+	</div>
+	
 	
 	
 	
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p><a href="#//api/name/bannerLoaded">bannerLoaded</a> atribute set to YES if the banner is fully loaded</p>
+		<p>A Boolean value that states whether the banner view has downloaded an Ad. (read-only)</p>
 	</div>
 	
 	
@@ -209,7 +238,7 @@
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The ad4MaxBannerView Delegate attribute</p>
+		<p>The delegate of the <a href="Ad4MaxBannerView.html">Ad4MaxBannerView</a>.</p>
 	</div>		
 	
 	
@@ -224,7 +253,9 @@
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The ad4MaxBannerView Delegate attribute</p>
+		<p>The delegate of the <a href="Ad4MaxBannerView.html">Ad4MaxBannerView</a>.</p>
+
+<p>Important: <a href="Ad4MaxBannerView.html">Ad4MaxBannerView</a> does not retain its delegate so before releasing an instance of <a href="Ad4MaxBannerView.html">Ad4MaxBannerView</a> that has a delegate, you must first set its delegate property to nil. For example, this can be done in your <a href="#//api/name/dealloc">dealloc</a> method.</p>
 	</div>
 	
 	
@@ -258,7 +289,7 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2011 Publigroupe. All rights reserved. (Last updated: 2011-12-06)</span><br />
+						<p><span class="copyright">&copy; 2011 Publigroupe. All rights reserved. (Last updated: 2011-12-09)</span><br />
 						
 						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.4 (build 703)</a>.</span></p>
 						
