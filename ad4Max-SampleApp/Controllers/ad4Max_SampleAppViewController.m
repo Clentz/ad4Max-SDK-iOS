@@ -30,6 +30,7 @@
 
 - (void)dealloc
 {
+    bannerView.ad4MaxDelegate = nil;
     self.bannerView = nil;
     
     self.scrollView = nil;
@@ -146,11 +147,11 @@
 // Getting mandatory parameters
 - (NSString*)getAdBoxId
 {
-    return @"b15dded7-8c97-456a-9395-c2ca6a7832d7";
+    return adBoxIdTextField.text;
 }
 
 - (NSString*)getAdServerURL {
-    return @"max.medialution.com";
+    return adServerUrlTextField.text;
 }
 
 

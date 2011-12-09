@@ -26,48 +26,56 @@
 @class      Ad4MaxParamsService;
 
 /**
- Ad4MaxBanner View
+ 
+ The Ad4MaxBannerView class provides a view that displays banner advertisements to the user using adOne advertisement network. When the user taps a banner view, the view triggers an action programmed into the advertisement.
+ 
+ The Ad4MaxBannerView’s delegate is called when a banner view cycles to show a new advertisement as well as when the user interacts with the banner view.
+ 
+ A banner view size must be always match the size of the advertisement defined
+    in the server, otherwise your delegate will be notified of an error via
+    the bannerView:didFailToReceiveAdWithError:.
+ 
+ ### Subclassing Notes
+ 
+ The Ad4MaxBannerView class provides a self-contained view. Your application should not subclass ADBannerView nor add subviews to a banner view.
+ 
  */
 @interface Ad4MaxBannerView : UIView <UIWebViewDelegate> {
      
     BOOL                        initialized;
     
-   /**
-        The webview containing the ad
-    */
+    // The webview containing the Ad
     UIWebView*					activeWebView;
     
-    /**
-        The next add in a non-visible webview
-     */
+    // The next Ad in a non-visible webview to enable transition between the Ads
     UIWebView*					inactiveWebView;
     
-    /**
-        The number of webview ad ready do display
-     */
+    // The number of webviews Ad ready do display
     NSInteger                   cntWebViewLoads;
     
-    /**
-        The service object used to retrieve the ad content
-     */
+    // The service object used to retrieve the Ad content
     Ad4MaxParamsService*        paramsService;
     
-    /**
-        The timer runing to handle the refresh of the ad
-     */
-    NSTimer*                    refreshTimer;
-    
+    // The timer running to handle the refresh of the Ad
+    NSTimer*                    refreshTimer;    
    
 }
 
 
+/** @name Getting and Setting the Delegate */
+
 /**
- The ad4MaxBannerView Delegate attribute
+ The delegate of the Ad4MaxBannerView.
+ 
+ Important: Ad4MaxBannerView does not retain its delegate so before releasing an instance of Ad4MaxBannerView that has a delegate, you must first set its delegate property to nil. For example, this can be done in your dealloc method.
  */
 @property(nonatomic, assign) IBOutlet id<Ad4MaxBannerViewDelegate> ad4MaxDelegate;
 
+/** @name Determining If the Banner View Is Showing an Ad */
+
 /**
- bannerLoaded atribute set to YES if the banner is fully loaded
+ A Boolean value that states whether the banner view has downloaded an Ad. (read-only)
+ @return This property returns YES if an Ad is loaded; NO otherwise.
  */
 @property(readonly, assign) BOOL bannerLoaded;
 
