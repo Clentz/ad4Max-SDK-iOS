@@ -84,7 +84,7 @@
  
  @return A CLLocation object giving the current device location
  */
-- (CLLocation*)getGeoLocation;
+- (CLLocation*)getUserGeoLocation;
 
 /** Set categories of Ads you want to display in your application
   

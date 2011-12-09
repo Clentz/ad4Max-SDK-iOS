@@ -157,7 +157,7 @@
 
 // Optional methods
 
-- (CLLocation*)getGeoLocation {
+- (CLLocation*)getUserGeoLocation {
     
     return [locationManager location];
 }

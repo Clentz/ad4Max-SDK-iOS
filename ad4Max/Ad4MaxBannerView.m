@@ -250,9 +250,9 @@ static const int MIN_REFRESH_RATE = 30;
     }
     
     // Handle optional delegate methods
-    if ([ad4MaxDelegate respondsToSelector:@selector(getGeoLocation)] ) {
+    if ([ad4MaxDelegate respondsToSelector:@selector(getUserGeoLocation)] ) {
 
-        CLLocation* location = [ad4MaxDelegate getGeoLocation];
+        CLLocation* location = [ad4MaxDelegate getUserGeoLocation];
         
         if (location) {
             [optionalParamsString appendFormat:@"ad4max_geo = '%@';", [self getLocationString:location]];
