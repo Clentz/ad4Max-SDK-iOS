@@ -222,7 +222,6 @@
 		E4D6E98A147527F2005BB3AE = {
 			isa = PBXGroup;
 			children = (
-				E4351E9C1491F7BD005BDD93 /* CoreLocation.framework */,
 				112C8B49148D19AF001FBABD /* ad4Max */,
 				E4D6E99F147527F2005BB3AE /* ad4Max-SampleApp */,
 				E44FECD91488EDA900C268E7 /* ad4Max-Tests */,
@@ -244,6 +243,7 @@
 		E4D6E998147527F2005BB3AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4351E9C1491F7BD005BDD93 /* CoreLocation.framework */,
 				112C8B56148D1A7F001FBABD /* GHUnitIOS.framework */,
 				E4C6F7E8147FB52000936DA4 /* SystemConfiguration.framework */,
 				E4C6F7E3147FB1B400936DA4 /* CoreTelephony.framework */,
