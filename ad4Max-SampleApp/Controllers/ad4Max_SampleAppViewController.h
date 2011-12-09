@@ -24,13 +24,13 @@
 #import "Ad4MaxBannerViewDelegate.h"
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ad4Max_SampleAppViewController : UIViewController <Ad4MaxBannerViewDelegate, UITextFieldDelegate> {
+@interface ad4Max_SampleAppViewController : UIViewController <Ad4MaxBannerViewDelegate, UITextFieldDelegate, CLLocationManagerDelegate> {
     
     
     IBOutlet Ad4MaxBannerView   *bannerView;
-    
-    
+        
     // Outlets used to exhibit configuration possibilities
 	IBOutlet UIScrollView       *scrollView;
 
@@ -48,7 +48,8 @@
     
     IBOutlet UISegmentedControl *positionControl;
     
-    
+    CLLocationManager           *locationManager;
+
     UITapGestureRecognizer      *singleTap;	
 	UITextField                 *lastActiveField;	// active UITextField
 	CGSize                      keyboardSize;		// size of keyboard
@@ -69,6 +70,7 @@
 @property (nonatomic, retain) IBOutlet UISwitch *disableClickSwitch;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *positionControl;
 
+@property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, retain) UITapGestureRecognizer *singleTap;
 
 - (void) hideKeyboard;

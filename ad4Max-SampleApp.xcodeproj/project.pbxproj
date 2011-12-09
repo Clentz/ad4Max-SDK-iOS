@@ -52,6 +52,7 @@
 		11E4FB76148E1ABE007437C8 /* Ad4MaxBannerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 112C8B4B148D19AF001FBABD /* Ad4MaxBannerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11E4FB77148E1ABE007437C8 /* Ad4MaxBannerViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 112C8B4D148D19AF001FBABD /* Ad4MaxBannerViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11E4FB78148E1ACF007437C8 /* Ad4MaxParamsService.h in Headers */ = {isa = PBXBuildFile; fileRef = 112C8B4E148D19AF001FBABD /* Ad4MaxParamsService.h */; };
+		E4351E9D1491F7BD005BDD93 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4351E9C1491F7BD005BDD93 /* CoreLocation.framework */; };
 		E44FECD61488EDA900C268E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E999147527F2005BB3AE /* UIKit.framework */; };
 		E44FECD71488EDA900C268E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99B147527F2005BB3AE /* Foundation.framework */; };
 		E44FECD81488EDA900C268E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99D147527F2005BB3AE /* CoreGraphics.framework */; };
@@ -100,6 +101,7 @@
 		11E383A61490D38B00D2499C /* Ad4MaxReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ad4MaxReachability.h; sourceTree = "<group>"; };
 		11E383A71490D38B00D2499C /* Ad4MaxReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ad4MaxReachability.m; sourceTree = "<group>"; };
 		11E4FB5E148E1A26007437C8 /* ad4Max.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ad4Max.framework; path = Ad4Max.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4351E9C1491F7BD005BDD93 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E44FECD41488EDA900C268E7 /* ad4Max-Tests.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ad4Max-Tests.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E44FECDB1488EDA900C268E7 /* ad4Max-Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ad4Max-Tests-Info.plist"; sourceTree = "<group>"; };
 		E44FECDD1488EDA900C268E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4351E9D1491F7BD005BDD93 /* CoreLocation.framework in Frameworks */,
 				E4C6F7E9147FB52000936DA4 /* SystemConfiguration.framework in Frameworks */,
 				E4C6F7E4147FB1B500936DA4 /* CoreTelephony.framework in Frameworks */,
 				E4D6E99A147527F2005BB3AE /* UIKit.framework in Frameworks */,
@@ -219,6 +222,7 @@
 		E4D6E98A147527F2005BB3AE = {
 			isa = PBXGroup;
 			children = (
+				E4351E9C1491F7BD005BDD93 /* CoreLocation.framework */,
 				112C8B49148D19AF001FBABD /* ad4Max */,
 				E4D6E99F147527F2005BB3AE /* ad4Max-SampleApp */,
 				E44FECD91488EDA900C268E7 /* ad4Max-Tests */,

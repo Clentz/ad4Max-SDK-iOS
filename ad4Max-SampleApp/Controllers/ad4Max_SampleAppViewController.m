@@ -26,7 +26,7 @@
 @implementation ad4Max_SampleAppViewController
 
 @synthesize bannerView;
-@synthesize scrollView , navBar, tabBar, adBoxIdTextField, adServerUrlTextField,refreshRateTextField, categoriesTextField, refreshSwitch, forceLangSwitch, disableClickSwitch, positionControl, singleTap;
+@synthesize scrollView , navBar, tabBar, adBoxIdTextField, adServerUrlTextField,refreshRateTextField, categoriesTextField, refreshSwitch, forceLangSwitch, disableClickSwitch, positionControl, singleTap, locationManager;
 
 - (void)dealloc
 {
@@ -75,6 +75,14 @@
 
     // detect single touch on a UIScrollView
 	self.singleTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)] autorelease];
+
+    // Launch location manager
+    self.locationManager = [[[CLLocationManager alloc] init] autorelease]; 
+    
+    locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters; 
+    locationManager.distanceFilter = 1000.0f;
+    locationManager.delegate = self; 
+    [locationManager startUpdatingLocation];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -138,15 +146,21 @@
 // Getting mandatory parameters
 - (NSString*)getAdBoxId
 {
-    return adBoxIdTextField.text;
+    return @"b15dded7-8c97-456a-9395-c2ca6a7832d7";
 }
 
 - (NSString*)getAdServerURL {
-    return adServerUrlTextField.text;
+    return @"max.medialution.com";
 }
 
 
 // Optional methods
+
+- (CLLocation*)getGeoLocation {
+    
+    return [locationManager location];
+}
+
 - (NSUInteger)getAdRefreshRate {
     if( [refreshSwitch isOn] ) {
         return [refreshRateTextField.text intValue];
@@ -160,7 +174,7 @@
     return categoriesTextField.text;
 }
 
-- (BOOL)forceLangFilter {
+- (BOOL)doForceLanguage {
     return forceLangSwitch.isOn;
 }
 
@@ -190,6 +204,14 @@
 - (void)bannerView:(Ad4MaxBannerView *)banner didFailToReceiveAdWithError:(NSError *)error 
 {
     NSLog(@"bannerView:didFailToReceiveAdWithError: %@", [error description]);    
+}
+
+
+#pragma mark - CCLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation { 
+
+    // Do nothing
 }
 
 

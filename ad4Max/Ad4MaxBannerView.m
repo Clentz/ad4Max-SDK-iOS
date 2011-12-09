@@ -28,6 +28,9 @@
 
 #import "Ad4MaxInternals.h"
 
+#import <CoreLocation/CoreLocation.h>
+
+
 static const int DEFAULT_REFRESH_RATE = 45;
 static const int MIN_REFRESH_RATE = 30;
 
@@ -47,6 +50,8 @@ static const int MIN_REFRESH_RATE = 30;
 - (void)orientationDidChange:(NSNotification *)notification;
 
 - (NSString*)getWebViewContent;
+- (NSString*)getLocationString:(CLLocation*)location;
+
 - (void)loadBannerInView;
 - (void)scheduleAdRefresh;
 - (void)changeAd;
@@ -245,8 +250,16 @@ static const int MIN_REFRESH_RATE = 30;
     }
     
     // Handle optional delegate methods
-    if ([ad4MaxDelegate respondsToSelector:@selector(forceLangFilter)] ) {
-        if ([ad4MaxDelegate forceLangFilter]) {
+    if ([ad4MaxDelegate respondsToSelector:@selector(getGeoLocation)] ) {
+
+        CLLocation* location = [ad4MaxDelegate getGeoLocation];
+        
+        if (location) {
+            [optionalParamsString appendFormat:@"ad4max_geo = '%@';", [self getLocationString:location]];
+        }
+    }
+    if ([ad4MaxDelegate respondsToSelector:@selector(doForceLanguage)] ) {
+        if ([ad4MaxDelegate doForceLanguage]) {
             [optionalParamsString appendFormat:@"ad4max_lang_filter = 'on';"];
         } 
         else {
@@ -260,6 +273,10 @@ static const int MIN_REFRESH_RATE = 30;
         }
     }
         
+    
+    
+    // ad4max_geo 
+    
     NSString *generatedHTMLString = [[[NSString alloc] initWithFormat:htmlStringFormat, 
                                      guidString, 
                                      appNameString,
@@ -277,6 +294,12 @@ static const int MIN_REFRESH_RATE = 30;
     return generatedHTMLString;
 }
 
+- (NSString*)getLocationString:(CLLocation*)location {
+
+    CLLocationAccuracy locationInKM = location.horizontalAccuracy / 1000;
+    
+    return [NSString stringWithFormat: @"%f;%f;%f", location.coordinate.latitude, location.coordinate.longitude, locationInKM];
+}
 
 - (void)loadBannerInView {
     
@@ -383,10 +406,10 @@ static const int MIN_REFRESH_RATE = 30;
             [self reportError:@"ERROR: failed to load ad4Max banner, server is not responding correctly (server failure)" withCode:Ad4MaxServerFailureError]; 
             return;
         }
-        else if( height == 0 && width == (int)self.frame.size.width ) {
+        else if( height == 0 && width == (int)self.frame.size.width ) {            
             // No Ad available
             // Today we are not able to make the difference between an error 
-            // on the AD BOX id and the fact that no ad is available
+            // on the AD BOX id and the fact that no ad is available            
             [self reportError:@"ERROR: either you AD BOX id is not valid or no ad banner is currently available for your application. You can hide this banner until a new ad becomes available" withCode:Ad4MaxNoAdsAvailableError]; 
             return;            
         }

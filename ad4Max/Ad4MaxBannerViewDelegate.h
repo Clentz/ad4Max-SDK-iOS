@@ -25,6 +25,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class CLLocation;
+
 /**
  Ad4MaxBanner View Delegate protocol
  Handle the ad configuration and the management of banner lifecycle events
@@ -52,6 +54,11 @@
 @optional
 /** @name Optionals parameters */
 
+/** Geolocation 
+ @return the geolocation of the device
+ */
+- (CLLocation*)getGeoLocation;
+
 /** Set the time interval at which the banner ad will be refreshed. 
     If you don't implement this method, the default value will be 45 seconds
     The minimum value is 30 seconds, values returned below 30 seconds will be floored to 30 seconds. 
@@ -66,9 +73,9 @@
 - (NSString*)getTargetedPublisherCategories;
 
 /** Ad lang filter 
- @return YES if the lang is forced to the curent device language
+ @return YES if the lang of the Ad is forced to the current device language
  */
-- (BOOL)forceLangFilter;
+- (BOOL)doForceLanguage;
 
 // Detecting When Advertisements Are Loaded
 /** banner will load event
