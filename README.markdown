@@ -39,21 +39,18 @@ Installation
 </div>
 
 1. Include the `Ad4Max.framework` in the linked libraries in the project configuration:
-<ul>
-<li> In the project settings go to the build phases tab
-<br/>
-![Build phases tab](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/02.png)
-</li>
-<li> explode “Link Binary With Libraries” and click the “+” button</li>
-<li> click on the “Add Other...” button
-<br/>
-![add other library](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/03.png)
-</li>
-<li> and finally select the `Ad4Max.framework` folder to add it
-<br/>
-![select .framework](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/04.png)
-</li>
-</ul>
+
+	* In the project settings go to the build phases tab
+
+		![Build phases tab](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/02.png)
+
+	* explode “Link Binary With Libraries” and click the “+” button
+	* click on the “Add Other...” button
+	
+		![add other library](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/03.png)
+	* and finally select the `Ad4Max.framework` folder to add it
+
+		![select .framework](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/04.png)
 
 1. Since you are at it, you can also add `CoreTelephony` and `SystemConfiguration` which are also required by the Ad4Max framework.
 <br/>
