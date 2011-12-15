@@ -391,11 +391,6 @@ static const int MIN_REFRESH_RATE = 30;
     // Report event to delegate
     if( --cntWebViewLoads == 0  ) {
     
-        // Center the iframe in case the content is not
-        // TODO: this is a bit of a hack, this should be done server-side
-        [activeWebView stringByEvaluatingJavaScriptFromString:@"document.body.getElementsByTagName('iframe').item(0).contentWindow.document.body.style.textAlign='center';"];
-        [activeWebView stringByEvaluatingJavaScriptFromString:@"document.body.getElementsByTagName('iframe').item(0).contentWindow.document.body.getElementsByTagName('div').item(0).style.textAlign='left';"];
-
         // Check size of the view is correct
         int height = [[activeWebView stringByEvaluatingJavaScriptFromString:@"document.body.getElementsByTagName('iframe').item(0).contentWindow.document.body.offsetHeight;"] intValue];
         int width = [[activeWebView stringByEvaluatingJavaScriptFromString:@"document.body.getElementsByTagName('iframe').item(0).contentWindow.document.body.offsetWidth;"] intValue];
