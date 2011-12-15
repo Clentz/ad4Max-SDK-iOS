@@ -16,7 +16,7 @@ Documentation
 =======================
 
 The code documentation is available for consulting in your browser [there](http://clentz.github.com/ad4Max-SampleApp-iOS/).
-You can also get it through XCode and subscribe to any updates via [this ATOM feed](http://clentz.github.com/ad4Max-SampleApp-iOS/publish/com.publigroup.ad4Max.atom).
+You can also get it through XCode and subscribe to any updates via [this Atom feed](http://clentz.github.com/ad4Max-SampleApp-iOS/publish/com.publigroup.ad4Max.atom).
 
 Sample application
 =======================
@@ -30,13 +30,12 @@ You can try it and analyze it by opening 'ad4Max-SampleApp.xcodeproj' in XCode.
 Installation
 =======================
 
-1. First you need to get [the latest version of the Ad4Max framework binary](http://clentz.github.com/ad4Max-SampleApp-iOS/framework/Ad4Max.framework.zip) on GitHub, or you can also compile it from the sources.
+1. First you need to get [the latest version of the Ad4Max framework binary](http://clentz.github.com/ad4Max-SampleApp-iOS/framework/Ad4Max.framework.zip) on GitHub.
 
-1. Unzip the `Ad4Max.framework` package to the project folder using the finder.
-
+1. Unzip the `Ad4Max.framework` package to the project folder using the Finder.
 ![Finder package](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/01.png)
 
-1. Include the `Ad4Max.framework` in the in the linked libraries in the project configuration:
+1. Include the `Ad4Max.framework` in the linked libraries in the project configuration:
 
 In the project settings go to the build phases tab
 
