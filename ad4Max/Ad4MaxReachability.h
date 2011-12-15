@@ -1,3 +1,14 @@
+
+//
+//  Ad4MaxReachability.h
+//  ad4Max-SampleApp
+//
+//  Copyright 2011 Publigroupe
+//  This product includes software developed by Apple Inc.
+//
+
+// ============================================================================
+
 /*
  
  File: Reachability.h
@@ -44,6 +55,8 @@
  Copyright (C) 2010 Apple Inc. All Rights Reserved.
  
 */
+
+// ============================================================================
 
 
 #import <Foundation/Foundation.h>
