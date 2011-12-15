@@ -33,10 +33,8 @@ Installation
 1. First you need to get [the latest version of the Ad4Max framework binary](http://clentz.github.com/ad4Max-SampleApp-iOS/framework/Ad4Max.framework.zip) on GitHub.
 
 1. Unzip the `Ad4Max.framework` package to the project folder using the Finder.
-<br/>
-<div style="text-align:center; margin: auto;">
-![Finder package](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/01.png)
-</div>
+
+	![Finder package](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/01.png)
 
 1. Include the `Ad4Max.framework` in the linked libraries in the project configuration:
 
@@ -53,60 +51,57 @@ Installation
 		![select .framework](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/04.png)
 
 1. Since you are at it, you can also add `CoreTelephony` and `SystemConfiguration` which are also required by the Ad4Max framework.
-<br/>
-![core telephony](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/05.png)
-![system configuration](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/06.png)
+
+	![core telephony](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/05.png)
+	![system configuration](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/06.png)
 
 1. Then you need to setup a subview on the screen where you want to display the Ad
-<ul>
-<li> Using Interface Builder drag a UIView object from the library
-<br/>
-![uiview](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/07.png)
-</li>
-<li> Size it to the right size of the Ad you want to display.
-<br/>
-![uiview size](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/08.png)
-</li>
-<li> Then change the Class of the object from `UIView` to `Ad4MaxBannerView`
-<br/>
-![change view class](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/09.png)
-</li>
-</ul>
+
+	* Using Interface Builder drag a UIView object from the library
+		
+		![uiview](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/07.png)
+
+	* Size it to the right size of the Ad you want to display.
+		
+		![uiview size](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/08.png)
+
+	* Then change the Class of the object from `UIView` to `Ad4MaxBannerView`
+		
+		![change view class](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/09.png)
 
 1. Link the ad4MaxDelegate to the file owner (probably your view controller)
-<br/>
-![delegate](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/10.png)
+
+	![delegate](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/10.png)
 
 1. Go in this file owner and start by including the header file:
-<br/>
-	\#import \<Ad4Max/Ad4Max.h\>
+		
+		\#import \<Ad4Max/Ad4Max.h\>
 
 1. Make your controller implement the `Ad4MaxBannerViewDelegate` protocol:
-	@interface ViewController : UIViewController <Ad4MaxBannerViewDelegate>```
+
+		@interface ViewController : UIViewController <Ad4MaxBannerViewDelegate>```
 
 1. Implement the required delegate methods:
-<ul>
-<li>the banner identifier definition:
-<br/>
-	-(NSString*)getAdBoxId
-	{
-		return @"38eef07c-f3c0-4caf-89e8-251e920d0668";
-	}
-</li>	
-<li> the ad server of your provider:
-<br/>
-	-(NSString*)getAdServerURL {
-    	return @"adtest.ad4max.com";
-	}
-</li>
-<li> and the error handling:
-<br/>
-	-(void)bannerView:(Ad4MaxBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
-	{
-	    NSLog(@"Error: %@",error);
-	}
-</li>
-</ul>
+
+	* the banner identifier definition:
+		
+			-(NSString*)getAdBoxId
+			{
+				return @"38eef07c-f3c0-4caf-89e8-251e920d0668";
+			}
+
+	* the ad server of your provider:
+
+			-(NSString*)getAdServerURL {
+    			return @"adtest.ad4max.com";
+			}
+
+	* and the error handling:
+
+			-(void)bannerView:(Ad4MaxBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+			{
+	    		NSLog(@"Error raised by Ad4MaxBannerView: %@", [error description]);
+			}
 
 You can also implement the optionals methods to handle the refresh rate, the Ad categories, the language filter, and the banner behaviors. Refer to the [documentation](http://clentz.github.com/ad4Max-SampleApp-iOS/) to find the details about the other parameters you can act on.
 
