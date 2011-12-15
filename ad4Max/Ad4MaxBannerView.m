@@ -99,7 +99,7 @@ static const int MIN_REFRESH_RATE = 30;
     [self addSubview:activeWebView];        
     
     // make sure the layout stays correct if the outer superview is resized
-    self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
+    //self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
     self.autoresizesSubviews = YES;
     
     [self setOpaque:NO]; 
@@ -174,9 +174,14 @@ static const int MIN_REFRESH_RATE = 30;
     // Reload the ad to give the developer the opportunity to change
     // its ad format
     AD4MAXDLOG(@"Reloading ad as the orientation has changed...");
+
+    [[self subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [[[self subviews] objectAtIndex:idx] setCenter:self.center];
+    }];
     
     [refreshTimer invalidate];
     [self performSelector:@selector(changeAd) withObject:nil afterDelay:1.0];
+
 }
 
 #pragma mark -
