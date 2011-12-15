@@ -5,7 +5,7 @@ The ad4max iOS SDK lets you monetize your iOS apps via advertising.
 The code sends http requests to the ad4max ad server and displays ads in various formats (images, text ads).
 You will receive 50 % of click and CPM generated revenues.
 It supports different 2 banner sizes (320x50 for portrait mode and 480x32 for landscape mode)
-Please go to http://www.ad4max.com/contact/contact-us to get in touch , and ask for an account.
+Please go to http://www.ad4max.com/contact/contact-us to get in touch, and ask for an account.
 
 About
 =======================
@@ -17,6 +17,11 @@ Documentation
 
 The code documentation is available for consulting in your browser [there](http://clentz.github.com/ad4Max-SampleApp-iOS/).
 You can also get it through XCode and subscribe to any updates via [this Atom feed](http://clentz.github.com/ad4Max-SampleApp-iOS/publish/com.publigroup.ad4Max.atom).
+
+Issues
+=======================
+
+If you have any trouble using this software, you can submit issues or feature requests in the GitHub project [here](https://github.com/Clentz/ad4Max-SDK-iOS/issues).
 
 Sample application
 =======================
