@@ -34,19 +34,26 @@ Installation
 
 1. Unzip the `Ad4Max.framework` package to the project folder using the Finder.
 <br/>
+<div style="text-align:center; margin: auto;">
 ![Finder package](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/01.png)
+</div>
 
 1. Include the `Ad4Max.framework` in the linked libraries in the project configuration:
-* In the project settings go to the build phases tab
+<ul>
+<li> In the project settings go to the build phases tab
 <br/>
 ![Build phases tab](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/02.png)
-* explode “Link Binary With Libraries” and click the “+” button
-* click on the “Add Other...” button
+</li>
+<li> explode “Link Binary With Libraries” and click the “+” button</li>
+<li> click on the “Add Other...” button
 <br/>
 ![add other library](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/03.png)
-* and finally select the `Ad4Max.framework` folder to add it
+</li>
+<li> and finally select the `Ad4Max.framework` folder to add it
 <br/>
 ![select .framework](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/04.png)
+</li>
+</ul>
 
 1. Since you are at it, you can also add `CoreTelephony` and `SystemConfiguration` which are also required by the Ad4Max framework.
 <br/>
@@ -54,15 +61,20 @@ Installation
 ![system configuration](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/06.png)
 
 1. Then you need to setup a subview on the screen where you want to display the Ad
-* Using Interface Builder drag a UIView object from the library
+<ul>
+<li> Using Interface Builder drag a UIView object from the library
 <br/>
 ![uiview](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/07.png)
-* Size it to the right size of the Ad you want to display.
+</li>
+<li> Size it to the right size of the Ad you want to display.
 <br/>
 ![uiview size](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/08.png)
-* Then change the Class of the object from `UIView` to `Ad4MaxBannerView`
+</li>
+<li> Then change the Class of the object from `UIView` to `Ad4MaxBannerView`
 <br/>
 ![change view class](http://clentz.github.com/ad4Max-SampleApp-iOS/tutorial/09.png)
+</li>
+</ul>
 
 1. Link the ad4MaxDelegate to the file owner (probably your view controller)
 <br/>
@@ -70,7 +82,7 @@ Installation
 
 1. Go in this file owner and start by including the header file:
 <br/>
-	\#import <Ad4Max/Ad4Max.h>
+	\#import \<Ad4Max/Ad4Max.h\>
 
 1. Make your controller implement the `Ad4MaxBannerViewDelegate` protocol:
 	@interface ViewController : UIViewController <Ad4MaxBannerViewDelegate>```
