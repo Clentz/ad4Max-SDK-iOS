@@ -127,3 +127,11 @@ This product includes third-party softwares compatible with this Apache license 
 - [UIDevice-with-UniqueIdentifier-for-iOS-5](https://github.com/gekitz/UIDevice-with-UniqueIdentifier-for-iOS-5/blob/master/license) licensed by the Georg Kitz. 
 
 Copyright (C) 2011 Publigroupe All Rights Reserved.
+
+
+Releases and Release notes
+=======================
+
+### v1.0 - 2011/12/16
+	
+	* Initial release of the framework
