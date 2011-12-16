@@ -15,8 +15,8 @@ Ad4max decided to make its SDK public as open source project. So you can adapt i
 Documentation
 =======================
 
-The code documentation is available for consulting in your browser [there](http://clentz.github.com/ad4Max-SampleApp-iOS/).
-You can also get it through XCode and subscribe to any updates via [this Atom feed](http://clentz.github.com/ad4Max-SampleApp-iOS/publish/com.publigroup.ad4Max.atom).
+The code documentation is available for consulting in your browser [there](http://clentz.github.com/ad4Max-SDK-iOS/).
+You can also get it through XCode and subscribe to any updates via [this Atom feed](http://clentz.github.com/ad4Max-SDK-iOS/publish/com.publigroup.ad4Max.atom).
 
 Issues
 =======================
@@ -35,7 +35,7 @@ You can try it and analyze it by opening 'ad4Max-SampleApp.xcodeproj' in XCode.
 Installation
 =======================
 
-1. First you need to get [the latest version of the Ad4Max framework binary](http://clentz.github.com/ad4Max-SampleApp-iOS/framework/Ad4Max.framework.zip) on GitHub.
+1. First you need to get [the latest version of the Ad4Max framework binary](http://clentz.github.com/ad4Max-SDK-iOS/framework/Ad4Max.framework-1.0.zip) on GitHub.
 
 1. Unzip the `Ad4Max.framework` package to the project folder using the Finder.
 
