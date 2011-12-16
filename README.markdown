@@ -4,7 +4,7 @@ Intro
 The ad4max iOS SDK lets you monetize your iOS apps via advertising. 
 The code sends http requests to the ad4max ad server and displays ads in various formats (images, text ads).
 You will receive 50 % of click and CPM generated revenues.
-It supports different 2 banner sizes (320x50 for portrait mode and 480x32 for landscape mode)
+It supports 2 different banner sizes (320x50 for portrait mode and 480x32 for landscape mode)
 Please go to http://www.ad4max.com/contact/contact-us to get in touch, and ask for an account.
 
 About
