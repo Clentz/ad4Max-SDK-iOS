@@ -691,7 +691,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ad4Max-Tests/ad4Max-Tests-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/ad4Max-Tests/OCMock/Headers";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/ad4Max-Tests/OCMock/Headers\"";
 				INFOPLIST_FILE = "ad4Max-Tests/ad4Max-Tests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -701,7 +701,7 @@
 					"-ObjC",
 					"-all_load",
 					"-force_load",
-					"$(PROJECT_DIR)/ad4Max-Tests/OCMock/libOCMock.a",
+					"\"$(PROJECT_DIR)/ad4Max-Tests/OCMock/libOCMock.a\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -722,7 +722,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ad4Max-Tests/ad4Max-Tests-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/ad4Max-Tests/OCMock/Headers";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/ad4Max-Tests/OCMock/Headers\"";
 				INFOPLIST_FILE = "ad4Max-Tests/ad4Max-Tests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -732,7 +732,7 @@
 					"-ObjC",
 					"-all_load",
 					"-force_load",
-					"$(PROJECT_DIR)/ad4Max-Tests/OCMock/libOCMock.a",
+					"\"$(PROJECT_DIR)/ad4Max-Tests/OCMock/libOCMock.a\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -754,7 +754,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ad4Max-Tests/ad4Max-Tests-Prefix.pch";
-				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/ad4Max-Tests/OCMock/Headers";
+				HEADER_SEARCH_PATHS = "\"$(PROJECT_DIR)/ad4Max-Tests/OCMock/Headers\"";
 				INFOPLIST_FILE = "ad4Max-Tests/ad4Max-Tests-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -764,7 +764,7 @@
 					"-ObjC",
 					"-all_load",
 					"-force_load",
-					"$(PROJECT_DIR)/ad4Max-Tests/OCMock/libOCMock.a",
+					"\"$(PROJECT_DIR)/ad4Max-Tests/OCMock/libOCMock.a\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
