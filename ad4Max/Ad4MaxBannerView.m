@@ -104,7 +104,6 @@ static const int MIN_REFRESH_RATE = 30;
     [self addSubview:activeWebView];        
     
     // make sure the layout stays correct if the outer superview is resized
-    //self.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
     self.autoresizesSubviews = YES;
     
     [self setOpaque:NO]; 
@@ -140,10 +139,6 @@ static const int MIN_REFRESH_RATE = 30;
     self.activeWebView = [[[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)] autorelease];
 
     activeWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-
-//    for (id subview in activeWebView.subviews)
-//        if ([[subview class] isSubclassOfClass: [UIScrollView class]])
-//            ((UIScrollView *)subview).bounces = NO;
 
     [activeWebView setOpaque:NO]; 
     activeWebView.backgroundColor = [UIColor clearColor];
@@ -418,9 +413,10 @@ static const int MIN_REFRESH_RATE = 30;
             [self reportError:@"ERROR: either you AD BOX id is not valid or no ad banner is currently available for your application. You can hide this banner until a new ad becomes available" withCode:Ad4MaxNoAdsAvailableError]; 
             return;            
         }
+        
+        // This is reported as an error but we though report that the Ad has loaded
         if( height != (int)self.frame.size.height || width != (int)self.frame.size.width ) {
             [self reportBannerSizeErrorWithHeight:height andWidth:width];
-            return;
         }
 
         bannerLoaded = YES;
