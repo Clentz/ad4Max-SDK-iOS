@@ -30,10 +30,12 @@ A very basic App is provided and demonstrates how to make a more advanced use of
 - how to display Ads both in Portrait and Landscape modes
 - how to show an Ad banner only when an Ad is available
 
-You can try it and analyze it by opening 'ad4Max-SampleApp.xcodeproj' in XCode.
+This sample application is available on GitHub [here](https://github.com/Clentz/ad4Max-SampleApp-iOS).
 
 Installation
 =======================
+
+The detailed steps required are detailed below. You can also see also these [installation steps detailed in a screencast](http://clentz.github.com/ad4Max-SDK-iOS/screencasts/Ad4Max%20SDK%20iOS%20-%20Installation%20Screencast.mp4) if you prefer.
 
 1. First you need to get [the latest version of the Ad4Max framework binary](http://clentz.github.com/ad4Max-SDK-iOS/framework/Ad4Max.framework-1.0.zip) on GitHub.
 
