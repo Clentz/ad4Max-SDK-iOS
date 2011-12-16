@@ -1,6 +1,6 @@
 //
 //  Ad4MaxUtilities.m
-//  ad4Max-SampleApp
+//  Ad4Max SDK 1.0
 //
 //  Copyright 2011 Publigroupe
 //
