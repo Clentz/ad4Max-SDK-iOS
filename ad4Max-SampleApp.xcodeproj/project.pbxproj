@@ -58,8 +58,11 @@
 		E44FECD81488EDA900C268E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99D147527F2005BB3AE /* CoreGraphics.framework */; };
 		E44FECDE1488EDA900C268E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E44FECDC1488EDA900C268E7 /* InfoPlist.strings */; };
 		E44FECE11488EDA900C268E7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E44FECE01488EDA900C268E7 /* main.m */; };
+		E4A4D2F5149A1872004F2F9F /* Ad4MaxBannerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E4A4D2F4149A1872004F2F9F /* Ad4MaxBannerViewTests.m */; };
 		E4C6F7E4147FB1B500936DA4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C6F7E3147FB1B400936DA4 /* CoreTelephony.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		E4C6F7E9147FB52000936DA4 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C6F7E8147FB52000936DA4 /* SystemConfiguration.framework */; };
+		E4D60D05149B5C05006ED726 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D60D03149B5C05006ED726 /* Icon.png */; };
+		E4D60D06149B5C05006ED726 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D60D04149B5C05006ED726 /* Icon@2x.png */; };
 		E4D6E99A147527F2005BB3AE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E999147527F2005BB3AE /* UIKit.framework */; };
 		E4D6E99C147527F2005BB3AE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99B147527F2005BB3AE /* Foundation.framework */; };
 		E4D6E99E147527F2005BB3AE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D6E99D147527F2005BB3AE /* CoreGraphics.framework */; };
@@ -107,8 +110,11 @@
 		E44FECDD1488EDA900C268E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E44FECDF1488EDA900C268E7 /* ad4Max-Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ad4Max-Tests-Prefix.pch"; sourceTree = "<group>"; };
 		E44FECE01488EDA900C268E7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		E4A4D2F4149A1872004F2F9F /* Ad4MaxBannerViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ad4MaxBannerViewTests.m; sourceTree = "<group>"; };
 		E4C6F7E3147FB1B400936DA4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E4C6F7E8147FB52000936DA4 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		E4D60D03149B5C05006ED726 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = Resources/Icon.png; sourceTree = "<group>"; };
+		E4D60D04149B5C05006ED726 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "Resources/Icon@2x.png"; sourceTree = "<group>"; };
 		E4D6E995147527F2005BB3AE /* ad4Max-SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ad4Max-SampleApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4D6E999147527F2005BB3AE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E4D6E99B147527F2005BB3AE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -204,6 +210,7 @@
 			children = (
 				E44FECDA1488EDA900C268E7 /* Supporting Files */,
 				E4E798631488EFC300A39E65 /* Ad4MaxParamsServiceTests.m */,
+				E4A4D2F4149A1872004F2F9F /* Ad4MaxBannerViewTests.m */,
 			);
 			path = "ad4Max-Tests";
 			sourceTree = "<group>";
@@ -217,6 +224,15 @@
 				E44FECE01488EDA900C268E7 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E4D60D01149B5BEE006ED726 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E4D60D03149B5C05006ED726 /* Icon.png */,
+				E4D60D04149B5C05006ED726 /* Icon@2x.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		E4D6E98A147527F2005BB3AE = {
@@ -243,8 +259,8 @@
 		E4D6E998147527F2005BB3AE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E4351E9C1491F7BD005BDD93 /* CoreLocation.framework */,
 				112C8B56148D1A7F001FBABD /* GHUnitIOS.framework */,
+				E4351E9C1491F7BD005BDD93 /* CoreLocation.framework */,
 				E4C6F7E8147FB52000936DA4 /* SystemConfiguration.framework */,
 				E4C6F7E3147FB1B400936DA4 /* CoreTelephony.framework */,
 				E4D6E999147527F2005BB3AE /* UIKit.framework */,
@@ -258,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				E4D6E9CD147567B9005BB3AE /* Classes */,
+				E4D60D01149B5BEE006ED726 /* Resources */,
 				E4D6E9A0147527F2005BB3AE /* Supporting Files */,
 			);
 			path = "ad4Max-SampleApp";
@@ -408,6 +425,8 @@
 				11631B79148D198A00DC4DB4 /* ad4Max_SampleAppViewController.xib in Resources */,
 				11631B7A148D198A00DC4DB4 /* InfoPlist.strings in Resources */,
 				11631B7B148D198A00DC4DB4 /* MainWindow.xib in Resources */,
+				E4D60D05149B5C05006ED726 /* Icon.png in Resources */,
+				E4D60D06149B5C05006ED726 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +493,7 @@
 			files = (
 				E44FECE11488EDA900C268E7 /* main.m in Sources */,
 				E4E798641488EFC300A39E65 /* Ad4MaxParamsServiceTests.m in Sources */,
+				E4A4D2F5149A1872004F2F9F /* Ad4MaxBannerViewTests.m in Sources */,
 				112C8B58148D1AB2001FBABD /* Ad4MaxParamsService.m in Sources */,
 				112C8B59148D1AB6001FBABD /* Ad4MaxBannerView.m in Sources */,
 				11E383AA1490D38B00D2499C /* Ad4MaxReachability.m in Sources */,
@@ -671,10 +691,17 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ad4Max-Tests/ad4Max-Tests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/ad4Max-Tests/OCMock/Headers";
 				INFOPLIST_FILE = "ad4Max-Tests/ad4Max-Tests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PROJECT_DIR)/ad4Max-Tests/OCMock\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"-force_load",
+					"$(PROJECT_DIR)/ad4Max-Tests/OCMock/libOCMock.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -695,10 +722,17 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ad4Max-Tests/ad4Max-Tests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/ad4Max-Tests/OCMock/Headers";
 				INFOPLIST_FILE = "ad4Max-Tests/ad4Max-Tests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PROJECT_DIR)/ad4Max-Tests/OCMock\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"-force_load",
+					"$(PROJECT_DIR)/ad4Max-Tests/OCMock/libOCMock.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -720,10 +754,17 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ad4Max-Tests/ad4Max-Tests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/ad4Max-Tests/OCMock/Headers";
 				INFOPLIST_FILE = "ad4Max-Tests/ad4Max-Tests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PROJECT_DIR)/ad4Max-Tests/OCMock\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"-force_load",
+					"$(PROJECT_DIR)/ad4Max-Tests/OCMock/libOCMock.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

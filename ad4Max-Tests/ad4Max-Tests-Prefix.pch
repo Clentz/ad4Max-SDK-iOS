@@ -42,3 +42,5 @@
 #    define DLog(...) /* */
 #endif
 #define ALog(...) NSLog(__VA_ARGS__)
+
+#define AD4MAXTEST 1

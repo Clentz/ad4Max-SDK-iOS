@@ -92,9 +92,14 @@ static const int MIN_REFRESH_RATE = 30;
  
     self.paramsService = [[[Ad4MaxParamsService alloc] init] autorelease];
     
+#ifdef AD4MAXTEST    
+    // Do not do UIKit related things in unit tests, it crashes
+    return;
+#endif
+
     self.inactiveWebView = nil;
     [self initActiveWebView];
-    
+
     // add webView to View
     [self addSubview:activeWebView];        
     
@@ -124,7 +129,10 @@ static const int MIN_REFRESH_RATE = 30;
 
     
     initialized = YES;
-    [self loadBannerInView];        
+    
+    if( ad4MaxDelegate ) {
+        [self loadBannerInView];        
+    }
 }
 
 - (void)initActiveWebView {
@@ -133,9 +141,9 @@ static const int MIN_REFRESH_RATE = 30;
 
     activeWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 
-    for (id subview in activeWebView.subviews)
-        if ([[subview class] isSubclassOfClass: [UIScrollView class]])
-            ((UIScrollView *)subview).bounces = NO;
+//    for (id subview in activeWebView.subviews)
+//        if ([[subview class] isSubclassOfClass: [UIScrollView class]])
+//            ((UIScrollView *)subview).bounces = NO;
 
     [activeWebView setOpaque:NO]; 
     activeWebView.backgroundColor = [UIColor clearColor];
@@ -192,9 +200,9 @@ static const int MIN_REFRESH_RATE = 30;
     ad4MaxDelegate = _delegate;
 
     // The load sequence is different if the delegate is set via IB or
-    // programatically
+    // programmatically
     // In case of IB, delegate is set before the call to awakeFromNib
-    // If done programatically in controller viewDidLoad, delegate is set after
+    // If done programmatically in controller viewDidLoad, delegate is set after
     // the call to awakeFromNib
     if( initialized ) {
         [self loadBannerInView];    
@@ -278,10 +286,7 @@ static const int MIN_REFRESH_RATE = 30;
         }
     }
         
-    
-    
-    // ad4max_geo 
-    
+        
     NSString *generatedHTMLString = [[[NSString alloc] initWithFormat:htmlStringFormat, 
                                      guidString, 
                                      appNameString,
