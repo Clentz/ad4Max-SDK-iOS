@@ -1,1 +1,4 @@
-docset-installed.txt
+  
+# Exclude OS X folder attributes
+.DS_Store
+ 

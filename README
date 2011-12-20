@@ -1,8 +1,7 @@
-// Standard html documentation:
-
+// Standard html documentation
+// Generates doc in ./html. Then copy content of html directory to the documentation repository
 appledoc --no-create-docset --project-name ad4Max --project-company "Publigroupe" --company-id com.publigroupe <path_to_xcode_project/ad4Max>  
 
-
 // Generate docset package and feed
-
+// Generates feed in ./html/publish. Then copy content of publish directory to the documentation repository (publish subdir)
 appledoc --project-name ad4Max --project-company "Publigroupe" --company-id com.publigroupe --output ./html/ --docset-feed-url http://clentz.github.com/ad4Max-SDK-iOS/publish/%DOCSETATOMFILENAME --docset-package-url http://clentz.github.com/ad4Max-SDK-iOS/publish/%DOCSETPACKAGEFILENAME --publish-docset  <path_to_xcode_project/ad4Max>
