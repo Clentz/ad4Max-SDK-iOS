@@ -16,7 +16,7 @@ Documentation
 =======================
 
 The code documentation is available for consulting in your browser [there](http://clentz.github.com/ad4Max-SDK-iOS/).
-You can also get it through XCode and subscribe to any updates via [this Atom feed](http://clentz.github.com/ad4Max-SDK-iOS/publish/com.publigroup.ad4Max.atom).
+You can also get it through XCode and subscribe to any updates via [this Atom feed](http://clentz.github.com/ad4Max-SDK-iOS/publish/com.publigroupe.ad4Max.atom).
 
 Issues
 =======================
