@@ -1,7 +1,8 @@
-//standard html documentation:
+// Standard html documentation:
 
-appledoc --no-create-docset --project-name ad4Max --project-company "Publigroupe" --company-id com.publigroup --output ./ ~/Desktop/ad4Max-SampleApp-iOS/ad4Max
+appledoc --no-create-docset --project-name ad4Max --project-company "Publigroupe" --company-id com.publigroupe <path_to_xcode_project/ad4Max>  
 
 
-//generate docset package and feed
-appledoc --project-name ad4Max --project-company "Publigroupe" --company-id com.publigroup --output ./html/ --docset-feed-url http://clentz.github.com/ad4Max-SampleApp-iOS/publish/%DOCSETATOMFILENAME --docset-package-url http://clentz.github.com/ad4Max-SampleApp-iOS/publish/%DOCSETPACKAGEFILENAME --publish-docset  ~/Desktop/ad4Max-SampleApp-iOS/ad4Max
+// Generate docset package and feed
+
+appledoc --project-name ad4Max --project-company "Publigroupe" --company-id com.publigroupe --output ./html/ --docset-feed-url http://clentz.github.com/ad4Max-SDK-iOS/publish/%DOCSETATOMFILENAME --docset-package-url http://clentz.github.com/ad4Max-SDK-iOS/publish/%DOCSETPACKAGEFILENAME --publish-docset  <path_to_xcode_project/ad4Max>
