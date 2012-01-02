@@ -30,8 +30,8 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-static const int DEFAULT_REFRESH_RATE = 45;
-static const int MIN_REFRESH_RATE = 30;
+#define DEFAULT_REFRESH_RATE        45
+#define MIN_REFRESH_RATE            30
 
 @interface Ad4MaxBannerView ()
 
@@ -235,7 +235,6 @@ static const int MIN_REFRESH_RATE = 30;
     "</html>";
     
     NSString *guidString = [ad4MaxDelegate getAdBoxId];
-    // TODO validate URL
     NSString *serverURLString = [ad4MaxDelegate getAdServerURL];
     NSString *widthString = [NSString stringWithFormat: @"%.0f", super.frame.size.width];
     NSString *heightString = [NSString stringWithFormat: @"%.0f", super.frame.size.height];
@@ -257,6 +256,7 @@ static const int MIN_REFRESH_RATE = 30;
     }
     
     // Handle optional delegate methods
+    // Check if the user location is declared in the delegate and so available
     if ([ad4MaxDelegate respondsToSelector:@selector(getUserGeoLocation)] ) {
 
         CLLocation* location = [ad4MaxDelegate getUserGeoLocation];
@@ -265,6 +265,7 @@ static const int MIN_REFRESH_RATE = 30;
             [optionalParamsString appendFormat:@"ad4max_geo = '%@';", [self getLocationString:location]];
         }
     }
+    // Check if the developer wants to force native language ads
     if ([ad4MaxDelegate respondsToSelector:@selector(doForceLanguage)] ) {
         if ([ad4MaxDelegate doForceLanguage]) {
             [optionalParamsString appendFormat:@"ad4max_lang_filter = 'on';"];
@@ -273,8 +274,8 @@ static const int MIN_REFRESH_RATE = 30;
             [optionalParamsString appendFormat:@"ad4max_lang_filter = 'off';"];
         }
     }
+    // Check if the developer wants to select specific types of ads
     if ([ad4MaxDelegate respondsToSelector:@selector(getTargetedPublisherCategories)] ) {
-        // TODO check format cat1;cat2;cat3 (max 3)
         if ([ad4MaxDelegate getTargetedPublisherCategories]) {
             [optionalParamsString appendFormat:@"ad4max_publisher_categories = '%@';", [ad4MaxDelegate getTargetedPublisherCategories]];
         }
