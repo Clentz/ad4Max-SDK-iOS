@@ -239,7 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				112C8B49148D19AF001FBABD /* ad4Max */,
-				E4D6E99F147527F2005BB3AE /* ad4Max-SampleApp */,
+				E4D6E99F147527F2005BB3AE /* ad4Max-TestApp */,
 				E44FECD91488EDA900C268E7 /* ad4Max-Tests */,
 				E4D6E998147527F2005BB3AE /* Frameworks */,
 				E4D6E996147527F2005BB3AE /* Products */,
@@ -270,14 +270,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E4D6E99F147527F2005BB3AE /* ad4Max-SampleApp */ = {
+		E4D6E99F147527F2005BB3AE /* ad4Max-TestApp */ = {
 			isa = PBXGroup;
 			children = (
 				E4D6E9CD147567B9005BB3AE /* Classes */,
 				E4D60D01149B5BEE006ED726 /* Resources */,
 				E4D6E9A0147527F2005BB3AE /* Supporting Files */,
 			);
-			path = "ad4Max-SampleApp";
+			path = "ad4Max-TestApp";
 			sourceTree = "<group>";
 		};
 		E4D6E9A0147527F2005BB3AE /* Supporting Files */ = {
