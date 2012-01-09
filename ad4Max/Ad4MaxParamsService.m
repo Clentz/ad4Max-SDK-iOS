@@ -28,30 +28,16 @@
 
 @interface Ad4MaxParamsService ()
 
-@property(nonatomic, retain)	NSUserDefaults			*userDefaults; 
-
 @end
 
 @implementation Ad4MaxParamsService
 
-@synthesize userDefaults;
 
 #pragma mark -
 #pragma mark Memory Management
 
-- (id) init {
-	
-	if ((self = [super init]))
-    {
-		self.userDefaults = [[[NSUserDefaults alloc] init] autorelease];		
-    }
-	
-	return self;
-}
-
 - (void) dealloc
 {
-	self.userDefaults = nil;
 	[super dealloc];
 }
 
@@ -72,10 +58,13 @@
 
 -(BOOL) isFirstLaunch {
     
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    
     BOOL firstLaunch = ![userDefaults boolForKey:@"ad4MaxAlreadyLaunched"];
     
     if( firstLaunch ) {
         [userDefaults setBool:YES forKey:@"ad4MaxAlreadyLaunched"];
+        [userDefaults synchronize];
     }
 
     return firstLaunch;
