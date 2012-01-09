@@ -39,7 +39,7 @@
 @property (nonatomic, retain) UIWebView*            activeWebView;
 @property (nonatomic, retain) UIWebView*            inactiveWebView; // used for animation
 @property (nonatomic, retain) Ad4MaxParamsService*  paramsService;
-@property (nonatomic, retain) NSTimer*              refreshTimer;
+@property (nonatomic, retain) NSTimer*              refreshTimer; // used to refresh the Ad. Is invalidated when the user leaves the application and restarted when he comes back
 
 - (void)baseInit;
 - (void)initActiveWebView;
@@ -87,6 +87,8 @@
     [super dealloc];
 }
 
+// baseInit is the init method of the object. It has been refactored because is called both by
+// initWithFrame: and by awakeFromNib
 - (void)baseInit {
  
     self.paramsService = [[[Ad4MaxParamsService alloc] init] autorelease];
@@ -144,6 +146,7 @@
     [activeWebView setDelegate:self];
 }
 
+// Called if the banner is created programmatically
 - (id)initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         [self baseInit];
@@ -151,6 +154,7 @@
     return self;
 }
 
+// Called if the banner is created via Interface Builder (IB)
 - (void)awakeFromNib {
     [self baseInit];
 }
@@ -158,12 +162,14 @@
 #pragma mark -
 #pragma mark - Application Lifecycle management
 
+// When the user re-enters the application, the refresh timer is restarted
 - (void)didBecomeActive:(NSNotification *)notification {
 
     // Schedule next ad refresh
     [self scheduleAdRefresh];    
 }
 
+// When the user leaves the application, the refresh timer is invalidated and will be restarted when he re-enters it
 - (void)willResignActive:(NSNotification *)notification {
     
     // Cancel ad refresh as long as ads are not visible
@@ -207,6 +213,10 @@
 #pragma mark -
 #pragma mark - Private methods
 
+// This method creates the HTML document that will be loaded in our inner UIWebView.
+// Basically, it creates an iframe using the standard javascript script also used for the generation of Ads 
+// for the Web. This iframe will contain the Ad displayed to the user.
+// Parameters are either computed by the SDK or requested to the delegate.
 - (NSString*)getWebViewContent {
         
     // set web view content
@@ -334,6 +344,9 @@
     }
     
     // Schedule next ad refresh
+    // TODO: the refresh timer should rather be scheduled on page load error or success
+    // Indeed, in case of slow loading Ads, the Ad can today be displayed shorter than the expected time
+    // Notice you will have to deal with cntWebViewLoads, which make things harder
     [self scheduleAdRefresh];
         
 }
