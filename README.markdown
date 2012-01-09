@@ -139,6 +139,7 @@ Credentials
 ===========
 
 This SDK has been designed and implemented by [OCTO Technology](http://www.octo.com) Switzerland.
+
 ![Powered by OCTO Technology](http://clentz.github.com/ad4Max-SDK-iOS/tutorial/PoweredByOcto.png)
 
 iOS Compatibility
