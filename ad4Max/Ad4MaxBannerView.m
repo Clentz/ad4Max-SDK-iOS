@@ -139,6 +139,9 @@
  
     self.activeWebView = [[[UIWebView alloc] initWithFrame:CGRectMake(0,0,super.frame.size.width,super.frame.size.height)] autorelease];
 
+    UIScrollView *scrollView = [[activeWebView subviews] lastObject];
+    [scrollView setScrollEnabled:NO];
+    
     activeWebView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 
     [activeWebView setOpaque:NO]; 
