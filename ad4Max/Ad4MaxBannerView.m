@@ -186,10 +186,6 @@
     // its ad format
     AD4MAXDLOG(@"Reloading ad as the orientation has changed...");
 
-    [[self subviews] enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        [[[self subviews] objectAtIndex:idx] setCenter:self.center];
-    }];
-    
     [refreshTimer invalidate];
     [self performSelector:@selector(changeAd) withObject:nil afterDelay:1.0];
 

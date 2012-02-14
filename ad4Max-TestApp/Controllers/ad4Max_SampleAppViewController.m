@@ -74,6 +74,8 @@
                         action:@selector(positionControlChanged)
               forControlEvents:UIControlEventValueChanged];
 
+    [self positionControlChanged];
+    
     // detect single touch on a UIScrollView
 	self.singleTap = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)] autorelease];
 
@@ -105,42 +107,75 @@
 	[super viewWillDisappear:animated];
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    
+    [self positionControlChanged];
+}
+
 - (void)positionControlChanged {
     
-    CGFloat screenHeight = [self.view bounds].size.height;
-    CGFloat screenWidth = [self.view bounds].size.width;
+    CGFloat screenHeight;
+    CGFloat screenWidth;
+    
+    if( UIDeviceOrientationIsPortrait([[UIApplication sharedApplication] statusBarOrientation]) ) {
+        screenHeight = 460;
+        screenWidth = 320;
+    }
+    else
+    {
+        screenHeight = 300;
+        screenWidth = 480;            
+    }
     
     switch (positionControl.selectedSegmentIndex) {
         case 0:
             // Top position, instead of NavBar
-            navBar.hidden = YES;
-            tabBar.hidden = NO;
-            [bannerView setFrame:CGRectMake(0, 0, bannerView.frame.size.width, bannerView.frame.size.height)];  
-            [scrollView setFrame:CGRectMake(0, bannerView.frame.size.height, scrollView.frame.size.width, scrollView.frame.size.height)];
+            [navBar removeFromSuperview];
+            if( ![tabBar superview] ) {
+                [[scrollView superview] insertSubview:tabBar atIndex:2];
+            }
+            [bannerView setFrame:CGRectMake(0, 0, screenWidth, bannerView.frame.size.height)];  
+            [scrollView setFrame:CGRectMake(0, bannerView.frame.size.height, screenWidth, scrollView.frame.size.height)];
+            [navBar setFrame:CGRectMake(0, 0, screenWidth, navBar.frame.size.height)];
+            [tabBar setFrame:CGRectMake(0, screenHeight-tabBar.frame.size.height, screenWidth, tabBar.frame.size.height)];
             break;
         case 1:
             // Bottom position, instead of TabBar
-            navBar.hidden = NO;
-            tabBar.hidden = YES;
-            [bannerView setFrame:CGRectMake(0, screenHeight-bannerView.frame.size.height, bannerView.frame.size.width, bannerView.frame.size.height)];                        
-            [scrollView setFrame:CGRectMake(0, navBar.frame.size.height, scrollView.frame.size.width, scrollView.frame.size.height)];
+            [tabBar removeFromSuperview];
+            if( ![navBar superview] ) {
+                [[scrollView superview] insertSubview:navBar atIndex:0];
+            }
+            [bannerView setFrame:CGRectMake(0, screenHeight-bannerView.frame.size.height, screenWidth, bannerView.frame.size.height)];                        
+            [scrollView setFrame:CGRectMake(0, navBar.frame.size.height, screenWidth, scrollView.frame.size.height)];
+            [navBar setFrame:CGRectMake(0, 0, screenWidth, navBar.frame.size.height)];
+            [tabBar setFrame:CGRectMake(0, screenHeight-tabBar.frame.size.height, screenWidth, tabBar.frame.size.height)];
             break;
         case 2:
             // Bottom position, above TabBar
-            navBar.hidden = YES;
-            tabBar.hidden = NO;
-            [bannerView setFrame:CGRectMake(0, screenHeight-bannerView.frame.size.height-tabBar.frame.size.height, bannerView.frame.size.width, bannerView.frame.size.height)];                        
-            [scrollView setFrame:CGRectMake(0, 0, scrollView.frame.size.width, scrollView.frame.size.height)];
+            [navBar removeFromSuperview];
+            if( ![tabBar superview] ) {
+                [[scrollView superview] insertSubview:tabBar atIndex:2];
+            }
+            [bannerView setFrame:CGRectMake(0, screenHeight-bannerView.frame.size.height-tabBar.frame.size.height, screenWidth, bannerView.frame.size.height)];                        
+            [scrollView setFrame:CGRectMake(0, 0, screenWidth, scrollView.frame.size.height)];
+            [navBar setFrame:CGRectMake(0, 0, screenWidth, navBar.frame.size.height)];
+            [tabBar setFrame:CGRectMake(0, screenHeight-tabBar.frame.size.height, screenWidth, tabBar.frame.size.height)];
             break;
         case 3:
             // Top position, below NavBar
-            navBar.hidden = NO;
-            tabBar.hidden = YES;
-            [bannerView setFrame:CGRectMake(0, navBar.frame.size.height, bannerView.frame.size.width, bannerView.frame.size.height)];                        
-            [scrollView setFrame:CGRectMake(0, navBar.frame.size.height+bannerView.frame.size.height, scrollView.frame.size.width, scrollView.frame.size.height)];
+            [tabBar removeFromSuperview];
+            if( ![navBar superview] ) {
+                [[scrollView superview] insertSubview:navBar atIndex:0];
+            }
+            [bannerView setFrame:CGRectMake(0, navBar.frame.size.height, screenWidth, bannerView.frame.size.height)];                        
+            [scrollView setFrame:CGRectMake(0, navBar.frame.size.height+bannerView.frame.size.height, screenWidth, scrollView.frame.size.height)];
+            [navBar setFrame:CGRectMake(0, 0, screenWidth, navBar.frame.size.height)];
+            [tabBar setFrame:CGRectMake(0, screenHeight-tabBar.frame.size.height, screenWidth, tabBar.frame.size.height)];
             break;
     }
+        
 }
+
 
 #pragma mark - Ad4MaxBannerViewDelegate
 

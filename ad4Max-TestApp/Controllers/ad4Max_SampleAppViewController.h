@@ -75,5 +75,6 @@
 
 - (void) hideKeyboard;
 - (void) resizeAndScrollView;
+- (void) positionControlChanged;
 
 @end
