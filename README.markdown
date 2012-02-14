@@ -153,3 +153,9 @@ Releases and Release notes
 ### v1.0 - 2011/12/16
 	
 	* Initial release of the framework
+	
+### v1.0.1 - 2011/02/14
+
+	* Fix a problem with the banner being scrollable
+	* Add armv6 as an iOS target deployment
+	* Fix a problem with banner not correctly rendered when orientation changes
