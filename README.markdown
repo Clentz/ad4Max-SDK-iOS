@@ -37,7 +37,7 @@ Installation
 
 The detailed steps required are detailed below. You can also see also these [installation steps detailed in a screencast](http://clentz.github.com/ad4Max-SDK-iOS/screencasts/Ad4Max%20SDK%20iOS%20-%20Installation%20Screencast.mp4) if you prefer.
 
-1. First you need to get [the latest version of the Ad4Max framework binary](http://clentz.github.com/ad4Max-SDK-iOS/framework/Ad4Max.framework-1.0.zip) on GitHub.
+1. First you need to get [the latest version of the Ad4Max framework binary](http://clentz.github.com/ad4Max-SDK-iOS/framework/Ad4Max.framework-1.0.1.zip) on GitHub.
 
 1. Unzip the `Ad4Max.framework` package to the project folder using the Finder.
 
